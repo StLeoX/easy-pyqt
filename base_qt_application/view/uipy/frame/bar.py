@@ -16,7 +16,7 @@ class Ui_base_bar(object):
         base_bar.setObjectName("base_bar")
         base_bar.resize(591, 100)
         self.horizontalLayout = QtWidgets.QHBoxLayout(base_bar)
-        self.horizontalLayout.setContentsMargins(10, 0, 10, 0)
+        self.horizontalLayout.setContentsMargins(10, 10, 10, 0)
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.app_logo = QtWidgets.QPushButton(base_bar)

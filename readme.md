@@ -1,4 +1,4 @@
-![app icon](icon.png) 工具名称
+![app icon](icon.png) QT
 
 # 基本介绍
 支持的版本: ![python 版本](python_version.svg)

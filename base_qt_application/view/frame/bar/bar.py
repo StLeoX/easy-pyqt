@@ -21,4 +21,4 @@ class BaseBar(BaseView, Ui_base_bar):
         pass
 
     def configure(self):
-        pass
+        self.set_style(self.resource.style_from("bar.css"))

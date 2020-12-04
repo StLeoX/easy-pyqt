@@ -18,8 +18,10 @@ from view.base_view import BaseView
 
 
 class BaseActivity(QDialog, BaseView):
-    # 自定义标题栏的最大化最小化
+    # 自定义标题栏的最大化最小化及关闭按钮
     bar_normal = None
+    bar_close = None
+    bar_mini = None
 
     # 自定义标题栏组件
     bar = None
@@ -65,6 +67,7 @@ class BaseActivity(QDialog, BaseView):
         super().__init__(flags, *args, **kwargs)
         self.default_func: FuncThread = FuncThread()  # 默认的执行线程
         self.waiting_dialog = waiting_dialog()  # 默认的遮罩层
+        self.button_font = self.resource.make_font(12, 2, "Webdings")
         self.logger = Logger()
         self.config = Config()
 
@@ -87,6 +90,15 @@ class BaseActivity(QDialog, BaseView):
         self.setAttribute(Qt.WA_TranslucentBackground, True)
         self.setWindowIcon(self.resource.qt_icon_project_ico)
         self.setAttribute(Qt.WA_TranslucentBackground)
+        if self.bar_normal:
+            self.bar_normal.setFont(self.button_font)
+            self.bar_normal.setText(b'\xef\x80\xb2'.decode("utf-8"))
+        if self.bar_mini:
+            self.bar_mini.setFont(self.button_font)
+            self.bar_mini.setText(b"\xef\x80\xb0".decode("utf-8"))
+        if self.bar_close:
+            self.bar_close.setFont(self.button_font)
+            self.bar_close.setText(b"\xef\x81\xb2".decode("utf-8"))
 
     def place(self):
         """
@@ -103,7 +115,11 @@ class BaseActivity(QDialog, BaseView):
         """
         if self.bar_normal:
             self.bar_normal.clicked.connect(lambda: BaseActivity.change_normal(self))
-            # 执行失败时，通信频道移交给错误弹窗
+        if self.bar_close:
+            self.bar_close.clicked.connect(self.accept)
+        if self.bar_mini:
+            self.bar_mini.clicked.connect(self.showMaximized)
+        # 执行失败时，通信频道移交给错误弹窗
         self.default_func.thread_error_signal.connect(self.error_dialog)
         self.default_func.thread_signal.connect(self.do_nothing)
 
@@ -148,6 +164,7 @@ class BaseActivity(QDialog, BaseView):
             return
         self.layout().setContentsMargins(0, 0, 0, 0)
         self.showMaximized()  # 先实现窗口最大化
+        self.bar_normal.setFont(self.button_font)
         self.bar_normal.setText(b'\xef\x80\xb2'.decode("utf-8"))
         self.bar_normal.setToolTip("恢复")  # 更改按钮提示
         self.bar_normal.disconnect()  # 断开原本的信号槽连接
@@ -163,6 +180,7 @@ class BaseActivity(QDialog, BaseView):
             return
         self.layout().setContentsMargins(5, 5, 5, 5)
         self.showNormal()
+        self.bar_normal.setFont(self.button_font)
         self.bar_normal.setText(b'\xef\x80\xb1'.decode("utf-8"))
         self.bar_normal.setToolTip("最大化")
         # 关闭信号与原始槽连接

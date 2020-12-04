@@ -13,7 +13,8 @@ import traceback
 
 description = "日志信息"
 __class_path__ = os.path.abspath(os.path.dirname(__file__))
-__root_path__ = os.path.abspath(os.path.join(__class_path__, os.path.pardir))
+__common_path__ = os.path.abspath(os.path.join(__class_path__, os.path.pardir))
+__root_path__ = os.path.abspath(os.path.join(__common_path__, os.path.pardir))
 LOG_PATH = os.path.join(__root_path__, "log")
 
 if not os.path.exists(LOG_PATH):
