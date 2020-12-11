@@ -19,10 +19,14 @@ class BaseView(QWidget):
     resource: ResourceLoader = ResourceLoader()
 
     @abc.abstractmethod
-    def set_signal(self): ...
+    def set_signal(self):
+        """信号设置"""
+        ...
 
     @abc.abstractmethod
-    def configure(self): ...
+    def configure(self):
+        """属性配置"""
+        ...
 
     def procedure(self):
         """

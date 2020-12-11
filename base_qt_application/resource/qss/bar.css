@@ -1,0 +1,53 @@
+/*自定义标题栏按钮*/
+#bar_btn_normal, #bar_btn_close, #bar_btn_min{
+    margin: 3px;
+    width: 25px;
+    height: 25px;
+    border-radius: 2%;
+}
+/*最小化按钮*/
+#bar_btn_min{
+    background: #00f5d4;
+}
+#bar_btn_min:hover {
+    background: #70FFEC;
+}
+/*最大化那妞*/
+#bar_btn_normal{
+    background: #00bbf9;
+}
+#bar_btn_normal:hover{
+    background: #47D1FF;
+}
+/*关闭按钮*/
+#bar_btn_close{
+    background: #f15bb5;
+}
+/*经过按钮*/
+#bar_btn_close:hover{
+    background: #CE1283;
+}
+/*按钮被按下*/
+/*noinspection CssInvalidPseudoSelector*/
+#bar_btn_close:pressed{
+    background: #CE1283;
+}
+/*标题栏背景*/
+#base_bar{
+    background: #6096ba;
+}
+/*应用名称*/
+#app_name{
+    margin-left: 10px;
+    font-family: "Microsoft YaHei UI", serif;
+    font-size: 16px;
+    border: none;
+    color: #0466c8;
+}
+/*应用图标*/
+#app_logo{
+    width: 25px;
+    height: 25px;
+    border: none;
+    background: transparent;
+}

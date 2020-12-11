@@ -1,6 +1,7 @@
 /*
     默认的样式表, 如果需要用到这个样式，且还用到其他的样式，那需要进行相加
  */
+QWidget{border-radius:7px;background-color:rgb(255,255,255);}
 #base_bar{
     height: 50px;
 }
