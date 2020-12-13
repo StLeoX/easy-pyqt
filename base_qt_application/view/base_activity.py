@@ -23,11 +23,11 @@ class BaseActivity(QDialog, BaseView):
     bar_close: QWidget = None
     bar_mini: QWidget = None
     # 顶部标题栏
-    bar: QWidget = None
+    bar: BaseView = None
 
     def __init__(self, flags=None, *args, **kwargs):
         """
-        自定义窗口，*他具有以下属性或者功能*：
+        自定义窗口，他具有以下属性或者功能：
             - 属性：logger    日志记录
             - 属性：resource  静态资源管理
             - 属性：waiting_dialog 弹出层
@@ -47,7 +47,7 @@ class BaseActivity(QDialog, BaseView):
         # 默认的执行线程
         self.default_func: FuncThread = FuncThread()
         # 默认的遮罩层
-        self.waiting_dialog = waiting_dialog()
+        self.waiting_dialog: QDialog = waiting_dialog()
         self.button_font = self.resource.make_font(12, 2, "Webdings")
         self.logger = Logger()
         self.config = Config()

@@ -74,7 +74,7 @@ def show_override_message(text):
     return message, qoverride, qadd, qcancel
 
 
-def waiting_dialog(waiting_info: str = "加载中，请稍后") -> QMessageBox:
+def waiting_dialog(waiting_info: str = "加载中，请稍后") -> QDialog:
     """
     等待对话框
     使用方法：

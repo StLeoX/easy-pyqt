@@ -1,35 +1,44 @@
+#bar{
+    /*background: #47D1FF;*/
+}
+#btn_bar_app_name{
+    font-family: "Microsoft YaHei UI", serif;
+    font-size: 14px;
+    background: transparent;
+}
 /*自定义标题栏按钮*/
-#bar_btn_normal, #bar_btn_close, #bar_btn_min{
+#btn_bar_normal, #btn_bar_close, #btn_bar_min, #btn_bar_app_logo{
     margin: 3px;
     width: 25px;
     height: 25px;
     border-radius: 2%;
+    background: transparent;
 }
 /*最小化按钮*/
-#bar_btn_min{
-    background: #00f5d4;
+#btn_bar_min{
+    /*background: #00f5d4;*/
 }
-#bar_btn_min:hover {
+#btn_bar_min:hover {
     background: #70FFEC;
 }
 /*最大化那妞*/
-#bar_btn_normal{
-    background: #00bbf9;
+#btn_bar_normal{
+    /*background: #00bbf9;*/
 }
-#bar_btn_normal:hover{
+#btn_bar_normal:hover{
     background: #47D1FF;
 }
 /*关闭按钮*/
-#bar_btn_close{
-    background: #f15bb5;
+#btn_bar_close{
+    /*background: #f15bb5;*/
 }
 /*经过按钮*/
-#bar_btn_close:hover{
+#btn_bar_close:hover{
     background: #CE1283;
 }
 /*按钮被按下*/
 /*noinspection CssInvalidPseudoSelector*/
-#bar_btn_close:pressed{
+#btn_bar_close:pressed{
     background: #CE1283;
 }
 /*标题栏背景*/

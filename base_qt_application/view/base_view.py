@@ -6,7 +6,8 @@
 """
 import abc
 
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtGui import QPainter
+from PyQt5.QtWidgets import QWidget, QStyleOption, QStyle
 
 from common.loader.resource import ResourceLoader
 
@@ -19,38 +20,45 @@ class BaseView(QWidget):
     resource: ResourceLoader = ResourceLoader()
 
     @abc.abstractmethod
-    def set_signal(self):
+    def set_signal(self) -> None:
         """信号设置"""
         ...
 
     @abc.abstractmethod
-    def configure(self):
+    def configure(self) -> None:
         """属性配置"""
         ...
 
-    def procedure(self):
+    def procedure(self) -> None:
         """
         初始化流程, 比如setUi、place、configure、set_signal等
-        :return:
         """
-        ...
+        self.place()
+        self.configure()
+        self.set_signal()
 
-    def place(self):
+    def place(self) -> None:
         """
         页面微布局,并不是所有的页面都是由Qt designer 设计而来的
         还有部分组件需要加载到页面，约定在这里编写，方便管理哦
-        :return:
         """
         ...
 
-    def set_style(self, *files: str, use_old_style: bool = False):
+    def set_style(self, *files: str, use_old_style: bool = False) -> None:
         """
         设置样式，可以传入多个文件名，后面声明的样式会覆盖前面声明的样式
         :param use_old_style: 是否使用原来控件上的样式？
         :param files:  样式列表, 相对qss的路径， 如qss/index.css -> index.css
-        :return:
         """
-        old_style = ""
-        if use_old_style:
-            old_style = self.styleSheet() or ""
+        old_style = self.styleSheet() if use_old_style else ""
         self.setStyleSheet(old_style + self.resource.style_from(*files))
+
+    def paintEvent(self, event):
+        """
+        重写paintEvent,如此在继承widget等控件之后依然可以通过调用qss样式文件进行样式重载
+        """
+        opt = QStyleOption()
+        opt.initFrom(self)
+        p = QPainter(self)
+        self.style().drawPrimitive(QStyle.PE_Widget, opt, p, self)
+        super(BaseView, self).paintEvent(event)

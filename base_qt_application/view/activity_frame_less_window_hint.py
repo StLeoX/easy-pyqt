@@ -6,7 +6,7 @@
 """
 from typing import Tuple
 
-from PyQt5 import QtCore, QtWidgets, QtGui
+from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt, QPoint
 
 from view.base_activity import BaseActivity
@@ -15,6 +15,7 @@ from view.base_activity import BaseActivity
 class FrameLessWindowHintActivity(BaseActivity):
     # 页面上的主要容器，控件应该放在这个里面
     body_widget: QtWidgets.QWidget = None
+    body_layout: QtWidgets.QHBoxLayout = None
     # 窗口拉伸边界
     border: int = 5
 
@@ -47,15 +48,6 @@ class FrameLessWindowHintActivity(BaseActivity):
 
     def __init__(self, flags=None, *args, **kwargs):
         super().__init__(flags, *args, **kwargs)
-        self.procedure()
-
-    def procedure(self):
-        """
-        初始化流程
-        """
-        self.place()
-        self.configure()
-        self.set_signal()
 
     def set_signal(self):
         super(FrameLessWindowHintActivity, self).set_signal()
@@ -63,36 +55,39 @@ class FrameLessWindowHintActivity(BaseActivity):
     def configure(self):
         super(FrameLessWindowHintActivity, self).configure()
         self.setMouseTracking(True)
+        self.setObjectName("main_window")
         self.body_widget.setMouseTracking(True)
-        self.setWindowIcon(self.resource.qt_icon_project_ico)
-        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.setWindowIcon(self.resource.qt_icon_project_png)
+        self.setAttribute(Qt.WA_TranslucentBackground)
+        self.setWindowFlag(Qt.FramelessWindowHint)
         self.set_default_window_shadow()
-        self.bar = self.body_widget
 
     def set_default_window_shadow(self):
         """设置默认阴影"""
-        effect_shadow = QtWidgets.QGraphicsDropShadowEffect(self)
-        # 偏移
-        effect_shadow.setOffset(0, 0)
-        # 阴影半径
-        effect_shadow.setBlurRadius(10)
-        # 阴影颜色
-        effect_shadow.setColor(QtCore.Qt.darkGray)
-        self.set_window_shadow(effect_shadow)
+        self.set_window_shadow(self.get_default_effect_shadow(), self.body_widget)
 
-    def set_window_shadow(self, shadow: QtWidgets.QGraphicsDropShadowEffect):
-        """设置窗口的阴影"""
-        self.body_widget.setGraphicsEffect(shadow)
+    def get_default_effect_shadow(self) -> QtWidgets.QGraphicsDropShadowEffect:
+        """获取一个默认的阴影对象"""
+        effect_shadow = QtWidgets.QGraphicsDropShadowEffect(self)
+        effect_shadow.setOffset(0, 0)  # 偏移
+        effect_shadow.setBlurRadius(10)  # 阴影半径
+        effect_shadow.setColor(Qt.darkGray)  # 阴影颜色
+        return effect_shadow
+
+    @staticmethod
+    def set_window_shadow(shadow: QtWidgets.QGraphicsDropShadowEffect, widget: QtWidgets.QWidget):
+        """给控件设置阴影"""
+        widget.setGraphicsEffect(shadow)
 
     def place(self):
         """
         创建一个无边框的窗体，附带界面阴影窗口拉伸
         """
         super(FrameLessWindowHintActivity, self).place()
-        body_layout = QtWidgets.QHBoxLayout(self)
+        main_layout = QtWidgets.QHBoxLayout(self)
         self.body_widget = QtWidgets.QWidget()
-        body_layout.addWidget(self.body_widget)
+        self.body_layout = QtWidgets.QHBoxLayout(self.body_widget)
+        main_layout.addWidget(self.body_widget)
 
     def event_flag(self, event: QtGui.QMouseEvent) -> Tuple[bool, bool, bool, bool]:
         """判断鼠标是否移动到边界"""
@@ -127,7 +122,8 @@ class FrameLessWindowHintActivity(BaseActivity):
                 self.EventFlags.event_flag_border_left = True
             elif right and self.EventFlags.event_switch_border_right:
                 self.EventFlags.event_flag_border_right = True
-            elif self.bar and event.y() < self.bar.height():
+            elif self.bar and self.body_widget and event.y() < self.bar.height()\
+                    + self.body_widget.layout().getContentsMargins()[1]:
                 self.EventFlags.event_flag_bar_move = True
                 self.EventFlags.event_position_mouse = event.globalPos() - self.pos()
 
@@ -156,12 +152,10 @@ class FrameLessWindowHintActivity(BaseActivity):
                 self.move(event.globalPos() - self.EventFlags.event_position_mouse)
             else:
                 self.setCursor(Qt.ArrowCursor)
-
             # 窗口拉伸
             if self.EventFlags.event_flag_border_top_left:
                 self.setGeometry(self.geometry().x() + event.pos().x(), self.geometry().y() + event.pos().y(),
                                  self.width() - event.pos().x(), self.height() - event.pos().y())
-
             elif self.EventFlags.event_flag_border_bottom_right:
                 self.resize(event.pos().x(), event.pos().y())
 
@@ -172,17 +166,13 @@ class FrameLessWindowHintActivity(BaseActivity):
             elif self.EventFlags.event_flag_border_top_right:
                 self.setGeometry(self.geometry().x(), self.geometry().y() + event.pos().y(),
                                  event.pos().x(), self.height() - event.pos().y())
-
             elif self.EventFlags.event_flag_border_right:
                 self.resize(event.pos().x(), self.height())
-
             elif self.EventFlags.event_flag_border_left:
                 self.setGeometry(self.geometry().x() + event.pos().x(), self.geometry().y(),
                                  self.width() - event.pos().x(), self.height())
-
             elif self.EventFlags.event_flag_border_bottom:
                 self.resize(self.width(), event.pos().y())
-
             elif self.EventFlags.event_flag_border_top:
                 self.setGeometry(self.geometry().x(), self.geometry().y() + event.pos().y(),
                                  self.width(), self.height() - event.pos().y())
