@@ -78,7 +78,9 @@ class Logger(logging.Logger):
         :return:
         """
         if self.isEnabledFor(logging.ERROR):
-            msg = str(msg) + traceback.format_exc()
+            traceback_rollback = traceback.format_exc()
+            traceback_rollback = "" if str(traceback_rollback) == "NoneType: None\n" else traceback_rollback
+            msg = str(msg) + traceback_rollback
             self._log(logging.ERROR, msg, args, **kwargs)
 
     def reset_name(self, name):

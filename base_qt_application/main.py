@@ -12,11 +12,14 @@ from PyQt5.QtWidgets import QApplication
 from common.util.logger import Logger
 from config.const import Config
 from example.test_activity import TestActivity
+from service.exception_handle import ExceptionHandle
 from view.dialog import error_dialog
 
 if __name__ == '__main__':
     ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(Config.unique_name)
     localServer = QLocalServer()
+    ExceptionHandle()
+    ExceptionHandle()
     try:
         app = QApplication(sys.argv)
         socket = QLocalSocket()

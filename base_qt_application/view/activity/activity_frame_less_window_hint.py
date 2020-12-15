@@ -3,13 +3,14 @@
     create by pymu
     on 2020/12/10
     at 17:17
+    无边框窗口阴影、拉伸、拖动
 """
 from typing import Tuple
 
 from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt, QPoint
 
-from view.base_activity import BaseActivity
+from view.activity.base_activity import BaseActivity
 
 
 class FrameLessWindowHintActivity(BaseActivity):

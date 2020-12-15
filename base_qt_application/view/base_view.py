@@ -4,7 +4,6 @@
     file: base_view.py
     页面及frame的约束类
 """
-import abc
 
 from PyQt5.QtGui import QPainter
 from PyQt5.QtWidgets import QWidget, QStyleOption, QStyle
@@ -19,12 +18,10 @@ class BaseView(QWidget):
     # 静态资源管理器
     resource: ResourceLoader = ResourceLoader()
 
-    @abc.abstractmethod
     def set_signal(self) -> None:
         """信号设置"""
         ...
 
-    @abc.abstractmethod
     def configure(self) -> None:
         """属性配置"""
         ...
@@ -44,7 +41,7 @@ class BaseView(QWidget):
         """
         ...
 
-    def set_style(self, *files: str, use_old_style: bool = False) -> None:
+    def set_style(self, *files: str, use_old_style: bool = True) -> None:
         """
         设置样式，可以传入多个文件名，后面声明的样式会覆盖前面声明的样式
         :param use_old_style: 是否使用原来控件上的样式？
@@ -55,7 +52,8 @@ class BaseView(QWidget):
 
     def paintEvent(self, event):
         """
-        重写paintEvent,如此在继承widget等控件之后依然可以通过调用qss样式文件进行样式重载
+        重写paintEvent,
+        如此在继承widget等控件之后依然可以通过调用qss样式文件进行样式重载
         """
         opt = QStyleOption()
         opt.initFrom(self)

@@ -2,7 +2,7 @@
 """
     create by pymu on 2020/5/7
     package: .base_activity.py
-    project:
+    基本的窗体结构初始化
 """
 
 from PyQt5 import QtGui
@@ -13,6 +13,7 @@ from PyQt5.QtWidgets import QDialog, QWidget
 from common.util.async_thread import FuncThread, ResponseData
 from common.util.logger import Logger
 from config.const import Config
+from service.exception_handle import ExceptionHandle
 from view.dialog import waiting_dialog, message_ok, error_dialog
 from view.base_view import BaseView
 
@@ -36,6 +37,7 @@ class BaseActivity(QDialog, BaseView):
             - 属性：default_thread 通用线程
             - 属性：bar_normal 最大最小化按钮，由子类赋值
             - 属性：bar        标题栏，由子类赋值
+            - 属性：exception_handle        异常捕获
             - 功能：拖动窗体，需把控件赋值给 bar 作为载体
             - 功能：无边框，实例化子类时，其边距应设置为5
             - 功能：最大最小化，需把控件赋值给 bar_normal 作为载体
@@ -48,6 +50,7 @@ class BaseActivity(QDialog, BaseView):
         self.default_func: FuncThread = FuncThread()
         # 默认的遮罩层
         self.waiting_dialog: QDialog = waiting_dialog()
+        self.exception_handle = ExceptionHandle()
         self.button_font = self.resource.make_font(12, 2, "Webdings")
         self.logger = Logger()
         self.config = Config()
