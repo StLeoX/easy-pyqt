@@ -44,6 +44,7 @@ python main.py
 - 1、设计好ui文件，统一放置在ui文件夹下，如果数量太多，可新建子文件夹
 - 2、通过命令 pyuic5 -x <ui文件> -o uipy/<py模板>, 统一转换到uipy文件夹下，
      如果对应的有文件夹，那uipy也应存在，需要注意，生成之后不可以修改此文件，要修改只能从ui图形设计修改，再转换而至
+     pyside2-uic mainwindow.ui > ui_mainwindow.py
 - 3、如果设计的ui模板属于frame组件级别的，在frame包新建一个类文件，通过集成及修改
       如果是activity级别，那就在activity包下集成修改。
 
