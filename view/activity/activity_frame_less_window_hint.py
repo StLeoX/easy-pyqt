@@ -22,7 +22,7 @@ class FrameLessWindowHintActivity(BaseActivity):
     bar_close: QWidget = None
     bar_mini: QWidget = None
     bar: BaseView = None  # 顶部标题栏
-    border: int = 5  # 窗口拉伸边界
+    border_width: int = 5  # 窗口拉伸边界
 
     class EventFlags:
         """扳机状态，用于判定鼠标事件是否触发"""
@@ -121,7 +121,7 @@ class FrameLessWindowHintActivity(BaseActivity):
         """
         if not hasattr(self, "bar_normal"):
             return
-        self.layout().setContentsMargins(*[self.border for _ in range(4)])
+        self.layout().setContentsMargins(*[self.border_width for _ in range(4)])
         self.showNormal()
         self.bar_normal.setFont(self.button_font)
         self.bar_normal.setText(b'\xef\x80\xb1'.decode("utf-8"))
@@ -141,10 +141,10 @@ class FrameLessWindowHintActivity(BaseActivity):
 
     def event_flag(self, event: QtGui.QMouseEvent) -> Tuple[bool, bool, bool, bool]:
         """判断鼠标是否移动到边界"""
-        top = self.border < event.pos().y() < self.border + 10
-        bottom = self.border + self.body_widget.height() < event.pos().y() < self.height()
-        left = self.border < event.pos().x() < self.border + 10
-        right = self.border + self.body_widget.width() < event.pos().x() < self.width()
+        top = self.border_width < event.pos().y() < self.border_width + 10
+        bottom = self.border_width + self.body_widget.height() < event.pos().y() < self.height()
+        left = self.border_width < event.pos().x() < self.border_width + 10
+        right = self.border_width + self.body_widget.width() < event.pos().x() < self.width()
         return top, bottom, left, right
 
     def mousePressEvent(self, event: QtGui.QMouseEvent) -> None:
@@ -173,7 +173,7 @@ class FrameLessWindowHintActivity(BaseActivity):
             elif right and self.EventFlags.event_switch_border_right:
                 self.EventFlags.event_flag_border_right = True
             elif self.bar and self.body_widget and event.y() < self.bar.height() \
-                    + self.body_widget.layout().getContentsMargins()[1]:
+                    + self.body_widget.layout().getContentsMargins()[1] * 2 + self.border_width + self.body_layout.spacing():
                 self.EventFlags.event_flag_bar_move = True
                 self.EventFlags.event_position_mouse = event.globalPos() - self.pos()
 
