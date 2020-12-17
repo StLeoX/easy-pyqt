@@ -8,7 +8,6 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog, QHBoxLayout, QLabel
 
 from view.base_view import BaseView
-from view.uipy.dialog_info_waring_error import Ui_Form
 
 
 class WaitingDialog(QDialog, BaseView):
@@ -42,23 +41,3 @@ class WaitingDialog(QDialog, BaseView):
                             Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint |
                             Qt.WindowMaximizeButtonHint)
         self.resize(240, 60)
-
-
-class NormalDialogFrame(BaseView, Ui_Form):
-    """
-    一般的弹窗样式，具体的配件需要模板生成，
-    如果调用的弹窗有其他的功能或者组件
-    请新建一个弹窗类
-    """
-
-    def __init__(self, flags=None, *args, **kwargs):
-        """一般弹窗, 继承自无边框窗体"""
-        super().__init__(flags, *args, **kwargs)
-        self.procedure()
-
-    def place(self):
-        super(NormalDialogFrame, self).place()
-        self.setupUi(self)
-
-    def configure(self) -> None:
-        super(NormalDialogFrame, self).configure()

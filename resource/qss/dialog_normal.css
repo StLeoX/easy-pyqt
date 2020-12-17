@@ -1,0 +1,13 @@
+/* 一般弹窗样式 */
+#btn_dialog_yes, #btn_dialog_no{
+    width: 50px;
+    height: 27px;
+    font-family: "Microsoft YaHei UI", serif;
+    font-size: 14px;
+}
+#btn_dialog_yes{
+    border: 1px solid #6096ba;
+}
+#btn_dialog_yes:hover{
+    background: azure;
+}

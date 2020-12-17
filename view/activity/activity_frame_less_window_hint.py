@@ -9,7 +9,7 @@ from typing import Tuple
 
 from PyQt5 import QtGui
 from PyQt5.QtCore import Qt, QPoint
-from PyQt5.QtWidgets import QWidget, QHBoxLayout, QGraphicsDropShadowEffect
+from PyQt5.QtWidgets import QWidget, QHBoxLayout, QGraphicsDropShadowEffect, QPushButton
 
 from view.base_activity import BaseActivity
 from view.base_view import BaseView
@@ -18,9 +18,9 @@ from view.base_view import BaseView
 class FrameLessWindowHintActivity(BaseActivity):
     body_widget: QWidget = None  # 页面上的主要容器，控件应该放在这个里面
     body_layout: QHBoxLayout = None
-    bar_normal: QWidget = None  # 自定义标题栏的最大化最小化及关闭按钮
-    bar_close: QWidget = None
-    bar_mini: QWidget = None
+    bar_normal: QPushButton = None  # 自定义标题栏的最大化最小化及关闭按钮
+    bar_close: QPushButton = None
+    bar_mini: QPushButton = None
     bar: BaseView = None  # 顶部标题栏
     border_width: int = 5  # 窗口拉伸边界
 
@@ -54,6 +54,7 @@ class FrameLessWindowHintActivity(BaseActivity):
     def __init__(self, flags=None, *args, **kwargs):
         super().__init__(flags, *args, **kwargs)
 
+    # noinspection PyUnresolvedReferences
     def set_signal(self):
         super(FrameLessWindowHintActivity, self).set_signal()
         if self.bar_normal:
@@ -67,20 +68,21 @@ class FrameLessWindowHintActivity(BaseActivity):
         super(FrameLessWindowHintActivity, self).configure()
         self.setMouseTracking(True)
         self.setObjectName("main_window")
-        self.body_widget.setMouseTracking(True)
         self.setWindowIcon(self.resource.qt_icon_project_png)
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setWindowFlag(Qt.FramelessWindowHint)
-        self.set_default_window_shadow()
+        if self.body_widget:
+            self.set_default_window_shadow()
+            self.body_widget.setMouseTracking(True)
         if self.bar_normal:
             self.bar_normal.setFont(self.button_font)
-            self.bar_normal.setText(b'\xef\x80\xb1'.decode("utf-8"))
+            self.bar_normal.setIcon(self.resource.awesome_font_icon("fa.window-maximize", color="black"))
         if self.bar_mini:
             self.bar_mini.setFont(self.button_font)
-            self.bar_mini.setText(b"\xef\x80\xb0".decode("utf-8"))
+            self.bar_mini.setIcon(self.resource.awesome_font_icon("fa.window-minimize", color="black"))
         if self.bar_close:
             self.bar_close.setFont(self.button_font)
-            self.bar_close.setText(b"\xef\x81\xb2".decode("utf-8"))
+            self.bar_close.setIcon(self.resource.awesome_font_icon("fa.close", color="black"))
 
     def set_default_window_shadow(self):
         """设置默认阴影"""
@@ -99,6 +101,7 @@ class FrameLessWindowHintActivity(BaseActivity):
         """给控件设置阴影"""
         widget.setGraphicsEffect(shadow)
 
+    # noinspection PyUnresolvedReferences
     def change_normal(self):
         """
         切换到恢复窗口大小按钮,
@@ -109,11 +112,12 @@ class FrameLessWindowHintActivity(BaseActivity):
         self.layout().setContentsMargins(0, 0, 0, 0)
         self.showMaximized()  # 先实现窗口最大化
         self.bar_normal.setFont(self.button_font)
-        self.bar_normal.setText(b'\xef\x80\xb2'.decode("utf-8"))
+        self.bar_normal.setIcon(self.resource.awesome_font_icon("fa.window-restore", color="black"))
         self.bar_normal.setToolTip("恢复")  # 更改按钮提示
         self.bar_normal.disconnect()  # 断开原本的信号槽连接
         self.bar_normal.clicked.connect(self.change_max)  # 重新连接信号和槽
 
+    # noinspection PyUnresolvedReferences
     def change_max(self):
         """
         切换到最大化按钮
@@ -124,7 +128,7 @@ class FrameLessWindowHintActivity(BaseActivity):
         self.layout().setContentsMargins(*[self.border_width for _ in range(4)])
         self.showNormal()
         self.bar_normal.setFont(self.button_font)
-        self.bar_normal.setText(b'\xef\x80\xb1'.decode("utf-8"))
+        self.bar_normal.setIcon(self.resource.awesome_font_icon("fa.window-maximize", color="black"))
         self.bar_normal.setToolTip("最大化")
         self.bar_normal.disconnect()  # 关闭信号与原始槽连接
         self.bar_normal.clicked.connect(self.change_normal)
@@ -134,10 +138,11 @@ class FrameLessWindowHintActivity(BaseActivity):
         创建一个无边框的窗体，附带界面阴影窗口拉伸
         """
         super(FrameLessWindowHintActivity, self).place()
-        main_layout = QHBoxLayout(self)
-        self.body_widget = QWidget()
-        self.body_layout = QHBoxLayout(self.body_widget)
-        main_layout.addWidget(self.body_widget)
+        if not self.body_widget:
+            main_layout = QHBoxLayout(self)
+            self.body_widget = QWidget()
+            self.body_layout = QHBoxLayout(self.body_widget)
+            main_layout.addWidget(self.body_widget)
 
     def event_flag(self, event: QtGui.QMouseEvent) -> Tuple[bool, bool, bool, bool]:
         """判断鼠标是否移动到边界"""

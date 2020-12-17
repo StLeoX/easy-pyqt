@@ -40,9 +40,9 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="btn_bar_app_name">
+       <widget class="QPushButton" name="btn_bar_title">
         <property name="text">
-         <string/>
+         <string>消息提示</string>
         </property>
        </widget>
       </item>
