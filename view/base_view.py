@@ -57,6 +57,5 @@ class BaseView(QWidget):
         """
         opt = QStyleOption()
         opt.initFrom(self)
-        p = QPainter(self)
-        self.style().drawPrimitive(QStyle.PE_Widget, opt, p, self)
+        self.style().drawPrimitive(QStyle.PE_Widget, opt, QPainter(self), self)
         super(BaseView, self).paintEvent(event)

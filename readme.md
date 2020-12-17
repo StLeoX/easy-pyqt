@@ -6,7 +6,9 @@
 # 项目结构
 ---
     -project                # 项目目录
-        | -activity         # 顶级窗口
+        | -view             # 视图
+            | -activity     # 顶级窗口
+            | -frame        # 组合控件
         | -service          # 服务层
         | -test             # 单元测试
         | -config           # 配置文件
@@ -17,7 +19,6 @@
             | -qss          # 界面样式
         | -ui               # Qt designer 设计的ui文件
         | -uipy             # ui生成的模板
-        | -frame            # 组合控件
         | -common           # 公共
             | -util         # 工具集
         | -main.py          # 启动入口

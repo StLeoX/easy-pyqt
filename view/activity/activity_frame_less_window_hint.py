@@ -7,18 +7,22 @@
 """
 from typing import Tuple
 
-from PyQt5 import QtWidgets, QtGui
+from PyQt5 import QtGui
 from PyQt5.QtCore import Qt, QPoint
+from PyQt5.QtWidgets import QWidget, QHBoxLayout, QGraphicsDropShadowEffect
 
-from view.activity.base_activity import BaseActivity
+from view.base_activity import BaseActivity
+from view.base_view import BaseView
 
 
 class FrameLessWindowHintActivity(BaseActivity):
-    # 页面上的主要容器，控件应该放在这个里面
-    body_widget: QtWidgets.QWidget = None
-    body_layout: QtWidgets.QHBoxLayout = None
-    # 窗口拉伸边界
-    border: int = 5
+    body_widget: QWidget = None  # 页面上的主要容器，控件应该放在这个里面
+    body_layout: QHBoxLayout = None
+    bar_normal: QWidget = None  # 自定义标题栏的最大化最小化及关闭按钮
+    bar_close: QWidget = None
+    bar_mini: QWidget = None
+    bar: BaseView = None  # 顶部标题栏
+    border: int = 5  # 窗口拉伸边界
 
     class EventFlags:
         """扳机状态，用于判定鼠标事件是否触发"""
@@ -52,6 +56,12 @@ class FrameLessWindowHintActivity(BaseActivity):
 
     def set_signal(self):
         super(FrameLessWindowHintActivity, self).set_signal()
+        if self.bar_normal:
+            self.bar_normal.clicked.connect(self.change_normal)
+        if self.bar_close:
+            self.bar_close.clicked.connect(self.accept)
+        if self.bar_mini:
+            self.bar_mini.clicked.connect(self.showMinimized)
 
     def configure(self):
         super(FrameLessWindowHintActivity, self).configure()
@@ -62,32 +72,71 @@ class FrameLessWindowHintActivity(BaseActivity):
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.set_default_window_shadow()
+        if self.bar_normal:
+            self.bar_normal.setFont(self.button_font)
+            self.bar_normal.setText(b'\xef\x80\xb1'.decode("utf-8"))
+        if self.bar_mini:
+            self.bar_mini.setFont(self.button_font)
+            self.bar_mini.setText(b"\xef\x80\xb0".decode("utf-8"))
+        if self.bar_close:
+            self.bar_close.setFont(self.button_font)
+            self.bar_close.setText(b"\xef\x81\xb2".decode("utf-8"))
 
     def set_default_window_shadow(self):
         """设置默认阴影"""
         self.set_window_shadow(self.get_default_effect_shadow(), self.body_widget)
 
-    def get_default_effect_shadow(self) -> QtWidgets.QGraphicsDropShadowEffect:
+    def get_default_effect_shadow(self) -> QGraphicsDropShadowEffect:
         """获取一个默认的阴影对象"""
-        effect_shadow = QtWidgets.QGraphicsDropShadowEffect(self)
+        effect_shadow = QGraphicsDropShadowEffect(self)
         effect_shadow.setOffset(0, 0)  # 偏移
         effect_shadow.setBlurRadius(10)  # 阴影半径
         effect_shadow.setColor(Qt.darkGray)  # 阴影颜色
         return effect_shadow
 
     @staticmethod
-    def set_window_shadow(shadow: QtWidgets.QGraphicsDropShadowEffect, widget: QtWidgets.QWidget):
+    def set_window_shadow(shadow: QGraphicsDropShadowEffect, widget: QWidget):
         """给控件设置阴影"""
         widget.setGraphicsEffect(shadow)
+
+    def change_normal(self):
+        """
+        切换到恢复窗口大小按钮,
+        :return:
+        """
+        if not hasattr(self, "bar_normal"):
+            return
+        self.layout().setContentsMargins(0, 0, 0, 0)
+        self.showMaximized()  # 先实现窗口最大化
+        self.bar_normal.setFont(self.button_font)
+        self.bar_normal.setText(b'\xef\x80\xb2'.decode("utf-8"))
+        self.bar_normal.setToolTip("恢复")  # 更改按钮提示
+        self.bar_normal.disconnect()  # 断开原本的信号槽连接
+        self.bar_normal.clicked.connect(self.change_max)  # 重新连接信号和槽
+
+    def change_max(self):
+        """
+        切换到最大化按钮
+        :return:
+        """
+        if not hasattr(self, "bar_normal"):
+            return
+        self.layout().setContentsMargins(*[self.border for _ in range(4)])
+        self.showNormal()
+        self.bar_normal.setFont(self.button_font)
+        self.bar_normal.setText(b'\xef\x80\xb1'.decode("utf-8"))
+        self.bar_normal.setToolTip("最大化")
+        self.bar_normal.disconnect()  # 关闭信号与原始槽连接
+        self.bar_normal.clicked.connect(self.change_normal)
 
     def place(self):
         """
         创建一个无边框的窗体，附带界面阴影窗口拉伸
         """
         super(FrameLessWindowHintActivity, self).place()
-        main_layout = QtWidgets.QHBoxLayout(self)
-        self.body_widget = QtWidgets.QWidget()
-        self.body_layout = QtWidgets.QHBoxLayout(self.body_widget)
+        main_layout = QHBoxLayout(self)
+        self.body_widget = QWidget()
+        self.body_layout = QHBoxLayout(self.body_widget)
         main_layout.addWidget(self.body_widget)
 
     def event_flag(self, event: QtGui.QMouseEvent) -> Tuple[bool, bool, bool, bool]:
@@ -123,7 +172,7 @@ class FrameLessWindowHintActivity(BaseActivity):
                 self.EventFlags.event_flag_border_left = True
             elif right and self.EventFlags.event_switch_border_right:
                 self.EventFlags.event_flag_border_right = True
-            elif self.bar and self.body_widget and event.y() < self.bar.height()\
+            elif self.bar and self.body_widget and event.y() < self.bar.height() \
                     + self.body_widget.layout().getContentsMargins()[1]:
                 self.EventFlags.event_flag_bar_move = True
                 self.EventFlags.event_position_mouse = event.globalPos() - self.pos()

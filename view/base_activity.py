@@ -8,24 +8,18 @@
 from PyQt5 import QtGui
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QMouseEvent
-from PyQt5.QtWidgets import QDialog, QWidget
+from PyQt5.QtWidgets import QDialog
 
 from common.util.async_thread import FuncThread, ResponseData
 from common.util.logger import Logger
 from config.const import Config
 from service.exception_handle import ExceptionHandle
-from view.dialog import waiting_dialog, message_ok, error_dialog
+from view.activity.dialog import WaitingDialog
 from view.base_view import BaseView
+from view.dialog import message_ok, error_dialog
 
 
 class BaseActivity(QDialog, BaseView):
-    # 自定义标题栏的最大化最小化及关闭按钮
-    bar_normal: QWidget = None
-    bar_close: QWidget = None
-    bar_mini: QWidget = None
-    # 顶部标题栏
-    bar: BaseView = None
-
     def __init__(self, flags=None, *args, **kwargs):
         """
         自定义窗口，他具有以下属性或者功能：
@@ -49,7 +43,7 @@ class BaseActivity(QDialog, BaseView):
         # 默认的执行线程
         self.default_func: FuncThread = FuncThread()
         # 默认的遮罩层
-        self.waiting_dialog: QDialog = waiting_dialog()
+        self.waiting_dialog: WaitingDialog = WaitingDialog()
         self.exception_handle = ExceptionHandle()
         self.button_font = self.resource.make_font(12, 2, "Webdings")
         self.logger = Logger()
@@ -59,24 +53,11 @@ class BaseActivity(QDialog, BaseView):
         """
         如果有用到两个样式表，则需要把两个样式表,都添加，
         activity的配置方法，这里设置了基本的页面属性\n
-        如果需要父类的方法，则需要在重构的子类方法之中添加：\n
-        >>> BaseActivity.configure(self)
-
-        :return: None
         """
         self.resize(1047, 680)
         self.setWindowTitle("应用名称")
         self.set_style("common.css")
         self.setWindowIcon(self.resource.qt_icon_project_ico)
-        if self.bar_normal:
-            self.bar_normal.setFont(self.button_font)
-            self.bar_normal.setText(b'\xef\x80\xb1'.decode("utf-8"))
-        if self.bar_mini:
-            self.bar_mini.setFont(self.button_font)
-            self.bar_mini.setText(b"\xef\x80\xb0".decode("utf-8"))
-        if self.bar_close:
-            self.bar_close.setFont(self.button_font)
-            self.bar_close.setText(b"\xef\x81\xb2".decode("utf-8"))
 
     def place(self):
         """test_layout = QtWidgets.QHBoxLayout(self)"""
@@ -84,17 +65,8 @@ class BaseActivity(QDialog, BaseView):
 
     def set_signal(self):
         """
-        设置信号，如果需要父类信号，那在重构的子类方法中\n：
-        >>> BaseActivity.set_signal(self)
-
-        :return: None
+        设置信号，如果需要父类信号，那在重构的子类方法中:super(类名, self).set_signal()
         """
-        if self.bar_normal:
-            self.bar_normal.clicked.connect(lambda: BaseActivity.change_normal(self))
-        if self.bar_close:
-            self.bar_close.clicked.connect(self.accept)
-        if self.bar_mini:
-            self.bar_mini.clicked.connect(self.showMinimized)
         # 执行失败时，通信频道移交给错误弹窗
         self.default_func.thread_error_signal.connect(self.error_dialog)
         self.default_func.thread_signal.connect(self.do_nothing)
@@ -108,41 +80,6 @@ class BaseActivity(QDialog, BaseView):
         :return: none
         """
         ...
-
-    @staticmethod
-    def change_normal(self: QWidget):
-        """
-        切换到恢复窗口大小按钮,
-        链接的方法为：
-        >>> lambda: BaseActivity.change_normal(self)
-        :return:
-        """
-        if not hasattr(self, "bar_normal"):
-            return
-        self.layout().setContentsMargins(0, 0, 0, 0)
-        self.showMaximized()  # 先实现窗口最大化
-        self.bar_normal.setFont(self.button_font)
-        self.bar_normal.setText(b'\xef\x80\xb2'.decode("utf-8"))
-        self.bar_normal.setToolTip("恢复")  # 更改按钮提示
-        self.bar_normal.disconnect()  # 断开原本的信号槽连接
-        self.bar_normal.clicked.connect(lambda: BaseActivity.change_max(self))  # 重新连接信号和槽
-
-    @staticmethod
-    def change_max(self: QWidget):
-        """
-        切换到最大化按钮
-        :return:
-        """
-        if not hasattr(self, "bar_normal"):
-            return
-        self.layout().setContentsMargins(5, 5, 5, 5)
-        self.showNormal()
-        self.bar_normal.setFont(self.button_font)
-        self.bar_normal.setText(b'\xef\x80\xb1'.decode("utf-8"))
-        self.bar_normal.setToolTip("最大化")
-        # 关闭信号与原始槽连接
-        self.bar_normal.disconnect()
-        self.bar_normal.clicked.connect(lambda: BaseActivity.change_normal(self))
 
     def dragEnterEvent(self, event):
         """

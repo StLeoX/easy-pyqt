@@ -7,6 +7,7 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QPushButton
 
+from view.activity.activity_dialog_normal import NormalDialogActivity
 from view.activity.activity_frame_less_window_hint import FrameLessWindowHintActivity
 from view.frame.frame_bar_demo0 import FrameBarDemo0
 
@@ -27,7 +28,10 @@ class TestActivity(FrameLessWindowHintActivity):
         self.body_layout.addWidget(button)
 
     def test(self):
-        1/0
+        try:
+            NormalDialogActivity().exec()
+        except Exception as e:
+            raise e
 
     def configure(self):
         """配置页面及控件属性, 要分清哪些是需要在重写之前，哪些是在重写之后哦"""

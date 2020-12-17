@@ -19,7 +19,6 @@ if __name__ == '__main__':
     ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(Config.unique_name)
     localServer = QLocalServer()
     ExceptionHandle()
-    ExceptionHandle()
     try:
         app = QApplication(sys.argv)
         socket = QLocalSocket()
