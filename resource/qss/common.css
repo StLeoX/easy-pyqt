@@ -9,7 +9,7 @@
     font-size: 14px;
 }
 /* widget 的默认底色，倒角 */
-QWidget{border-radius:3px;background-color: #fdfdfd;}
+QWidget{border-radius:2px;background-color: #fdfdfd;}
 /* 用于承载页面的窗体设置为背景透明 */
 #main_window{background: transparent}
 /* 设定标题栏高度 */
