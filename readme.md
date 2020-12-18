@@ -4,7 +4,7 @@
 
 点击此处查看👉👉👉[easy 基础](doc/help.md)👈👈👈如何自己开发一个pyqt组件
 
-点击此处查看👉👉👉[qesy pyqt 使用教程](doc/help.md)👈👈👈如何使用框架快速开发一个qt应用程序
+点击此处查看👉👉👉[qesy pyqt 使用教程](doc/start.md)👈👈👈如何使用框架快速开发一个qt应用程序
 
 
 # 项目结构
