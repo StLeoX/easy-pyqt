@@ -13,7 +13,6 @@ from PyQt5.QtWidgets import QDialog
 from common.util.async_thread import FuncThread, ResponseData
 from common.util.logger import Logger
 from config.const import Config
-from service.exception_handle import ExceptionHandle
 from view.activity.dialog import WaitingDialog
 from view.base_view import BaseView
 from view.dialog import message_ok, error_dialog
@@ -44,8 +43,6 @@ class BaseActivity(QDialog, BaseView):
         self.default_func: FuncThread = FuncThread()
         # 默认的遮罩层
         self.waiting_dialog: WaitingDialog = WaitingDialog()
-        self.exception_handle = ExceptionHandle()
-        self.button_font = self.resource.make_font(12, 2, "Webdings")
         self.logger = Logger()
         self.config = Config()
 

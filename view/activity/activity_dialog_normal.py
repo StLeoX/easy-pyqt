@@ -13,9 +13,11 @@ from view.uipy.dialog_info_waring_error import Ui_Form
 
 class NormalDialogActivity(FrameLessWindowHintActivity, Ui_Form):
 
-    def __init__(self):
+    def __init__(self, info="消息提示", title="提示"):
         """一般弹窗, 继承自无边框窗体"""
         super().__init__()
+        self.info = info
+        self.title = title
         self.procedure()
 
     def place(self):
@@ -33,9 +35,18 @@ class NormalDialogActivity(FrameLessWindowHintActivity, Ui_Form):
         self.resize(300, 200)
         self.set_style("dialog_normal.css")
         self.btn_bar_app_logo.setIcon(self.resource.qt_icon_project_png)
-        self.btn_bar_title.setText("操作异常")
+        self.btn_bar_title.setText(self.title)
+        self.dialog_show_info.setText(self.info)
         self.btn_dialog_yes.setText("确认")
         self.btn_dialog_no.setHidden(True)
-        self.EventFlags.event_switch_border_bottom = False
-        self.EventFlags.event_switch_border_right = False
-        self.EventFlags.event_switch_border_bottom_right = False
+        self.event_flags.event_switch_border_bottom = False
+        self.event_flags.event_switch_border_right = False
+        self.event_flags.event_switch_border_bottom_right = False
+
+    def set_signal(self) -> None:
+        super(NormalDialogActivity, self).set_signal()
+        self.btn_dialog_yes.clicked.connect(self.on_click_sure)
+
+    def on_click_sure(self):
+        """点击确认"""
+        self.accept()

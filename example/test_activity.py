@@ -26,7 +26,7 @@ class TestActivity(FrameLessWindowHintActivity):
         button = QPushButton("测试")
         # noinspection PyUnresolvedReferences
         button.clicked.connect(self.test)
-        self.body_layout.addWidget(button)
+        self.body_layout.addWidget(button, alignment=Qt.AlignTop)
 
     def test(self):
         try:

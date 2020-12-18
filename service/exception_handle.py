@@ -10,7 +10,7 @@ import threading
 import traceback
 
 from common.util.logger import Logger
-from view.dialog import error_dialog
+from view.activity.activity_dialog_normal import NormalDialogActivity
 
 
 class ExceptionHandle:
@@ -62,7 +62,7 @@ class ExceptionHandle:
 
         msg += ' %s: %s\n' % (exc_type.__name__, exc_value)
         self.logger.error("{}".format(msg))
-        error_dialog(self.exception_mapping(exc_type, exc_value))
+        NormalDialogActivity(info=self.exception_mapping(exc_type, exc_value), title="操作异常").exec()
 
     def exception_mapping(self, exception_type: type, exc_value: BaseException):
         """
@@ -71,9 +71,6 @@ class ExceptionHandle:
         """
         if not self.is_mapping:
             return str(exception_type)
-        print(isinstance(exception_type, StopIteration))
-        msg = ""
-        print(exception_type)
         if isinstance(exception_type, SystemExit):
             msg = "Python 解释器请求退出"
         elif isinstance(exception_type, KeyboardInterrupt):
