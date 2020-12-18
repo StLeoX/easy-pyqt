@@ -176,7 +176,8 @@ class FrameLessWindowHintActivity(BaseActivity):
             elif right and self.event_flags.event_switch_border_right:
                 self.event_flags.event_flag_border_right = True
             elif self.bar and self.body_widget and event.y() < self.bar.height() \
-                    + self.body_widget.layout().getContentsMargins()[1] * 2 + self.border_width + self.body_layout.spacing():
+                    + self.body_widget.layout().getContentsMargins()[1] * 2 \
+                    + self.border_width + self.body_layout.spacing():
                 self.event_flags.event_flag_bar_move = True
                 self.event_flags.event_position_mouse = event.globalPos() - self.pos()
         return super(FrameLessWindowHintActivity, self).mousePressEvent(event)
