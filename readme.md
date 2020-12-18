@@ -1,7 +1,9 @@
 ![app icon](icon.png) QT
 
 # 基本介绍
-支持的版本: ![python 版本](python_version.svg)
+
+点击此处查看👉👉👉[qt美化教程](doc/help.md)👈👈👈如何自己开发一个pyqt组件
+
 
 # 项目结构
 ---
