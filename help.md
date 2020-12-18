@@ -116,5 +116,67 @@ mousePassEvent（鼠标点击事件）、mouseMoveEvent（鼠标移动事件）�
 main.py
 ```python
 
+import sys
+
+from PyQt5 import QtGui
+from PyQt5.QtCore import Qt, QPoint
+from PyQt5.QtWidgets import QApplication, QDialog, QWidget, QHBoxLayout, QGraphicsDropShadowEffect
+
+
+class BaseActivity(QDialog):
+
+    widget: QWidget = None
+    is_move = False  # 是否拖拽
+    p_pos: QPoint = None
+
+    def __init__(self):
+        super().__init__()
+        self.place()
+        self.configure()
+        self.set_signal()
+
+    def set_signal(self):
+        """页面信号"""
+
+    def place(self):
+        """页面布局"""
+        self.widget = QWidget()
+        layout = QHBoxLayout(self)
+        layout.addWidget(self.widget)
+
+    def configure(self):
+        """页面配置"""
+        self.resize(300, 200)
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
+        self.widget.setStyleSheet("background: #fff")
+        effect_shadow = QGraphicsDropShadowEffect()
+        effect_shadow.setOffset(0, 0)  # 偏移
+        effect_shadow.setBlurRadius(10)  # 阴影半径
+        effect_shadow.setColor(Qt.darkGray)  # 阴影颜色
+        self.widget.setGraphicsEffect(effect_shadow)
+        self.widget.setMouseTracking(True)
+        self.setMouseTracking(True)
+
+    def mousePressEvent(self, event: QtGui.QMouseEvent) -> None:
+        if event.button() == Qt.LeftButton:
+            if event.y() < self.widget.height():
+                self.is_move = True
+                self.p_pos = event.globalPos() - self.pos()
+
+    def mouseMoveEvent(self, event: QtGui.QMouseEvent) -> None:
+        if self.is_move:
+            # 此处应该是绝对坐标
+            self.move(event.globalPos() - self.p_pos)
+
+    def mouseReleaseEvent(self, event: QtGui.QMouseEvent) -> None:
+        self.is_move = False
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    window = BaseActivity()
+    window.show()
+    sys.exit(app.exec_())
 ```
 

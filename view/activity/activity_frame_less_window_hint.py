@@ -153,7 +153,6 @@ class FrameLessWindowHintActivity(BaseActivity):
 
     def mousePressEvent(self, event: QtGui.QMouseEvent) -> None:
         """重构鼠标点击事件"""
-        super(FrameLessWindowHintActivity, self).mousePressEvent(event)
         if not self.body_widget:
             return super(FrameLessWindowHintActivity, self).mousePressEvent(event)
         top, bottom, left, right = self.event_flag(event)
@@ -180,6 +179,7 @@ class FrameLessWindowHintActivity(BaseActivity):
                     + self.body_widget.layout().getContentsMargins()[1] * 2 + self.border_width + self.body_layout.spacing():
                 self.event_flags.event_flag_bar_move = True
                 self.event_flags.event_position_mouse = event.globalPos() - self.pos()
+        return super(FrameLessWindowHintActivity, self).mousePressEvent(event)
 
     def mouseMoveEvent(self, event: QtGui.QMouseEvent) -> None:
         """鼠标移动事件"""
