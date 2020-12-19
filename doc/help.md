@@ -697,3 +697,5 @@ class BaseActivity(QDialog, BaseView):
             a0.accept()
 ```
 
+## 全局异常类
+

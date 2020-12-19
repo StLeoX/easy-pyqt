@@ -5,8 +5,7 @@
 """
 
 from common.base.eq_init import EasyQtInit
-from example.test_activity import TestActivity
+from example.view.test_activity import TestActivity
 
 if __name__ == '__main__':
-    app = EasyQtInit(TestActivity())
-    app.run()
+    EasyQtInit(TestActivity()).run()
