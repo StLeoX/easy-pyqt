@@ -2,6 +2,7 @@
 """
     create by pymu on 2020/6/18
     package: .main.py
+    程序启动代码
 """
 
 from common.base.eq_init import EasyQtInit

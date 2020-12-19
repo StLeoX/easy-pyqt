@@ -1,10 +1,10 @@
-![app icon](icon.png) QT
+![app icon](resource/img/icon.png) QT
 
 # 基本介绍
 
-点击此处查看👉👉👉[easy 基础](doc/help.md)👈👈👈如何自己开发一个pyqt组件
+点击👉👉👉[easy your qt](doc/help.md)👈👈👈查看我们是如何制作eq框架的。
 
-点击此处查看👉👉👉[qesy pyqt 使用教程](doc/start.md)👈👈👈如何使用框架快速开发一个qt应用程序
+点击👉👉👉[qesy pyqt 使用教程](doc/start.md)👈👈👈查看，如何使用eq框架快速开发一个pyqt应用程序。
 
 
 # 项目结构
@@ -13,19 +13,18 @@
         | -view             # 视图
             | -activity     # 顶级窗口
             | -frame        # 组合控件
+            | -ui           # Qt designer 设计的ui文件
+            | -uipy         # ui生成的模板
         | -service          # 服务层
-        | -test             # 单元测试
+        | -example          # 测试样例
         | -config           # 配置文件
             | setting.py    # 保存常用的目录路径及配置选项
         | -log              # 日志文件夹
         | -resource         # 静态资源，需要打包的资源文件也需要放置在此处
             | -img          # 图片资源
             | -qss          # 界面样式
-        | -ui               # Qt designer 设计的ui文件
-        | -uipy             # ui生成的模板
         | -common           # 公共
             | -util         # 工具集
-        | -main.py          # 启动入口
         | -requirement.txt  # 依赖列表
         | -README           # 辅助说明
 

@@ -35,13 +35,15 @@ class ExceptionHandle:
         exception_level: int = 0
         # 是否做日志记录，默认为记录在日志中
         is_log_it = True
+        dialog_title = "程序异常"
 
-        def __init__(self, description="未知异常", is_show_dialog=True,
+        def __init__(self, description="未知异常", is_show_dialog=True, dialog_title="程序异常",
                      callback=None, exception_level=LEVEL_ERROR, is_log_it=True):
             """
             初始化有一个异常操作类型,在异常触发时调用
             :param description: 异常描述
             :param is_show_dialog: 是否显示弹窗
+            :param dialog_title: 弹窗的标题
             :param callback: 回调，即触发该异常时进行回调
             :param exception_level: 异常等级，根据等级显示弹窗的等级
             :param is_log_it: 是否做日志记录， 默认是
@@ -51,6 +53,7 @@ class ExceptionHandle:
             self.callback = callback
             self.exception_level = exception_level
             self.is_log_it = is_log_it
+            self.dialog_title = dialog_title
 
     # 异常映射类型(可以重构)
     # 因为全局异常类是属于一个全局单例对象
@@ -88,6 +91,8 @@ class ExceptionHandle:
         "SystemError": ExceptionOperational("解释器系统错误"),
         "TypeError": ExceptionOperational("类型无效"),
         "ValueError": ExceptionOperational("值无效"),
+        "FileNotFoundError": ExceptionOperational("找不到文件"),
+        "PermissionError": ExceptionOperational("无操作权限"),
         "UnicodeError": ExceptionOperational("Unicode编码异常"),
         "UnicodeDecodeError": ExceptionOperational("Unicode解码异常"),
         "UnicodeEncodeError": ExceptionOperational("Unicode编码异常"),
@@ -157,5 +162,5 @@ class ExceptionHandle:
             self.logger.error("{}".format(msg))
         if ex_operational.is_show_dialog:
             if ex_operational.exception_level == self.ExceptionOperational.LEVEL_ERROR:
-                pass
-                NormalDialogActivity(info=f"{ex_operational.description}, {exc_value}", title="操作异常").exec()
+                NormalDialogActivity(info=f"{ex_operational.description} {exc_value}",
+                                     title=ex_operational.dialog_title).exec()
