@@ -91,7 +91,7 @@ class ExceptionHandle:
         "SystemError": ExceptionOperational("解释器系统错误"),
         "TypeError": ExceptionOperational("类型无效"),
         "ValueError": ExceptionOperational("值无效"),
-        "FileNotFoundError": ExceptionOperational("找不到文件"),
+        "FileNotFoundError": ExceptionOperational("找不到路径"),
         "PermissionError": ExceptionOperational("无操作权限"),
         "UnicodeError": ExceptionOperational("Unicode编码异常"),
         "UnicodeDecodeError": ExceptionOperational("Unicode解码异常"),
