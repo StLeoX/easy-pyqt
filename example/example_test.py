@@ -5,12 +5,11 @@
     at 17:14
     测试页面
 """
-import sys
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QPushButton
+from PyQt5.QtWidgets import QPushButton
 
-from service.exception_handle import ExceptionHandle
+from common.base.eq_init import EasyQtInit
 from view.activity.activity_frame_less_window_hint import FrameLessWindowHintActivity
 from view.frame.frame_bar_demo0 import FrameBarDemo0
 
@@ -33,7 +32,7 @@ class TestActivity(FrameLessWindowHintActivity):
 
     def test_click(self):
         """测试点击事件"""
-        1 / 0
+        raise ValueError("不应该传入没有定义的值")
 
     def configure(self):
         """配置页面及控件属性, 要分清哪些是需要在重写之前，哪些是在重写之后哦"""
@@ -45,8 +44,4 @@ class TestActivity(FrameLessWindowHintActivity):
 
 
 if __name__ == '__main__':
-    exception_handle = ExceptionHandle()
-    app = QApplication(sys.argv)
-    window = TestActivity()
-    window.show()
-    sys.exit(app.exec_())
+    EasyQtInit(TestActivity()).run()

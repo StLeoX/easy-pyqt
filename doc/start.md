@@ -80,7 +80,7 @@ class TestActivity(FrameLessWindowHintActivity):
 
 具体的文件内容可以参考
 ```python
-from view.base_view import BaseView
+from common.base.base_view import BaseView
 from view.uipy.frame_bar import Ui_bar
 
 
@@ -104,6 +104,7 @@ class FrameBarDemo0(BaseView, Ui_bar):
         self.set_style('bar.css')
         self.btn_bar_app_name.setText("测试标题栏0")
 ```
+
 
 
     
