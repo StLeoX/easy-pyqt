@@ -19,7 +19,7 @@ class ExceptionHandle:
 
     def __init__(self):
         """
-        包含属性：
+        全局异常处理，包含属性：
             - logger：日志
             - exception：异常回溯
             - exception_mapping：异常转换成中文
@@ -71,7 +71,7 @@ class ExceptionHandle:
         """
         if not self.is_mapping:
             return str(exception_type)
-        if isinstance(exception_type, SystemExit):
+        if isinstance(exception_type, ZeroDivisionError):
             msg = "Python 解释器请求退出"
         elif isinstance(exception_type, KeyboardInterrupt):
             msg = "用户执行中断"
@@ -80,5 +80,5 @@ class ExceptionHandle:
         elif isinstance(exception_type, GeneratorExit):
             msg = "生成器(generator)发生异常来通知退出"
         else:
-            msg = "未知异常"
+            msg = f"未知异常类型:{exception_type.__name__}"
         return f"{msg} {exc_value}"

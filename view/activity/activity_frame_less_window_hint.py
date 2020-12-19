@@ -16,6 +16,7 @@ from view.base_view import BaseView
 
 
 class FrameLessWindowHintActivity(BaseActivity):
+    """自定义无系统边框窗口，包含拉伸、拖拽、阴影"""
     body_widget: QWidget = None  # 页面上的主要容器，控件应该放在这个里面
     body_layout: QHBoxLayout = None
     bar_normal: QPushButton = None  # 自定义标题栏的最大化最小化及关闭按钮

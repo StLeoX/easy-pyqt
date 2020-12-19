@@ -104,5 +104,7 @@ class FrameBarDemo0(BaseView, Ui_bar):
         self.set_style('bar.css')
         self.btn_bar_app_name.setText("测试标题栏0")
 ```
+
+
     
 

@@ -8,8 +8,9 @@
 import sys
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QApplication, QPushButton
 
+from service.exception_handle import ExceptionHandle
 from view.activity.activity_frame_less_window_hint import FrameLessWindowHintActivity
 from view.frame.frame_bar_demo0 import FrameBarDemo0
 
@@ -26,6 +27,13 @@ class TestActivity(FrameLessWindowHintActivity):
         # 添加默认的标题栏0
         self.bar: FrameBarDemo0 = FrameBarDemo0(self)
         self.body_layout.addWidget(self.bar, alignment=Qt.AlignTop)
+        button = QPushButton("点击按钮")
+        button.clicked.connect(self.test_click)
+        self.body_layout.addWidget(button, alignment=Qt.AlignTop)
+
+    def test_click(self):
+        """测试点击事件"""
+        1 / 0
 
     def configure(self):
         """配置页面及控件属性, 要分清哪些是需要在重写之前，哪些是在重写之后哦"""
@@ -37,6 +45,7 @@ class TestActivity(FrameLessWindowHintActivity):
 
 
 if __name__ == '__main__':
+    exception_handle = ExceptionHandle()
     app = QApplication(sys.argv)
     window = TestActivity()
     window.show()
