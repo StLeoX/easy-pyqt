@@ -162,5 +162,6 @@ class ExceptionHandle:
             self.logger.error("{}".format(msg))
         if ex_operational.is_show_dialog:
             if ex_operational.exception_level == self.ExceptionOperational.LEVEL_ERROR:
-                NormalDialogActivity(info=f"{ex_operational.description} {exc_value}",
-                                     title=ex_operational.dialog_title).exec()
+                NormalDialogActivity(
+                    info=f"{ex_operational.description if self.is_mapping else exc_type.__name__} {exc_value}",
+                    title=ex_operational.dialog_title).exec()

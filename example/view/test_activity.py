@@ -29,8 +29,7 @@ class TestActivity(FrameLessWindowHintActivity):
         self.body_layout.addWidget(button, alignment=Qt.AlignTop)
 
     def test(self):
-        with open("", "r") as f:
-            pass
+        1 / 0
 
     def configure(self):
         """配置页面及控件属性, 要分清哪些是需要在重写之前，哪些是在重写之后哦"""
