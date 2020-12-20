@@ -6,6 +6,8 @@
 
 # 基本介绍
 
+easy qt for python 致力于样式跟界面布局之上，作为开发人员的你只需专注于业务逻辑即可。
+
 - 👉点击[easy your qt](doc/help/)查看我们是如何制作eq框架的。👈
 
 - 👉点击[qesy pyqt 使用教程](doc/start/)查看，如何使用eq框架快速开发一个pyqt应用程序。👈
@@ -13,6 +15,8 @@
 - 👉点击[qesy pyqt todo清单](doc/todo/)查看待实现的清单列表。👈
 
 - 👉点击[qesy pyqt 设计风格](doc/ui_designer/)查看eq的设计思路。👈
+
+- 👉点击[组件列表](doc/frame_list/)查看已实现的组件列表，从中选择你喜欢的组件进行开发吧。👈
 
 
 # 项目结构
