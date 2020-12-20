@@ -30,7 +30,7 @@ if __name__ == '__main__':
     sys.exit(app.exec_())
 ```
 了了二十行代码即可实现一个基本的自定义窗口。
-![使用eq开发第一个页面](img/教程第一个页面.png)
+![使用eq开发第一个页面](../img/教程第一个页面.png)
 
 那我该如何给页面添加布局？请放心，说好的做一个快速开发的pyqt组件，我们自会给你安排上: [eq内置标题栏]()
 具体用法可以参考一下代码：
@@ -63,7 +63,7 @@ class TestActivity(FrameLessWindowHintActivity):
         self.bar.btn_bar_app_logo.setIcon(self.resource.qt_icon_project_png)
 ```
 实现的效果是这样的：
-![使用eq内置标题栏](img/使用eq内置标题栏.gif)
+![使用eq内置标题栏](../img/使用eq内置标题栏.gif)
 
 ## 组件
 
@@ -72,7 +72,7 @@ class TestActivity(FrameLessWindowHintActivity):
 - 使用qt creator 设计工具设计一个符合要求的ui(变量名可以随意)
 
 如下图：
-![自定义标题栏](img/0x04设计自定义标题栏.PNG)
+![自定义标题栏](../img/0x04设计自定义标题栏.PNG)
 
 - 使用脚本工具 pyuic5 转换成py文件
 > 我为什么转换成py，而不是动态加载ui？第一点动态加载的ui文件不便于开发，第二不利于面向对象开发
