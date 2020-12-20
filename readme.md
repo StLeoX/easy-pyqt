@@ -1,4 +1,8 @@
-![app icon](resource/img/icon.png) QT
+![app icon](resource/img/icon.png) 
+
+
+☺简单开发你的qt应用，答应我别在熬夜了，好吗？👀✨
+---
 
 # 基本介绍
 
