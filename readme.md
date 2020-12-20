@@ -12,7 +12,7 @@
 
 - 👉点击[qesy pyqt todo清单](doc/todo/)查看待实现的清单列表。👈
 
-- 👉点击[qesy pyqt 设计风格](doc/ui designer/)查看eq的设计思路。👈
+- 👉点击[qesy pyqt 设计风格](doc/ui_designer/)查看eq的设计思路。👈
 
 
 # 项目结构
