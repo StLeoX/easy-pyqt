@@ -2,7 +2,7 @@
 
 # 基本介绍
 
-点击👉👉👉[easy your qt](doc/help.md)👈👈👈查看我们是如何制作eq框架的。
+点击👉👉👉[easy your qt](doc/help/readme.md)👈👈👈查看我们是如何制作eq框架的。
 
 点击👉👉👉[qesy pyqt 使用教程](doc/start.md)👈👈👈查看，如何使用eq框架快速开发一个pyqt应用程序。
 
