@@ -6,11 +6,11 @@
 
 # 基本介绍
 
-点击👉👉👉[easy your qt](doc/help/)👈👈👈查看我们是如何制作eq框架的。
+- 点击👉👉👉[easy your qt](doc/help/)👈👈👈查看我们是如何制作eq框架的。
 
-点击👉👉👉[qesy pyqt 使用教程](doc/start/)👈👈👈查看，如何使用eq框架快速开发一个pyqt应用程序。
+- 点击👉👉👉[qesy pyqt 使用教程](doc/start/)👈👈👈查看，如何使用eq框架快速开发一个pyqt应用程序。
 
-点击👉👉👉[qesy pyqt todo清单](doc/todo/)👈👈👈查看待实现的清单列表。
+- 点击👉👉👉[qesy pyqt todo清单](doc/todo/)👈👈👈查看待实现的清单列表。
 
 
 # 项目结构
