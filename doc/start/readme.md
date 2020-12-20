@@ -78,7 +78,7 @@ class TestActivity(FrameLessWindowHintActivity):
 > 我为什么转换成py，而不是动态加载ui？第一点动态加载的ui文件不便于开发，第二不利于面向对象开发
 - 新建一个frame文件
 
-具体的文件内容可以参考
+具体的文件内容可以参考以下代码
 ```python
 from common.base.base_view import BaseView
 from view.uipy.frame_bar import Ui_bar
@@ -103,6 +103,56 @@ class FrameBarDemo0(BaseView, Ui_bar):
         super(FrameBarDemo0, self).configure()
         self.set_style('bar.css')
         self.btn_bar_app_name.setText("测试标题栏0")
+```
+
+即可生成一个标题栏组件，再将组件放置再页面容器中。
+> 什么数据应该放在组件中而不是页面中？什么事件因该放在组件中而不是页面中？
+> 租价作为一个可复用的载体，那个性化的数据或者事件就不应该由组件声明，其次作为组件，元素是应该对页面窗口暴露的，即高层组件是可以访问低级组件的。
+> 所以重复事件、数据应该被聚合在组件当中，如自定义标题栏FrameBarDemo0 中的btn_bar_app_name 默认是“测试标题栏0”，但也可以在高层组件TestActivity中访问并修改的。
+
+## 全局异常拦截
+
+在代码中我们还不能发现的异常：
+
+![](../img/0x10未捕获除零异常.png)
+
+在项目运行中运行到异常的代码块时, 全局异常会将其捕获：
+
+![](../img/0x11除零异常被捕获.png)
+
+同时，也会将异常代码块写入日志文件中：
+
+![](../img/0x12除零异常被捕获并写入日志.png)
+
+1. 如果我需要个性化异常拦截，该如何注入到程序中？
+- 继承ExceptionHandle
+- 实现个性化功能
+- 在启动类执行run方法之前，注入到启动类当中，即：
+```python
+
+app = EasyQtInit(TestActivity())
+app.ex_handle = CustomExceptionHandle()  # 自定义异常拦截
+app.run()
+```
+2. 如果我只想修改异常类的某系属性或者方法呢？
+因为异常拦截是全局的单例启动，所以在你的任意代码段执行实例化后修改其属性，也是可以做到全局的属性修改的即：
+```python
+ExceptionHandle().is_mapping = False  # 不使用中文映射异常提示
+```
+
+## 启动类
+
+只是把启动方法聚合成一个类对象，方便修改, 当中包含一些全局的属性
+```python
+from common.base.eq_init import EasyQtInit
+from example.view.test_activity import TestActivity
+"""
+启动初始化，设置是否唯一启动
+:param index_activity: 启动的窗口， 默认是一个Base Activity
+:param is_run_unique: 是否需要唯一启动， 默认是True
+"""
+if __name__ == '__main__':
+    EasyQtInit(TestActivity()).run()
 ```
 
 

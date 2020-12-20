@@ -25,6 +25,7 @@ class EasyQtInit:
     def __init__(self, index_activity: BaseActivity = BaseActivity(), is_run_unique=True):
         """
         启动初始化，设置是否唯一启动
+
         :param index_activity: 启动的窗口
         :param is_run_unique: 是否需要唯一启动
         """
