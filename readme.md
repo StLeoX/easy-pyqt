@@ -8,7 +8,7 @@
 
 easy qt for python 致力于样式跟界面布局之上，作为开发人员的你只需专注于业务逻辑即可。
 
-国内玩家请访问🚩[码云](https://gitee.com/pymu/easy-pyqt)🚩
+- 👉国内玩家请访问[码云](https://gitee.com/pymu/easy-pyqt)🚩👈
 
 - 👉点击[easy your qt](doc/help/)查看我们是如何制作eq框架的。👈
 
