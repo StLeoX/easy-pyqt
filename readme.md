@@ -63,6 +63,8 @@ python main.py
      pyside2-uic mainwindow.ui > ui_mainwindow.py
 - 3、如果设计的ui模板属于frame组件级别的，在frame包新建一个类文件，通过集成及修改
       如果是activity级别，那就在activity包下集成修改。
+> 很好，现在来说一下，以上都是废话，在这里只需遵循，一个原则：第一是组件是可复用的，第二uipy（ui转出来的py）仅是可读的。
+> 其他的无所谓啦
 
 
 # 打包
