@@ -142,6 +142,7 @@ class ExceptionHandle:
 
     def exception(self, exc_type: type, exc_value: BaseException, tb: traceback):
         """
+        todo 异常回调
         分为两个部分：
             - 日志记录：写到日志文件中
             - 弹窗提示，除了日志无感记录之外，出现未记录的异常应该提示给用户

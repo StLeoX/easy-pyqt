@@ -53,7 +53,6 @@ class BaseActivity(QDialog, BaseView):
         """
         self.resize(1047, 680)
         self.setWindowTitle("应用名称")
-        self.set_style("common.css")
         self.setWindowIcon(self.resource.qt_icon_project_ico)
 
     def place(self):

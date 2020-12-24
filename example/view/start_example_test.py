@@ -19,6 +19,7 @@ class TestActivity(FrameLessWindowHintActivity):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.procedure()
+        self.is_a = True
 
     def place(self):
         """放置布局"""
@@ -28,11 +29,18 @@ class TestActivity(FrameLessWindowHintActivity):
         self.body_layout.addWidget(self.bar, alignment=Qt.AlignTop)
         button = QPushButton("点击按钮")
         button.clicked.connect(self.test_click)
+
         self.body_layout.addWidget(button, alignment=Qt.AlignTop)
 
     def test_click(self):
         """测试点击事件"""
-        raise ValueError("不应该传入没有定义的值")
+        if self.is_a:
+            css_name = "common-1.css"
+        else:
+            css_name = "common.css"
+        self.is_a = not self.is_a
+        self.set_template(css_name)
+        1/0
 
     def configure(self):
         """配置页面及控件属性, 要分清哪些是需要在重写之前，哪些是在重写之后哦"""

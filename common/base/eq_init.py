@@ -12,11 +12,12 @@ from PyQt5.QtWidgets import QApplication
 
 from common.base.base_activity import BaseActivity
 from common.base.exception_handle import ExceptionHandle
+from common.loader.resource import ResourceLoader
 from config.const import Config
 from view.activity.activity_dialog_normal import NormalDialogActivity
 
 # 放在py文件中，需要在窗口显示之前实例化
-app = QApplication(sys.argv)
+app = QApplication.instance() or QApplication(sys.argv)
 
 
 class EasyQtInit:
@@ -37,6 +38,7 @@ class EasyQtInit:
 
     def run(self):
         """启动方法"""
+        app.setStyleSheet(ResourceLoader().style_from("common.css"))
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(Config.unique_name)
         self.socket.connectToServer(Config.app_name)
         if self.is_run_unique and self.socket.waitForConnected(500):
