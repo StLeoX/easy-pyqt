@@ -1,34 +1,43 @@
 /*默认的样式表。如果需要用到这个样式，且还用到其他的样式，那需要进行相加,子控件样式会继承自这个公共样式。除了主题样式，个性化样式请不要在此表中声明.*/
-/*------------------------------筛选器--------------------------------------*/
-/*伪元素选样式选择器 todo 统一配色*/
+DEFINED_VALUE{
+    --basic-color: #fdfdfd; /*基本色*/
+    --basic-color-sub: #d0d2d4;/*基本 辅助色 */
+    --basic-color-sub-border: darkgray;/*基本 辅助边框色 */
+    --basic-color-sub-outline: gray;/*基本 辅助边框色 */
+    --accent-color: #6096ba;/*辅助色*/
+    --accent-color-light: #6096ba;/*辅助亮色*/
+    --basi-border-radius: 2px;/*默认的倒角*/
+    --basi-pdding-sieze-5: 5px;/*默认的边距*/
+}
+/*------------------------------抽象元素筛选器--------------------------------------*/
 *{font-family: "Microsoft YaHei UI", serif;font-size: 14px;}
 /*QAbstractItemView item列*/
-QAbstractItemView{padding: 1px;border: 1px solid darkgray;outline: 0 solid gray;/* 选定项的虚框 */ selection-background-color: #23e45e;  /* 整个下拉窗体被选中项的背景色 */}
+QAbstractItemView{padding: 1px;border: 1px solid var(--basic-color-sub-border);outline: none;/* 选定项的虚框 */ selection-background-color: var(--accent-color);  /* 整个下拉窗体被选中项的背景色 */}
 /*QAbstractItemView item项 一般（设置pComboBox.setView(QListView());后，该项才起作用） */
-QAbstractItemView::item {height: 30px;padding: 5px; border-radius: 2px; color: black}
+QAbstractItemView::item {height: 30px;padding: var(--basi-pdding-sieze-5); border-radius: var(--basi-border-radius); color: black}
 /*QAbstractItemView item项 划过效果*/
 QAbstractItemView::item:hover {}
 /*QAbstractItemView item项 选定效果*/
-QAbstractItemView::item:selected {background: #6096ba;}
+QAbstractItemView::item:selected {background: var(--accent-color-light);}
 /*QScrollBar 滚动条*/
-QScrollBar{background-color: #d0d2d4;}
+QScrollBar{}
 /*QScrollBar 滚动条 滑块*/
-QScrollBar::handle{border-radius: 2px;background: #47D1FF;}
+QScrollBar::handle{border-radius: var(--basi-border-radius);background: var(--basic-color-sub);}
 /*QScrollBar 垂直滚动条 */
 QScrollBar:vertical {width: 5px;}
 /*QScrollBar 垂直滚动条 滑块*/
 QScrollBar::handle:vertical {}
 /*QScrollBar 垂直滚动条 滑块 悬停*/
-QScrollBar::handle:vertical:hover {background: #047ba3;}
+QScrollBar::handle:vertical:hover {background: var(--accent-color-light);}
 
 /*------------------------------元素筛选器--------------------------------------*/
 
 /*QWidget 基本容器*/
-QWidget, QFrame{border-radius:2px;background-color: #fdfdfd;}
+QWidget, QFrame{border-radius:var(--basi-border-radius);background-color: var(--basic-color);}
 /*QPushButton 按钮*/
 QPushButton{border: 1px solid darkgray;}
 /*QComboBox 下拉框*/
-QComboBox{padding: 5px;border: 1px solid darkgray;max-width: 300px}
+QComboBox{padding: var(--basi-pdding-sieze-5);border: 1px solid var(--basic-color-sub-border);max-width: 300px}
 /*QComboBox 可编辑下拉框样式*/
 QComboBox:editable {}
 /*QComboBox 可编辑下拉框 打开样式*/
@@ -63,12 +72,11 @@ QComboBox::drop-down:editable {}
 #main_window{background: transparent}
 /* 设定标题栏高度 */
 #bar{height: 50px;}
-#bar{
-    /*background: #47D1FF;*/
-}
-#btn_bar_app_name{background: transparent;}
+#bar{/*background: #47D1FF;*/}
+#btn_bar_app_name, #app_name, #btn_bar_title{background: transparent;border: none}
 /*自定义标题栏按钮*/
 #btn_bar_normal, #btn_bar_close, #btn_bar_min, #btn_bar_app_logo{
+    border: none;
     margin: 3px;
     width: 25px;
     height: 25px;
@@ -77,47 +85,39 @@ QComboBox::drop-down:editable {}
 }
 /*最小化按钮*/
 #btn_bar_min{
-    /*background: #00f5d4;*/
+    background: @c-red;
 }
 #btn_bar_min:hover {
     background: #70FFEC;
 }
 /*最大化那妞*/
-#btn_bar_normal{
-    /*background: #00bbf9;*/
-}
-#btn_bar_normal:hover{
-    background: #47D1FF;
-}
+#btn_bar_normal{/*background: #00bbf9;*/}
+#btn_bar_normal:hover{background: #47D1FF;}
 /*关闭按钮*/
-#btn_bar_close{
-    /*background: #f15bb5;*/
-}
+#btn_bar_close{/*background: #f15bb5;*/}
 /*经过按钮*/
-#btn_bar_close:hover{
-    background: #CE1283;
-}
+#btn_bar_close:hover{background: #CE1283;}
 /*按钮被按下*/
 /*noinspection CssInvalidPseudoSelector*/
-#btn_bar_close:pressed{
-    background: #CE1283;
-}
+#btn_bar_close:pressed{background: #CE1283;}
 /*标题栏背景*/
-#base_bar{
-    background: #6096ba;
-}
-/*应用名称*/
-#app_name{
-    margin-left: 10px;
-    font-family: "Microsoft YaHei UI", serif;
-    font-size: 16px;
-    border: none;
-    color: #0466c8;
-}
+#base_bar{background: #6096ba;}
 /*应用图标*/
-#app_logo{
-    width: 25px;
-    height: 25px;
-    border: none;
-    background: transparent;
+#app_logo{width: 25px;height: 25px;border: none;background: transparent;}
+/* 一般弹窗样式 */
+#btn_dialog_yes, #btn_dialog_no{
+    width: 50px;
+    height: 27px;
+    font-family: "Microsoft YaHei UI", serif;
+    font-size: 14px;
+}
+#btn_dialog_yes{
+    border: 1px solid #6096ba;
+}
+#btn_dialog_yes:hover{
+    background: azure;
+}
+
+*[mandatoryField="true"]{
+
 }

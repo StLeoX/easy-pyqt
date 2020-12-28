@@ -33,7 +33,6 @@ class NormalDialogActivity(FrameLessWindowHintActivity, Ui_Form):
         self.bar_close = self.btn_bar_close
         super(NormalDialogActivity, self).configure()
         self.resize(300, 200)
-        self.set_style("dialog_normal.css")
         self.btn_bar_app_logo.setIcon(self.resource.qt_icon_project_png)
         self.btn_bar_title.setText(self.title)
         self.dialog_show_info.setText(self.info)

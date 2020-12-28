@@ -8,7 +8,7 @@
 import sys
 import threading
 import traceback
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 from common.util.logger import Logger
 from view.activity.activity_dialog_normal import NormalDialogActivity
@@ -61,6 +61,7 @@ class ExceptionHandle:
     # 同时在不同的场景下可以通过修改类属性而修改异常操作类型
     mapping_dict: Dict[str, ExceptionOperational] = {
         "ZeroDivisionError": ExceptionOperational("除零异常"),
+        "RecursionError": ExceptionOperational("超出最大递归深度"),
         "SystemExit": ExceptionOperational("解释器请求退出"),
         "KeyboardInterrupt": ExceptionOperational("用户中断执行"),
         "StopIteration": ExceptionOperational("迭代器没有更多的值"),
@@ -129,6 +130,12 @@ class ExceptionHandle:
         self.is_mapping = is_mapping
         self.logger = Logger()
         sys.excepthook = self.exception
+
+    @staticmethod
+    def instance():
+        """获取实例"""
+        instance: Optional[ExceptionHandle] = getattr(ExceptionHandle, "_instance")
+        return instance or ExceptionHandle()
 
     def __new__(cls, *args, **kwargs):
         """

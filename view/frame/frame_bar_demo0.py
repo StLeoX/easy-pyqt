@@ -27,5 +27,4 @@ class FrameBarDemo0(BaseView, Ui_bar):
 
     def configure(self) -> None:
         super(FrameBarDemo0, self).configure()
-        self.set_style("bar.css")
-        self.btn_bar_app_name.setText("测试标题栏0")
+        self.btn_bar_app_name.setText("测试标题栏0x01")

@@ -4,7 +4,8 @@
     file: base_view.py
     页面及frame的约束类
 """
-
+from PyQt5 import QtGui
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPainter
 from PyQt5.QtWidgets import QWidget, QStyleOption, QStyle, QApplication
 
@@ -19,16 +20,17 @@ class BaseView(QWidget):
     resource: ResourceLoader = ResourceLoader()
 
     def set_signal(self) -> None:
-        """信号设置"""
+        """信号设置, 信号放在此处定义，方便管理哦，如此在后期调试就不用在各处翻找事件及信号"""
         ...
 
     def configure(self) -> None:
-        """属性配置"""
+        """属性配置，同上统一配置方便管理"""
         ...
 
     def procedure(self) -> None:
         """
-        初始化流程, 比如setUi、place、configure、set_signal等
+        初始化流程, 比如setUi、place、configure、set_signal等，
+        注意先后顺序，place放置结束之后、进行页面配置（样式、属性等）、连接信号。
         """
         self.place()
         self.configure()
@@ -68,3 +70,9 @@ class BaseView(QWidget):
         opt.initFrom(self)
         self.style().drawPrimitive(QStyle.PE_Widget, opt, QPainter(self), self)
         super(BaseView, self).paintEvent(event)
+
+    def showEvent(self, event: QtGui.QShowEvent) -> None:
+        """解决最小化之后页面假死问题，此处参阅：https://blog.csdn.net/qq_40194498/article/details/109511055"""
+        if not self.isMinimized():
+            self.setAttribute(Qt.WA_Mapped)
+        super(BaseView, self).showEvent(event)

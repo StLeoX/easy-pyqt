@@ -6,12 +6,14 @@
     静态资源加载， 避免重复进行实例化
 """
 import threading
+from typing import Optional
 
 import qtawesome
 from PyQt5 import QtGui
 from PyQt5.QtGui import qGray, qRgba, qAlpha
 
 from common.decorator.lazy_property import Lazy
+from common.util.string_utils import format_style_file
 from config import const
 
 
@@ -36,6 +38,12 @@ class ResourceLoader:
                 if not hasattr(ResourceLoader, "_instance"):
                     ResourceLoader._instance = object.__new__(cls)
         return ResourceLoader._instance
+
+    @staticmethod
+    def instance():
+        """获取实例"""
+        instance: Optional[ResourceLoader] = getattr(ResourceLoader, "_instance")
+        return instance or ResourceLoader()
 
     def render_icon(self, name: str, convert=False) -> QtGui.QIcon:
         """
@@ -107,7 +115,7 @@ class ResourceLoader:
                     const.Config().qss_path,
                     file_name),
                     encoding="utf-8") as f:
-                style_str += f.read()
+                style_str += format_style_file(f.read())
         return style_str
 
     @staticmethod
