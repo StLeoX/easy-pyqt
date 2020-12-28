@@ -20,6 +20,12 @@ easy qt for python 致力于样式跟界面布局之上，作为开发人员的�
 
 - 👉点击[组件列表](doc/frame_list/)查看已实现的组件，从中选择你喜欢的组件进行开发吧。👈
 
+- 👉点击[QT样式指南](doc/style/)。👈
+
+- 👉点击[qt测试](https://github.com/PyQt5/PyQt) 大佬的测试样例，能解决大部分功能问题。👈
+
+- 👉点击[打包教程](doc/package/) python应用打包详解。👈
+
 
 # 项目结构
 ---

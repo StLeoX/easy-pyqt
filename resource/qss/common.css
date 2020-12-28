@@ -1,15 +1,64 @@
-/*
-默认的样式表。
-如果需要用到这个样式，且还用到其他的样式，那需要进行相加,。
-子控件样式会继承自这个公共样式。
-除了主题样式，个性化样式请不要在此表中声明.
-*/
-*{
-    font-family: "Microsoft YaHei UI", serif;
-    font-size: 14px;
+/*默认的样式表。如果需要用到这个样式，且还用到其他的样式，那需要进行相加,子控件样式会继承自这个公共样式。除了主题样式，个性化样式请不要在此表中声明.*/
+/*------------------------------筛选器--------------------------------------*/
+/*伪元素选样式选择器 todo 统一配色*/
+*{font-family: "Microsoft YaHei UI", serif;font-size: 14px;}
+/*QAbstractItemView item列*/
+QAbstractItemView{padding: 1px;border: 1px solid darkgray;outline: 0 solid gray;/* 选定项的虚框 */ selection-background-color: #23e45e;  /* 整个下拉窗体被选中项的背景色 */}
+/*QAbstractItemView item项 一般（设置pComboBox.setView(QListView());后，该项才起作用） */
+QAbstractItemView::item {height: 30px;padding: 5px; border-radius: 2px; color: black}
+/*QAbstractItemView item项 划过效果*/
+QAbstractItemView::item:hover {}
+/*QAbstractItemView item项 选定效果*/
+QAbstractItemView::item:selected {background: #6096ba;}
+/*QScrollBar 滚动条*/
+QScrollBar{background-color: #d0d2d4;}
+/*QScrollBar 滚动条 滑块*/
+QScrollBar::handle{border-radius: 2px;background: #47D1FF;}
+/*QScrollBar 垂直滚动条 */
+QScrollBar:vertical {width: 5px;}
+/*QScrollBar 垂直滚动条 滑块*/
+QScrollBar::handle:vertical {}
+/*QScrollBar 垂直滚动条 滑块 悬停*/
+QScrollBar::handle:vertical:hover {background: #047ba3;}
+
+/*------------------------------元素筛选器--------------------------------------*/
+
+/*QWidget 基本容器*/
+QWidget, QFrame{border-radius:2px;background-color: #fdfdfd;}
+/*QPushButton 按钮*/
+QPushButton{border: 1px solid darkgray;}
+/*QComboBox 下拉框*/
+QComboBox{padding: 5px;border: 1px solid darkgray;max-width: 300px}
+/*QComboBox 可编辑下拉框样式*/
+QComboBox:editable {}
+/*QComboBox 可编辑下拉框 打开样式*/
+QComboBox:editable:on {}
+/*QComboBox 不可编辑下拉框样式*/
+QComboBox:!editable {}
+/*QComboBox 不可编辑下拉框 打开样式*/
+QComboBox:!editable:on {}
+/*QComboBox 下拉框右侧图标区域样式*/
+QComboBox::drop-down {
+    subcontrol-origin: padding;   /* 子控件在父元素中的原点矩形。如果未指定此属性，则默认为padding。 */
+    subcontrol-position: top right;   /* 下拉框的位置（右上） */
+    width: 30px;
+    border-left-width: 1px;   /* 下拉框的左边界线宽度 */
+    border-left-color: darkgray;   /* 下拉框的左边界线颜色 */
+    border-left-style: solid;   /* 下拉框的左边界线为实线 */
+    border-top-right-radius: 3px;   /* 下拉框的右上边界线的圆角半径（应和整个QComboBox右上边界线的圆角半径一致） */
+    border-bottom-right-radius: 3px;
 }
-/* widget 的默认底色，倒角 */
-QWidget{border-radius:2px;background-color: #fdfdfd;}
+/*QComboBox 下拉框右侧图标区域样式*/
+QComboBox::down-arrow {}
+/*QComboBox 下拉框右侧图标区域 打开时样式*/
+QComboBox::down-arrow:on {}
+/*QComboBox 下拉框右侧图标区域 鼠标悬停时样式*/
+QComboBox::drop-down:hover {background: #0aaa93}
+/*QComboBox 不可编辑下拉框右侧图标区域样式*/
+QComboBox::drop-down:!editable {}
+/*QComboBox 可编辑下拉框右侧图标区域样式*/
+QComboBox::drop-down:editable {}
+
 /* 用于承载页面的窗体设置为背景透明 */
 #main_window{background: transparent}
 /* 设定标题栏高度 */
@@ -17,11 +66,7 @@ QWidget{border-radius:2px;background-color: #fdfdfd;}
 #bar{
     /*background: #47D1FF;*/
 }
-#btn_bar_app_name{
-    font-family: "Microsoft YaHei UI", serif;
-    font-size: 14px;
-    background: transparent;
-}
+#btn_bar_app_name{background: transparent;}
 /*自定义标题栏按钮*/
 #btn_bar_normal, #btn_bar_close, #btn_bar_min, #btn_bar_app_logo{
     margin: 3px;
