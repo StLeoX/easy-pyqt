@@ -1,18 +1,30 @@
 /*默认的样式表。如果需要用到这个样式，且还用到其他的样式，那需要进行相加,子控件样式会继承自这个公共样式。除了主题样式，个性化样式请不要在此表中声明.*/
 DEFINED_VALUE{
-    --basic-color: #fdfdfd; /*基本色*/
-    --basic-color-sub: #d0d2d4;/*基本 辅助色 */
-    --basic-color-sub-border: darkgray;/*基本 辅助边框色 */
-    --basic-color-sub-outline: gray;/*基本 辅助边框色 */
-    --accent-color: #6096ba;/*辅助色*/
-    --accent-color-light: #6096ba;/*辅助亮色*/
+    --basic-color: #fdfdfd; /*背景色一般留白颜色*/
+    --basic-color-1: #f5f5f5;/*基本辅助色 减饱和度 1 常用于 hover 事件*/
+    --basic-color-a: #dedede;/*基本辅助色 加饱和度 1* 常用于 点击 事件*/
+    --basic-color-2: #e3e3e3;/*基本辅助色 用于简单修饰背景色*/
+    --basic-color-1-border: darkgray;/*基本辅助边框色 */
+    --basic-color-1-outline: gray;/*基本辅助边框色 */
+    --accent-color-light: #0099FF;/*辅助亮色用于表示强调，吸引注意力（一般不能多用，以免过度消费用户视觉）*/
+    --accent-color-1: rgba(0, 153, 255, 0.8);/*辅助色低饱和度 用于大范围的辅助背景色(低饱和度) 透明度减到0.8 常用于 hover 事件*/
+    --accent-color-a: #027bc7;/*辅助色低饱和度 常用于 点击 事件*/
+    --accent-color: #666699;/*辅助色低饱和度*/
+    --accent-color-warning: #FF9900;/*辅助色表示警告*/
+    --accent-color-warning-1: rgba(255, 153, 0, 0.8);/*辅助色表示警告 透明度减到0.8*/
+    --accent-color-warning-a: rgb(227, 137, 2);/*辅助色表示警告 常用于 点击 事件*/
+    --accent-color-danger: #FF4351;/*辅助色表示危险*/
+    --accent-color-danger-1: rgba(255, 67, 81, 0.8);/*辅助色表示危险 透明度减到0.8*/
+    --accent-color-danger-a: rgb(220, 60, 73);/*辅助色表示危险 常用于 点击 事件*/
     --basi-border-radius: 2px;/*默认的倒角*/
     --basi-pdding-sieze-5: 5px;/*默认的边距*/
 }
+
+
 /*------------------------------抽象元素筛选器--------------------------------------*/
 *{font-family: "Microsoft YaHei UI", serif;font-size: 14px;}
 /*QAbstractItemView item列*/
-QAbstractItemView{padding: 1px;border: 1px solid var(--basic-color-sub-border);outline: none;/* 选定项的虚框 */ selection-background-color: var(--accent-color);  /* 整个下拉窗体被选中项的背景色 */}
+QAbstractItemView{padding: 1px;border: 1px solid var(--basic-color-1-border);outline: none;/* 选定项的虚框 */ selection-background-color: var(--accent-color);  /* 整个下拉窗体被选中项的背景色 */}
 /*QAbstractItemView item项 一般（设置pComboBox.setView(QListView());后，该项才起作用） */
 QAbstractItemView::item {height: 30px;padding: var(--basi-pdding-sieze-5); border-radius: var(--basi-border-radius); color: black}
 /*QAbstractItemView item项 划过效果*/
@@ -22,7 +34,7 @@ QAbstractItemView::item:selected {background: var(--accent-color-light);}
 /*QScrollBar 滚动条*/
 QScrollBar{}
 /*QScrollBar 滚动条 滑块*/
-QScrollBar::handle{border-radius: var(--basi-border-radius);background: var(--basic-color-sub);}
+QScrollBar::handle{border-radius: var(--basi-border-radius);background: var(--basic-color-1);}
 /*QScrollBar 垂直滚动条 */
 QScrollBar:vertical {width: 5px;}
 /*QScrollBar 垂直滚动条 滑块*/
@@ -35,9 +47,11 @@ QScrollBar::handle:vertical:hover {background: var(--accent-color-light);}
 /*QWidget 基本容器*/
 QWidget, QFrame{border-radius:var(--basi-border-radius);background-color: var(--basic-color);}
 /*QPushButton 按钮*/
-QPushButton{border: 1px solid darkgray;}
+QPushButton{border: 1px solid var(--basic-color-1-border);height: 30px;padding: 3px 7px}
+QPushButton:hover{background: var(--basic-color-1);}
+QPushButton:pressed{background: var(--basic-color-a);}
 /*QComboBox 下拉框*/
-QComboBox{padding: var(--basi-pdding-sieze-5);border: 1px solid var(--basic-color-sub-border);max-width: 300px}
+QComboBox{padding: var(--basi-pdding-sieze-5);border: 1px solid var(--basic-color-1-border);max-width: 300px}
 /*QComboBox 可编辑下拉框样式*/
 QComboBox:editable {}
 /*QComboBox 可编辑下拉框 打开样式*/
@@ -67,6 +81,36 @@ QComboBox::drop-down:hover {background: #0aaa93}
 QComboBox::drop-down:!editable {}
 /*QComboBox 可编辑下拉框右侧图标区域样式*/
 QComboBox::drop-down:editable {}
+
+
+/*------------------属性筛选---------------------*/
+/*QPushButton 原始按钮 btn_class_primary */
+QPushButton[property_name="btn_class_primary"]{border-color:var(--basic-color-1-border);height: 30px;padding: 3px 7px}
+QPushButton[property_name="btn_class_primary"]:hover{background: var(--basic-color-1);}
+QPushButton[property_name="btn_class_primary"]:pressed{background: var(--basic-color-a);}
+/*QPushButton 常规按钮 btn_class_normal */
+QPushButton[property_name="btn_class_normal"]{background: var(--accent-color-light);color: #fff; border-color:var(--accent-color-light);}
+QPushButton[property_name="btn_class_normal"]:hover{background: var(--accent-color-1);border-color: var(--accent-color-1);}
+QPushButton[property_name="btn_class_normal"]:pressed{background: var(--accent-color-a);border-color: var(--accent-color-a);}
+/*QPushButton 警告按钮 btn_class_warning */
+QPushButton[property_name="btn_class_warning"]{border-color:var(--accent-color-warning);color: #fff; background: var(--accent-color-warning);}
+QPushButton[property_name="btn_class_warning"]:hover{background: var(--accent-color-warning-1);border-color: var(--accent-color-warning-1);}
+QPushButton[property_name="btn_class_warning"]:pressed{background: var(--accent-color-warning-a);border-color: var(--accent-color-warning-a);}
+/*QPushButton 危险按钮 btn_class_danger */
+QPushButton[property_name="btn_class_danger"]{border-color:var(--accent-color-danger);color: #fff; background: var(--accent-color-danger);}
+QPushButton[property_name="btn_class_danger"]:hover{background: var(--accent-color-danger-1);border-color:var(--accent-color-danger-1);}
+QPushButton[property_name="btn_class_danger"]:pressed{background: var(--accent-color-danger-a);border-color:var(--accent-color-danger-a);}
+/*QPushButton 禁用按钮 btn_class_disable */
+QPushButton[property_name="btn_class_disable"]{border-color:var(--basic-color-1-border);color: var(--basic-color-1-outline); background: 1px solid var(--basic-color-2);}
+QPushButton[property_name="btn_class_disable"]:hover{background: var(--basic-color-2);border-color:var(--basic-color-1-border);}
+QPushButton[property_name="btn_class_disable"]:pressed{background: var(--basic-color-2);border-color:var(--basic-color-1-border);}
+
+/*QPushButton 按钮尺寸 大 btn_size_lg */
+QPushButton[property_name="btn_size_lg"]{}
+QPushButton[property_name="btn_size_normal"]{}
+QPushButton[property_name="btn_size_lg"]{}
+
+/*-----------------id筛选------------------------*/
 
 /* 用于承载页面的窗体设置为背景透明 */
 #main_window{background: transparent}
@@ -116,8 +160,4 @@ QComboBox::drop-down:editable {}
 }
 #btn_dialog_yes:hover{
     background: azure;
-}
-
-*[mandatoryField="true"]{
-
 }

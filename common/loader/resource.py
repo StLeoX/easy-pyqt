@@ -12,8 +12,8 @@ import qtawesome
 from PyQt5 import QtGui
 from PyQt5.QtGui import qGray, qRgba, qAlpha
 
-from common.decorator.lazy_property import Lazy
-from common.util.string_utils import format_style_file
+from common.decorator.lazy import Lazy
+from common.util.strings import format_style_file
 from config import const
 
 

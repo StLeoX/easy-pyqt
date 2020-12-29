@@ -115,3 +115,14 @@ class Config:
         :return:
         """
         return self.link(self.resource_path, "oracle_client\\instantclient_19_3")
+
+
+class WidgetProperty:
+    """空间属性样式对应表 详细效果图请参阅：https://github.com/py-mu/easy-pyqt"""
+
+    # 使用元组放置属性筛选描述
+    btn_class_primary = ("原始按钮，不被注意的按钮如取消", ("property_name", "btn_class_primary"))  # note: 原始按钮
+    btn_class_normal = ("常规按钮，容易被注意到且表示积极的按钮", ("property_name", "btn_class_normal"))  # note: 常规按钮()
+    btn_class_warning = ("警告按钮，橙黄色带有冲击性的颜色，具有警告意味，但是无关紧要", ("property_name", "btn_class_warning"))  # note: 警告按钮()
+    btn_class_danger = ("危险按钮，红色带有冲击性的颜色, 表示动作很危险， 具有强烈警告", ("property_name", "btn_class_danger"))  # note: 危险按钮()
+    btn_class_disable = ("禁用按钮，通常用于表示，当前动作不可用", ("property_name", "btn_class_disable"))  # note: 禁用按钮()

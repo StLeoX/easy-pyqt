@@ -3,6 +3,7 @@
     create by pymu
     on 2020/12/20
     at 0:50
+    eq 启动类
 """
 import ctypes
 import sys
@@ -10,8 +11,8 @@ import sys
 from PyQt5.QtNetwork import QLocalServer, QLocalSocket
 from PyQt5.QtWidgets import QApplication
 
-from common.base.base_activity import BaseActivity
-from common.base.exception_handle import ExceptionHandle
+from common.base.activity import BaseActivity
+from common.base.handle import ExceptionHandle
 from common.loader.resource import ResourceLoader
 from config.const import Config
 from view.activity.activity_dialog_normal import NormalDialogActivity

@@ -5,8 +5,6 @@
 """
 from functools import wraps
 from inspect import signature
-from typing import Tuple
-
 
 
 def check_v_type(*args, **kwargs):
@@ -17,6 +15,7 @@ def check_v_type(*args, **kwargs):
     :return: 元
     :raise TypeError 类型异常
     """
+
     def decorate(func):
         signal_object = signature(func)
         # 检验队列

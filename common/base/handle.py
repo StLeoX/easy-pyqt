@@ -3,7 +3,7 @@
     create by pymu
     on 2020/12/15
     at 10:13
-    全局异常处理
+    全局拦截
 """
 import sys
 import threading

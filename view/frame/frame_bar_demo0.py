@@ -5,7 +5,7 @@
     at 20:18
     默认的标题栏样式1
 """
-from common.base.base_view import BaseView
+from common.base.view import BaseView
 from view.uipy.frame_bar import Ui_bar
 
 
