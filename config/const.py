@@ -11,6 +11,8 @@ import os
 __class_path__ = os.path.abspath(os.path.dirname(__file__))
 __root_path__ = os.path.abspath(os.path.join(__class_path__, os.path.pardir))
 
+from typing import Tuple
+
 
 class Config:
     """
@@ -126,3 +128,19 @@ class WidgetProperty:
     btn_class_warning = ("警告按钮，橙黄色带有冲击性的颜色，具有警告意味，但是无关紧要", ("property_name", "btn_class_warning"))  # note: 警告按钮()
     btn_class_danger = ("危险按钮，红色带有冲击性的颜色, 表示动作很危险， 具有强烈警告", ("property_name", "btn_class_danger"))  # note: 危险按钮()
     btn_class_disable = ("禁用按钮，通常用于表示，当前动作不可用", ("property_name", "btn_class_disable"))  # note: 禁用按钮()
+    border_class_red = ("红色边框一般用于警示，输入错误", ("property_name", "border_class_red"))  # note: 红色边框()
+
+    @staticmethod
+    def get_style(name: str) -> Tuple[str, Tuple[str, str]]:
+        """
+        通过属性名筛选样式
+
+        :param name: 属性名称
+        :return: 如果有则返回，没有则返回默认的
+        """
+        default_property = "默认属性", ("property_name", "")
+        if not name:
+            return default_property
+        if hasattr(WidgetProperty, str(name)):
+            return getattr(WidgetProperty, str(name))
+        return default_property
