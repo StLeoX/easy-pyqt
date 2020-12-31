@@ -51,7 +51,7 @@ QPushButton{border-color: var(--basic-color-1-border); border-width: 1px; border
 QPushButton:hover{background: var(--basic-color-1);}
 QPushButton:pressed{background: var(--basic-color-a);}
 QLineEdit{border-color: var(--basic-color-1-border); border-width: 1px; border-style: solid; height: 30px;padding: 2px 5px;}
-
+QToolTip{padding: 2px 3px; border:1px solid var(--basic-color-1-border); background-color: #ffffff; color:#484848; font-size:12px; border-radius: var(--basi-border-radius);}
 /*QComboBox 下拉框*/
 QComboBox{padding: var(--basi-pdding-sieze-5);border: 1px solid var(--basic-color-1-border);max-width: 300px}
 /*QComboBox 可编辑下拉框样式*/
