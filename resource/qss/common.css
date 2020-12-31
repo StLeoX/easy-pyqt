@@ -22,7 +22,7 @@ DEFINED_VALUE{
 
 
 /*------------------------------抽象元素筛选器--------------------------------------*/
-*{font-family: "Microsoft YaHei UI", serif;font-size: 14px;}
+*{font-family: "Microsoft YaHei UI", serif;font-size: 13px;}
 /*QAbstractItemView item列*/
 QAbstractItemView{padding: 1px;border: 1px solid var(--basic-color-1-border);outline: none;/* 选定项的虚框 */ selection-background-color: var(--accent-color);  /* 整个下拉窗体被选中项的背景色 */}
 /*QAbstractItemView item项 一般（设置pComboBox.setView(QListView());后，该项才起作用） */

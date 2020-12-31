@@ -84,12 +84,13 @@ class TestActivity(FrameLessWindowHintActivity):
         f_layout.addWidget(button7)
 
         # todo 父类转子类
-        self.button8 = QPushButton("QPushButton")
+        self.button8 = QPushButton()
+        self.button8.setIcon(self.resource.awesome_font_icon("fa.frown-o"))
         self.button8.setToolTip("ui加载的button")
         f_layout.addWidget(self.button8)
 
         # todo 父类转子类
-        button9 = QPushButton("QPushButton")
+        button9 = QPushButton()
         button9.setToolTip("ui加载的button")
 
         line_edit = QLineEdit("这是一个输入框")
@@ -113,8 +114,8 @@ class TestActivity(FrameLessWindowHintActivity):
         f_layout.addWidget(line_edit3)
 
         self.body_layout.addWidget(g)
+        # 拉伸填充置顶
         self.body_layout.addStretch()
-
 
     def unused_button5(self):
         """设置button5不可用于可用"""
@@ -129,11 +130,11 @@ class TestActivity(FrameLessWindowHintActivity):
         super(TestActivity, self).configure()
         self.bar.btn_bar_app_logo.setIcon(self.resource.qt_icon_project_png)
         self.button8 = QPushButtonToBaseButton(self.button8)
-        # self.button8.setListenHover(True)
-        self.button8.installEventFilter(self)
+        self.button8.setListenHover(True)
         # self.button8.setDisabled(True)
-        # self.button8.hover_in.connect(lambda: self.button8.setIcon(self.resource.awesome_font_icon("fa.grav")))
-        # self.button8.hover_out.connect(lambda: self.button8.setIcon(self.resource.awesome_font_icon("fa.frown-o")))
+        self.button8.setProperty(*WidgetProperty.btn_class_normal[1])
+        self.button8.hover_in.connect(lambda: self.button8.setIcon(self.resource.awesome_font_icon("fa.grav")))
+        self.button8.hover_out.connect(lambda: self.button8.setIcon(self.resource.awesome_font_icon("fa.frown-o")))
 
 
 if __name__ == '__main__':
