@@ -4,7 +4,17 @@
 - [Qt 样式表示例](https://doc.qt.io/qt-5/stylesheet-examples.html)
 - [Qt 样式表参考](https://doc.qt.io/qt-5/stylesheet-reference.html)
 
-## 一、自定义主题
+## 一、基本元素
+
+### 1、QPushButton 按钮
+
+### 2、QLineEdit 输入框
+
+### 3、QToolTip 提示框
+
+
+
+## 二、自定义主题
 
 ### 1.切换主题配色
 复制[eq样式表](../../resource/qss/common.css)文件，重命名为你的项目基本样式。编辑复制的样式文件在以下找到配色变量
