@@ -129,6 +129,7 @@ class ExceptionHandle:
             self.is_init = not self.is_init
         self.is_mapping = is_mapping
         self.logger = Logger()
+        # noinspection SpellCheckingInspection
         sys.excepthook = self.exception
 
     @staticmethod

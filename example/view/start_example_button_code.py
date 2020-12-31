@@ -102,8 +102,9 @@ class StartExampleButtonActivity(FrameLessWindowHintActivity):
 
         # button 组
         button_group = QWidget()
+        button_group.setToolTip("<p>按钮组合，现在还不能清除button之间的border间隙，但我相信以后可以的。😉</p>")
         button_group_layout = QHBoxLayout(button_group)
-        button_group_layout.setContentsMargins(0, 0, 0, 0)
+        button_group_layout.setContentsMargins(20, 0, 20, 0)
         button_group_layout.setSpacing(1)
         button11 = QPushButton()
         button11.setIcon(self.resource.awesome_font_icon("fa.chevron-left", color="black"))

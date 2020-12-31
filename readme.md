@@ -8,23 +8,23 @@
 
 easy qt for python（eq） 致力于样式跟界面布局之上，力达能够做出一个快速开发的组件框架，作为开发人员的你只需专注于业务逻辑以及如何调用即可。
 
-- 👉国内玩家请访问[码云](https://gitee.com/pymu/easy-pyqt)🚩👈
+- 👉国内玩家请访问[码云](https://gitee.com/pymu/easy-pyqt)🚩
 
-- 👉点击[easy your qt](doc/help/)查看我们是如何制作eq框架的。👈
+- 👉点击[easy your qt](doc/help/)查看我们是如何制作eq框架的。
 
-- 👉点击[qesy pyqt 使用教程](doc/start/)查看，如何使用eq框架快速开发一个pyqt应用程序。👈
+- 👉点击[qesy pyqt 使用教程](doc/start/)查看，如何使用eq框架快速开发一个pyqt应用程序。
 
-- 👉点击[qesy pyqt todo清单](doc/todo/)查看待实现的清单列表。👈
+- 👉点击[qesy pyqt todo清单](doc/todo/)查看待实现的清单列表。
 
-- 👉点击[UI设计指南](doc/ui/)查看eq的风格设计思路，提供应用样式模板可选解决方案。👈
+- 👉点击[UI设计指南](doc/ui/)查看eq的风格设计思路，提供应用样式模板可选解决方案。
 
-- 👉点击[组件列表](doc/frame/)查看已实现的组件，从中选择你喜欢的组件进行开发吧。👈
+- 👉点击[组件列表](doc/frame/)查看已实现的组件，从中选择你喜欢的组件进行开发吧。
 
-- 👉点击[Qss样式指南](doc/style/)。👈
+- 👉点击[Qss样式指南](doc/style/)。
 
-- 👉点击[qt测试](https://github.com/PyQt5/PyQt) 大佬的测试样例，能解决大部分功能问题。👈
+- 👉点击[qt测试](https://github.com/PyQt5/PyQt) 大佬的测试样例，能解决大部分功能问题。
 
-- 👉点击[打包教程](doc/package/) python应用打包详解。👈
+- 👉点击[打包教程](doc/package/) python应用打包详解。
 
 
 # 项目结构
