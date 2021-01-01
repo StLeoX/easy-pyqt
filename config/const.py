@@ -23,7 +23,7 @@ class Config:
     person_sg = 0
     person_gb = 1
 
-    # 唯一启动标识
+    # 唯一启动标识 todo 获取设备号
     unique_name = "unique_6948510_u_8"
 
     @property
@@ -117,6 +117,7 @@ class Config:
         :return:
         """
         return self.link(self.resource_path, "oracle_client\\instantclient_19_3")
+
 
 
 class WidgetProperty:

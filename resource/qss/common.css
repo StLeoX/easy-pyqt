@@ -54,6 +54,8 @@ QPushButton:hover{background: var(--basic-color-1);}
 QPushButton:pressed{background: var(--basic-color-a);}
 /*QLineEdit 单行输入框*/
 QLineEdit{border-color: var(--basic-color-1-border); border-width: 1px; border-style: solid; height: 30px;padding: 2px 5px;}
+/*QTextEdit 文本输入框*/
+QTextEdit{border-color: var(--basic-color-1-border); border-width: 1px; border-style: solid;padding: 2px 5px;}
 /*QToolTip 提示框*/
 QToolTip{padding: 2px 3px; border-color: var(--basic-color-1-border); border-width: 1px; border-style: solid; background-color: var(--basic-color); color:var(--font-color-1); font-size:12px; border-radius: var(--basi-border-radius);}
 /*QComboBox 下拉框*/
