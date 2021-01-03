@@ -9,7 +9,7 @@ from typing import Tuple
 
 from PyQt5 import QtGui
 from PyQt5.QtCore import Qt, QPoint
-from PyQt5.QtWidgets import QWidget, QHBoxLayout, QGraphicsDropShadowEffect, QPushButton, QVBoxLayout
+from PyQt5.QtWidgets import QWidget, QHBoxLayout, QPushButton, QVBoxLayout
 
 from common.base.activity import BaseActivity
 from common.base.view import BaseView
@@ -51,7 +51,7 @@ class FrameLessWindowHintActivity(BaseActivity):
         event_switch_border_bottom_right = True
 
         event_position_mouse: QPoint = None
-        
+
         def __init__(self):
             """进行实例化，不同页面窗体，不同的开关及状态"""
 
@@ -88,20 +88,7 @@ class FrameLessWindowHintActivity(BaseActivity):
 
     def set_default_window_shadow(self):
         """设置默认阴影"""
-        self.set_window_shadow(self.get_default_effect_shadow(), self.body_widget)
-
-    def get_default_effect_shadow(self) -> QGraphicsDropShadowEffect:
-        """获取一个默认的阴影对象"""
-        effect_shadow = QGraphicsDropShadowEffect(self)
-        effect_shadow.setOffset(0, 0)  # 偏移
-        effect_shadow.setBlurRadius(10)  # 阴影半径
-        effect_shadow.setColor(Qt.darkGray)  # 阴影颜色
-        return effect_shadow
-
-    @staticmethod
-    def set_window_shadow(shadow: QGraphicsDropShadowEffect, widget: QWidget):
-        """给控件设置阴影"""
-        widget.setGraphicsEffect(shadow)
+        self.set_widget_shadow(self.get_effect_shadow(), self.body_widget)
 
     # noinspection PyUnresolvedReferences
     def change_normal(self):

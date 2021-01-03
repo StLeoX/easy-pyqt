@@ -4,10 +4,12 @@
     file: base_view.py
     页面及frame的约束类
 """
+from typing import Union
+
 from PyQt5 import QtGui
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QPainter
-from PyQt5.QtWidgets import QWidget, QStyleOption, QStyle, QApplication
+from PyQt5.QtGui import QPainter, QColor, QGradient
+from PyQt5.QtWidgets import QWidget, QStyleOption, QStyle, QApplication, QGraphicsDropShadowEffect
 
 from common.loader.resource import ResourceLoader
 
@@ -60,6 +62,26 @@ class BaseView(QWidget):
         """
         app: QApplication = QApplication.instance()
         app.setStyleSheet(self.resource.style_from(css_name))
+
+    def get_effect_shadow(self, offset=(0, 0), radius=10,
+                          color: Union[QColor, Qt.GlobalColor, QGradient] = Qt.darkGray) -> QGraphicsDropShadowEffect:
+        """
+        获取一个默认的阴影对象， 偏移0、半径10、颜色深灰色
+
+        :param offset: 偏移（x， y）
+        :param radius: 半径；默认10
+        :param color: 颜色
+        """
+        effect_shadow = QGraphicsDropShadowEffect(self)
+        effect_shadow.setOffset(*offset)  # 偏移
+        effect_shadow.setBlurRadius(radius)  # 阴影半径
+        effect_shadow.setColor(color)  # 阴影颜色
+        return effect_shadow
+
+    @staticmethod
+    def set_widget_shadow(shadow: QGraphicsDropShadowEffect, widget: QWidget):
+        """给控件设置阴影"""
+        widget.setGraphicsEffect(shadow)
 
     def paintEvent(self, event):
         """

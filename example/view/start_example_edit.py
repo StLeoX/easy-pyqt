@@ -6,7 +6,7 @@
     使用EQ开发示例：输入框
 """
 from PyQt5.QtCore import Qt, QRegExp
-from PyQt5.QtGui import QRegExpValidator, QFontMetrics, QFont
+from PyQt5.QtGui import QRegExpValidator
 from PyQt5.QtWidgets import QLineEdit, QTextEdit
 
 from common.base.highlight import EditHighLighter
@@ -53,8 +53,13 @@ class TestActivity(FrameLessWindowHintActivity):
         pass_wd.setClearButtonEnabled(True)
         self.body_layout.addWidget(pass_wd)
 
+        text_edit1 = QTextEdit()
+        text_edit1.setPlaceholderText("长文本输入框")
+        self.body_layout.addWidget(text_edit1)
+
+
         self.text_edit = QTextEdit()
-        self.text_edit.setPlaceholderText("长文本输入框")
+        self.text_edit.setPlaceholderText("你试着输入一些 python的关键字看看，比如 class def True 或者一些数值")
         self.body_layout.addWidget(self.text_edit)
 
         # 拉伸填充置顶
@@ -82,12 +87,8 @@ class TestActivity(FrameLessWindowHintActivity):
         self.bar_normal = self.bar.btn_bar_normal
         super(TestActivity, self).configure()
         self.bar.btn_bar_app_logo.setIcon(self.resource.qt_icon_project_png)
-        # EditHighLighter(self.text_edit)
         self.high_lighter = EditHighLighter(self.text_edit)
         self.high_lighter.set_tab_size()
-        # self.high_lighter.key_word = EditHighLighter.SQL_KEY
-        # self.high_lighter.builtins = EditHighLighter.SQL_BUILTINS
-        # self.high_lighter.constants = EditHighLighter.SQL_CONSTANTS
 
 
 if __name__ == '__main__':
