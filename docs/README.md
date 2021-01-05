@@ -1,4 +1,4 @@
-![app icon](resource/img/icon.png) 
+![app icon](../resource/img/icon.png) 
 
 
 *简单开发你的qt应用，答应我，别再熬夜了，好吗？👀✨*

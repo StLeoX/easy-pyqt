@@ -21,7 +21,7 @@ DEFINED_VALUE{
     --accent-color-danger: #FF4351;/*辅助色表示危险*/
     --accent-color-danger-1: rgba(255, 67, 81, 0.8);/*辅助色表示危险 透明度减到0.8*/
     --accent-color-danger-a: rgb(220, 60, 73);/*辅助色表示危险 常用于 点击 事件*/
-    --accent-colo-green: #5FB878; /*绿色*/
+    --accent-colo-green: #5FB878; /*绿色 常用于成功*/
     --accent-colo-green-a: #0aaa93; /*绿色*/
     --basi-border-radius: 2px;/*默认的倒角*/
     --basi-pdding-sieze-5: 5px;/*默认的边距*/
@@ -79,10 +79,10 @@ QComboBox{padding: var(--basi-pdding-sieze-5);border: 1px solid var(--basic-colo
 QComboBox:editable {}
 /*QComboBox 可编辑下拉框 打开样式*/
 QComboBox:editable:on {}
-/*QComboBox 不可编辑下拉框样式*/
-QComboBox:!editable {}
-/*QComboBox 不可编辑下拉框 打开样式*/
-QComboBox:!editable:on {}
+/*QComboBox 可编辑下拉框样式*/
+QComboBox:editable {}
+/*QComboBox 可编辑下拉框 打开样式*/
+QComboBox:editable:on {}
 /*QComboBox 下拉框右侧图标区域样式*/
 QComboBox::drop-down {
     subcontrol-origin: padding;   /* 子控件在父元素中的原点矩形。如果未指定此属性，则默认为padding。 */
@@ -100,8 +100,8 @@ QComboBox::down-arrow {}
 QComboBox::down-arrow:on {}
 /*QComboBox 下拉框右侧图标区域 鼠标悬停时样式*/
 QComboBox::drop-down:hover {background: #0aaa93}
-/*QComboBox 不可编辑下拉框右侧图标区域样式*/
-QComboBox::drop-down:!editable {}
+/*QComboBox 可编辑下拉框右侧图标区域样式*/
+QComboBox::drop-down:editable {}
 /*QComboBox 可编辑下拉框右侧图标区域样式*/
 QComboBox::drop-down:editable {}
 
