@@ -8,7 +8,7 @@
 from PyQt5.QtWidgets import QHBoxLayout, QWidget
 
 from view.activity.activity_frame_less_window_hint import FrameLessWindowHintActivity
-from view.uipy.dialog_info_waring_error import Ui_Form
+from view.ui.dialog_info_waring_error import Ui_Form
 
 
 class NormalDialogActivity(FrameLessWindowHintActivity, Ui_Form):

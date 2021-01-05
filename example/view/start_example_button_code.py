@@ -6,7 +6,7 @@
     使用EQ开发按钮示例
 """
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QGroupBox, QPushButton, QWidget, QHBoxLayout
+from PyQt5.QtWidgets import QGroupBox, QPushButton, QWidget, QHBoxLayout, QCheckBox, QRadioButton
 
 from common.base.button import BaseButton, QPushButtonToBaseButton
 from common.base.launch import EasyQtInit
@@ -90,15 +90,15 @@ class StartExampleButtonActivity(FrameLessWindowHintActivity):
         self.button8.setToolTip("ui加载的button， 然后升格为派生子类BaseButton， 也就是说我现在是BaseButton类型")
         f_layout.addWidget(self.button8)
 
-        # button9 = QPushButton()
-        # button9.setIcon(self.resource.awesome_font_icon("fa.upload", color="black"))
-        # button9.setToolTip("图标按钮：上传")
-        # f_layout.addWidget(button9)
-        #
-        # button10 = QPushButton()
-        # button10.setIcon(self.resource.awesome_font_icon("fa.download", color="black"))
-        # button10.setToolTip("图标按钮：上传")
-        # f_layout.addWidget(button10)
+        button9 = QPushButton()
+        button9.setIcon(self.resource.awesome_font_icon("fa.upload", color="black"))
+        button9.setToolTip("图标按钮：上传")
+        f_layout.addWidget(button9)
+
+        button10 = QPushButton()
+        button10.setIcon(self.resource.awesome_font_icon("fa.download", color="black"))
+        button10.setToolTip("图标按钮：上传")
+        f_layout.addWidget(button10)
 
         # button 组
         button_group = QWidget()
@@ -122,6 +122,17 @@ class StartExampleButtonActivity(FrameLessWindowHintActivity):
         button_group_layout.addWidget(button13)
 
         f_layout.addWidget(button_group)
+
+
+        check_box = QCheckBox("默认复选框")
+        check_box.setCheckState(Qt.PartiallyChecked)
+        f_layout.addWidget(check_box)
+
+        check_box1 = QCheckBox("一般复选框")
+        check_box1.setProperty(*WidgetProperty.checkbox_class_primary[1])
+        f_layout.addWidget(check_box1)
+
+        f_layout.addWidget(QRadioButton("默认单选按钮"))
 
         self.body_layout.addWidget(g)
         # 拉伸填充置顶

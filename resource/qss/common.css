@@ -4,7 +4,12 @@ DEFINED_VALUE{
     --basic-color-1: #f5f5f5;/*基本辅助色 减饱和度 1 常用于 hover 事件*/
     --basic-color-a: #dedede;/*基本辅助色 加饱和度 1* 常用于 点击 事件*/
     --basic-color-2: #e3e3e3;/*基本辅助色 用于简单修饰背景色*/
-    --basic-color-1-border: darkgray;/*基本辅助边框色 */
+    --basic-color-3: #d2d2d2;/*基本辅助色 用于简单修饰背景色*/
+    --basic-color-4: #c2c2c2;/*基本辅助色 用于简单修饰背景色*/
+    --basic-color-5-text: #999;/*基本辅助色 用于简单修饰背景色*/
+    --basic-color-6-text: #666;/*基本辅助色 用于简单修饰背景色*/
+    --basic-color-7-text: #333;/*基本辅助色 用于简单修饰背景色*/
+    --basic-color-1-border: #d2d2d2;/*基本辅助边框色 */
     --basic-color-1-outline: gray;/*基本辅助边框色 */
     --accent-color-light: #0099FF;/*辅助亮色用于表示强调，吸引注意力（一般不能多用，以免过度消费用户视觉）*/
     --accent-color-1: rgba(0, 153, 255, 0.8);/*辅助色低饱和度 用于大范围的辅助背景色(低饱和度) 透明度减到0.8 常用于 hover 事件*/
@@ -16,6 +21,8 @@ DEFINED_VALUE{
     --accent-color-danger: #FF4351;/*辅助色表示危险*/
     --accent-color-danger-1: rgba(255, 67, 81, 0.8);/*辅助色表示危险 透明度减到0.8*/
     --accent-color-danger-a: rgb(220, 60, 73);/*辅助色表示危险 常用于 点击 事件*/
+    --accent-colo-green: #5FB878; /*绿色*/
+    --accent-colo-green-a: #0aaa93; /*绿色*/
     --basi-border-radius: 2px;/*默认的倒角*/
     --basi-pdding-sieze-5: 5px;/*默认的边距*/
     --font-color: #333333;
@@ -24,7 +31,7 @@ DEFINED_VALUE{
 
 
 /*------------------------------抽象元素筛选器--------------------------------------*/
-*{font-family: "Microsoft YaHei UI", serif;font-size: 13px;}
+*{font-family: "Microsoft YaHei UI", serif;font-size: 13px;color: var(--basic-color-7-text);}
 /*QAbstractItemView item列*/
 QAbstractItemView{padding: 1px;border: 1px solid var(--basic-color-1-border);outline: none;/* 选定项的虚框 */ selection-background-color: var(--accent-color);  /* 整个下拉窗体被选中项的背景色 */}
 /*QAbstractItemView item项 一般（设置pComboBox.setView(QListView());后，该项才起作用） */
@@ -58,6 +65,14 @@ QLineEdit{border-color: var(--basic-color-1-border); border-width: 1px; border-s
 QTextEdit{border-color: var(--basic-color-1-border); border-width: 1px; border-style: solid;padding: 2px 5px;}
 /*QToolTip 提示框*/
 QToolTip{padding: 2px 3px; border-color: var(--basic-color-1-border); border-width: 1px; border-style: solid; background-color: var(--basic-color); color:var(--font-color-1); font-size:12px; border-radius: var(--basi-border-radius);}
+/*QCheckBox 复选框*/
+QCheckBox{color: var(--basic-color-6-text);}
+QCheckBox::indicator{border-radius: var(--basi-border-radius);border-color: var(--accent-colo-green); border-width: 1px; border-style: solid;}
+QCheckBox::indicator:hover{border-color: var(--accent-colo-green-a);}
+QCheckBox::indicator::checked{background: var(--accent-colo-green-a);}
+QCheckBox::indicator:indeterminate {background: var(--accent-colo-green);padding: 2px;}
+/*QRadioButton 单选按钮 */
+QRadioButton{color: var(--basic-color-6-text);}
 /*QComboBox 下拉框*/
 QComboBox{padding: var(--basi-pdding-sieze-5);border: 1px solid var(--basic-color-1-border);max-width: 300px}
 /*QComboBox 可编辑下拉框样式*/
@@ -90,6 +105,25 @@ QComboBox::drop-down:!editable {}
 /*QComboBox 可编辑下拉框右侧图标区域样式*/
 QComboBox::drop-down:editable {}
 
+/*QTabWidget tab选项卡*/
+QTabWidget{border: 1px solid #1b99c2;}
+/*选项卡位于右侧*/
+QTabWidget::tab-bar {/*subcontrol-position:right;*/width:177px;}
+/*选项卡面板*/
+QTabWidget::pane{
+    border: 1px solid var(--basic-color-1-border);
+    background: var(--basic-color);
+    /*background-clip:margin;*/
+    /*background-origin:margin;*/
+    /*width:77px;*/
+    /*height:55px;*/
+    /*面板位置 位于左下角*/
+    /*subcontrol-position: bottom left;*/
+}
+QTabWidget QTabBar{background: var(--basic-color);border: none;}
+QTabBar::tab:selected {
+    border-bottom-style: none;
+}
 
 /*------------------属性筛选---------------------*/
 /*QPushButton 原始按钮 btn_class_primary */
@@ -115,6 +149,25 @@ QPushButton[property_name="btn_class_disable"]:pressed, QPushButton:disabled:pre
 
 QLineEdit[property_name="border_class_red"]{border-color: var(--accent-color-danger);}
 QLineEdit[property_name="border_class_blue"]{color: var(--accent-color-a);}
+
+
+
+/*QCheckBox 复选框*/
+QCheckBox[property_name="checkbox_class_normal"] {border-color: var(--basic-color-1-border); border-width: 1px; border-style: solid;padding: 0 10px 0 0;color: #ffffff;}
+QCheckBox[property_name="checkbox_class_normal"]::indicator {width: 25px;height: 30px;border: none;border-radius: 0; background: var(--basic-color);}
+QCheckBox[property_name="checkbox_class_normal"]::unchecked {background: var(--basic-color-3);}
+QCheckBox[property_name="checkbox_class_normal"]::unchecked:hover {background: var(--basic-color-4);}
+QCheckBox[property_name="checkbox_class_normal"]::checked {background: var(--accent-colo-green);}
+QCheckBox[property_name="checkbox_class_normal"]::indicator::unchecked:hover {background: var(--accent-colo-green-a);}
+
+QCheckBox[property_name="checkbox_class_primary"] {border-color: var(--basic-color-1-border); border-width: 1px; border-style: solid;padding: 0 10px 0 0;color: #ffffff;}
+QCheckBox[property_name="checkbox_class_primary"]::indicator {width: 25px;height: 30px;border: none;border-radius: 0;background: var(--basic-color);}
+QCheckBox[property_name="checkbox_class_primary"]::unchecked {background: var(--basic-color-3);}
+QCheckBox[property_name="checkbox_class_primary"]::unchecked:hover {background: var(--basic-color-4);}
+QCheckBox[property_name="checkbox_class_primary"]::checked {background: var(--accent-colo-green);}
+QCheckBox[property_name="checkbox_class_primary"]::indicator::unchecked:hover {background: var(--accent-colo-green-a);}
+
+
 
 /*QPushButton 按钮尺寸 大 btn_size_lg */
 QPushButton[property_name="btn_size_lg"]{height: 30px;padding: 3px 7px}
@@ -143,7 +196,7 @@ QPushButton[property_name="btn_border_radius_50%"]{}
 }
 /*最小化按钮*/
 #btn_bar_min{
-    background: @c-red;
+    /*background: @c-red;*/
 }
 #btn_bar_min:hover {
     background: #70FFEC;

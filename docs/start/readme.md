@@ -81,7 +81,7 @@ class TestActivity(FrameLessWindowHintActivity):
 具体的文件内容可以参考以下代码
 ```python
 from common.base.view import BaseView
-from view.uipy.frame_bar import Ui_bar
+from view.ui.frame_bar import Ui_bar
 
 
 class FrameBarDemo0(BaseView, Ui_bar):

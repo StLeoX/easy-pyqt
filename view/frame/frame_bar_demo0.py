@@ -6,7 +6,7 @@
     默认的标题栏样式1
 """
 from common.base.view import BaseView
-from view.uipy.frame_bar import Ui_bar
+from view.ui.frame_bar import Ui_bar
 
 
 class FrameBarDemo0(BaseView, Ui_bar):
@@ -27,4 +27,4 @@ class FrameBarDemo0(BaseView, Ui_bar):
 
     def configure(self) -> None:
         super(FrameBarDemo0, self).configure()
-        self.btn_bar_app_name.setText("测试标题栏0x01")
+        self.btn_bar_app_name.setText("默认标题栏一")

@@ -129,6 +129,8 @@ class WidgetProperty:
     btn_class_warning = ("警告按钮，橙黄色带有冲击性的颜色，具有警告意味，但是无关紧要", ("property_name", "btn_class_warning"))  # note: 警告按钮()
     btn_class_danger = ("危险按钮，红色带有冲击性的颜色, 表示动作很危险， 具有强烈警告", ("property_name", "btn_class_danger"))  # note: 危险按钮()
     btn_class_disable = ("禁用按钮，通常用于表示，当前动作不可用", ("property_name", "btn_class_disable"))  # note: 禁用按钮()
+    checkbox_class_normal = ("常用的复选框", ("property_name", "checkbox_class_normal"))  # note: 常用的复选框()
+    checkbox_class_primary = ("原生的复选框", ("property_name", "checkbox_class_primary"))  # note: 原生的复选框()
     border_class_red = ("红色边框一般用于警示，输入错误", ("property_name", "border_class_red"))  # note: 红色边框()
 
     @staticmethod

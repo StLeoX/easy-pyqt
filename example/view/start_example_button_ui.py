@@ -14,7 +14,7 @@ from config.const import WidgetProperty
 from view.activity.activity_dialog_normal import NormalDialogActivity
 from view.activity.activity_frame_less_window_hint import FrameLessWindowHintActivity
 from view.frame.frame_bar_demo0 import FrameBarDemo0
-from view.uipy.start_example_button import Ui_Form
+from view.ui.start_example_button import Ui_Form
 
 
 # noinspection PyAttributeOutsideInit
