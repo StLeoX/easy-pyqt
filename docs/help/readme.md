@@ -7,6 +7,7 @@
 - 新建一个空项目
 - 新建一个main.py文件，作为程序的主入口
 - 在文件中输入：
+
 ```python
 import sys
 from PyQt5.QtWidgets import QApplication, QDialog
@@ -18,6 +19,7 @@ if __name__ == '__main__':
     sys.exit(app.exec_())
 ```
 - 运行代码，就可以出现下面的界面。
+
 ![我的第一个qt窗口](../img/我的第一个qt窗口.png)
 
 >ps: 但是我们很多时候并不是都满意系统自带的窗口样式，于是乎。
@@ -25,6 +27,7 @@ if __name__ == '__main__':
 ### 1.2窗口无边框
 
 在以上代码的基础上设定窗口属性为无边框:
+
 ```python
 import sys
 from PyQt5.QtCore import Qt
@@ -54,6 +57,7 @@ if __name__ == '__main__':
 实现原理：
 - 给最顶层窗体设置~~①背景透明~~；②无边框;③窗口大小
 - 添加容器，用于放置其他组件，并设置其背景颜色
+
 ```python
 import sys
 
@@ -80,8 +84,8 @@ if __name__ == '__main__':
 此时，起到的效果，应该是这样的：
 ![边框颜色](../img/窗口阴影-顶层窗口为红色.png)
 - 给主要容器widget添加阴影，同时给顶层窗口设置背景透明
-```python
 
+```python
 import sys
 
 from PyQt5.QtCore import Qt
@@ -120,7 +124,9 @@ mousePassEvent（鼠标点击事件）、mouseMoveEvent（鼠标移动事件）�
 > 为什么选择继承QDialog而不是更上的QWidget？其实两者都差不多。我更乐意用继承QWidget作为组件的父类，QDialog作为页面级别的父类。
 - 重写mousePassEvent（鼠标点击事件）、mouseMoveEvent（鼠标移动事件）、mouseReleaseEvent（鼠标释放事件）
 > 值得注意的是：鼠标事件中的相对坐标及绝对坐标
+
 main.py
+
 ```python
 
 import sys
@@ -285,6 +291,7 @@ if __name__ == '__main__':
     sys.exit(app.exec_())
 ```
  支持所有边界的拉伸效果。
+ 
 ```python
 import sys
 from typing import Tuple
@@ -478,6 +485,7 @@ if __name__ == '__main__':
     sys.exit(app.exec_())
 ```
 效果如是这样的：
+
 ![窗口拉伸](../img/窗口拉伸.gif)
 
 
