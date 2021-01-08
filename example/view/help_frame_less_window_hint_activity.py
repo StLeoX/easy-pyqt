@@ -13,7 +13,7 @@ from PyQt5 import QtGui
 from PyQt5.QtCore import Qt, QPoint
 from PyQt5.QtWidgets import QApplication, QDialog, QWidget, QHBoxLayout, QGraphicsDropShadowEffect, QPushButton
 
-from common.base.view import BaseView
+from core.view import BaseView
 
 
 class BaseActivity(QDialog):

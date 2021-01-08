@@ -9,8 +9,8 @@ from PyQt5.QtCore import Qt, QRegExp
 from PyQt5.QtGui import QRegExpValidator
 from PyQt5.QtWidgets import QLineEdit, QTextEdit
 
-from common.base.highlight import EditHighLighter
-from common.base.launch import EasyQtInit
+from core.highlight import EditHighLighter
+from core.launch import EasyQtInit
 from config.const import WidgetProperty
 from view.activity.activity_frame_less_window_hint import FrameLessWindowHintActivity
 from view.frame.frame_bar_demo0 import FrameBarDemo0

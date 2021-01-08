@@ -8,7 +8,7 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget
 
-from common.base.launch import EasyQtInit
+from core.launch import EasyQtInit
 from view.activity.activity_frame_less_window_hint import FrameLessWindowHintActivity
 from view.frame.frame_bar_demo0 import FrameBarDemo0
 from view.ui.start_example_tab_bar import Ui_Form

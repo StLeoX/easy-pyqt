@@ -8,8 +8,8 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget
 
-from common.base.button import QPushButtonToBaseButton
-from common.base.launch import EasyQtInit
+from core.button import QPushButtonToBaseButton
+from core.launch import EasyQtInit
 from config.const import WidgetProperty
 from view.activity.activity_dialog_normal import NormalDialogActivity
 from view.activity.activity_frame_less_window_hint import FrameLessWindowHintActivity

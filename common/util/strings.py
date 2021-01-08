@@ -9,7 +9,7 @@
 import re
 from typing import List
 
-REGEX_DEFINED = re.compile("DEFINED_VALUE\{(.*?)\}", re.S)
+REGEX_DEFINED = re.compile("DEFINED_VALUE{(.*?)}", re.S)
 
 
 def format_style_file(text: str) -> str:

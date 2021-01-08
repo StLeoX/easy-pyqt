@@ -5,7 +5,7 @@
     程序启动代码
 """
 
-from common.base.launch import EasyQtInit
+from core.launch import EasyQtInit
 from example.view.test_activity import TestActivity
 
 if __name__ == '__main__':

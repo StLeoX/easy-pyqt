@@ -11,8 +11,8 @@ from PyQt5 import QtGui
 from PyQt5.QtCore import Qt, QPoint
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QPushButton, QVBoxLayout
 
-from common.base.activity import BaseActivity
-from common.base.view import BaseView
+from core.activity import BaseActivity
+from core.view import BaseView
 
 
 class FrameLessWindowHintActivity(BaseActivity):

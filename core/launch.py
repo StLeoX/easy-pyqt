@@ -11,8 +11,8 @@ import sys
 from PyQt5.QtNetwork import QLocalServer, QLocalSocket
 from PyQt5.QtWidgets import QApplication
 
-from common.base.activity import BaseActivity
-from common.base.handle import ExceptionHandle
+from core.activity import BaseActivity
+from core.handle import ExceptionHandle
 from common.loader.resource import ResourceLoader
 from config.const import Config
 from view.activity.activity_dialog_normal import NormalDialogActivity

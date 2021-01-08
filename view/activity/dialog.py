@@ -7,7 +7,7 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog, QHBoxLayout, QLabel
 
-from common.base.view import BaseView
+from core.view import BaseView
 
 
 class WaitingDialog(QDialog, BaseView):

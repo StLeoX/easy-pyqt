@@ -14,7 +14,7 @@ from common.util.thread import FuncThread, ResponseData
 from common.util.logger import Logger
 from config.const import Config
 from view.activity.dialog import WaitingDialog
-from common.base.view import BaseView
+from core.view import BaseView
 from view.dialog import message_ok, error_dialog
 
 

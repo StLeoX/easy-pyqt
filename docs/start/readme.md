@@ -80,7 +80,7 @@ class TestActivity(FrameLessWindowHintActivity):
 
 具体的文件内容可以参考以下代码
 ```python
-from common.base.view import BaseView
+from core.view import BaseView
 from view.ui.frame_bar import Ui_bar
 
 
@@ -144,7 +144,7 @@ ExceptionHandle().is_mapping = False  # 不使用中文映射异常提示
 
 只是把启动方法聚合成一个类对象，方便修改, 当中包含一些全局的属性
 ```python
-from common.base.launch import EasyQtInit
+from core.launch import EasyQtInit
 from example.view.test_activity import TestActivity
 """
 启动初始化，设置是否唯一启动

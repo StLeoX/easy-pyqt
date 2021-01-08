@@ -8,9 +8,9 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QGroupBox, QPushButton, QWidget, QHBoxLayout, QCheckBox, QRadioButton
 
-from common.base.button import BaseButton, QPushButtonToBaseButton
-from common.base.launch import EasyQtInit
-from common.base.layout import FlowLayout
+from core.button import BaseButton, QPushButtonToBaseButton
+from core.launch import EasyQtInit
+from core.layout import FlowLayout
 from config.const import WidgetProperty
 from view.activity.activity_dialog_normal import NormalDialogActivity
 from view.activity.activity_frame_less_window_hint import FrameLessWindowHintActivity
