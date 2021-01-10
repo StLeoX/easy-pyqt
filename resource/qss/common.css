@@ -3,26 +3,33 @@ DEFINED_VALUE{
     --basic-color: #fdfdfd; /*背景色一般留白颜色*/
     --basic-color-1: #f5f5f5;/*基本辅助色 减饱和度 1 常用于 hover 事件*/
     --basic-color-a: #dedede;/*基本辅助色 加饱和度 1* 常用于 点击 事件*/
-    --basic-color-2: #e3e3e3;/*基本辅助色 用于简单修饰背景色*/
+    --basic-color-2: #e3e3e3;/*基本辅助色 用于简单修饰背景色 */
     --basic-color-3: #d2d2d2;/*基本辅助色 用于简单修饰背景色*/
     --basic-color-4: #c2c2c2;/*基本辅助色 用于简单修饰背景色*/
-    --basic-color-5-text: #999;/*基本辅助色 用于简单修饰背景色*/
-    --basic-color-6-text: #666;/*基本辅助色 用于简单修饰背景色*/
-    --basic-color-7-text: #333;/*基本辅助色 用于简单修饰背景色*/
+    --basic-color-5: #a1a2a1;/*基本辅助色 用于简单修饰背景色*/
+    --basic-color-999-text: #999;/*字体色 常用于不可用、弱提示的辅助色*/
+    --basic-color-666-text: #666;/*字体色 常用于不可用、弱提示的辅助色 不过较于999有比较明显的颜色*/
+    --basic-color-333-text: #333;/*字体色 常用色*/
     --basic-color-1-border: #d2d2d2;/*基本辅助边框色 */
     --basic-color-1-outline: gray;/*基本辅助边框色 */
     --accent-color-light: #0099FF;/*辅助亮色用于表示强调，吸引注意力（一般不能多用，以免过度消费用户视觉）*/
     --accent-color-1: rgba(0, 153, 255, 0.8);/*辅助色低饱和度 用于大范围的辅助背景色(低饱和度) 透明度减到0.8 常用于 hover 事件*/
     --accent-color-a: #027bc7;/*辅助色低饱和度 常用于 点击 事件*/
-    --accent-color: #666699;/*辅助色低饱和度*/
+    --accent-color: #6e6e99;/*辅助色低饱和度*/
     --accent-color-warning: #FF9900;/*辅助色表示警告*/
     --accent-color-warning-1: rgba(255, 153, 0, 0.8);/*辅助色表示警告 透明度减到0.8*/
     --accent-color-warning-a: rgb(227, 137, 2);/*辅助色表示警告 常用于 点击 事件*/
     --accent-color-danger: #FF4351;/*辅助色表示危险*/
     --accent-color-danger-1: rgba(255, 67, 81, 0.8);/*辅助色表示危险 透明度减到0.8*/
     --accent-color-danger-a: rgb(220, 60, 73);/*辅助色表示危险 常用于 点击 事件*/
-    --accent-colo-green: #5FB878; /*绿色 常用于成功*/
+    --accent-colo-green: #56a774; /*绿色 常用于成功*/
+    --accent-colo-green-1: #38724e; /*绿色*/
     --accent-colo-green-a: #0aaa93; /*绿色*/
+    --other-color-0: #a2b2b2;  /*其他辅助色*/
+    --other-color-1: #b2b2b2;  /*其他辅助色*/
+    --other-color-2: #c2a2b2;  /*其他辅助色*/
+    --other-color-3: #d2a2d2;  /*其他辅助色*/
+    --other-color-4: #e2d2a2;  /*其他辅助色*/
     --basi-border-radius: 2px;/*默认的倒角*/
     --basi-pdding-sieze-5: 5px;/*默认的边距*/
     --font-color: #333333;
@@ -31,7 +38,7 @@ DEFINED_VALUE{
 
 
 /*------------------------------抽象元素筛选器--------------------------------------*/
-*{font-family: "Microsoft YaHei UI", serif;font-size: 13px;color: var(--basic-color-7-text);}
+*{font-family: "Microsoft YaHei UI", serif;font-size: 13px;color: var(--basic-color-333-text);}
 /*QAbstractItemView item列*/
 QAbstractItemView{padding: 1px;border: 1px solid var(--basic-color-1-border);outline: none;/* 选定项的虚框 */ selection-background-color: var(--accent-color);  /* 整个下拉窗体被选中项的背景色 */}
 /*QAbstractItemView item项 一般（设置pComboBox.setView(QListView());后，该项才起作用） */
@@ -66,13 +73,13 @@ QTextEdit{border-color: var(--basic-color-1-border); border-width: 1px; border-s
 /*QToolTip 提示框*/
 QToolTip{padding: 2px 3px; border-color: var(--basic-color-1-border); border-width: 1px; border-style: solid; background-color: var(--basic-color); color:var(--font-color-1); font-size:12px; border-radius: var(--basi-border-radius);}
 /*QCheckBox 复选框*/
-QCheckBox{color: var(--basic-color-6-text);}
+QCheckBox{color: var(--basic-color-666-text);}
 QCheckBox::indicator{border-radius: var(--basi-border-radius);border-color: var(--accent-colo-green); border-width: 1px; border-style: solid;}
 QCheckBox::indicator:hover{border-color: var(--accent-colo-green-a);}
 QCheckBox::indicator::checked{background: var(--accent-colo-green-a);}
 QCheckBox::indicator:indeterminate {background: var(--accent-colo-green);padding: 2px;}
 /*QRadioButton 单选按钮 */
-QRadioButton{color: var(--basic-color-6-text);}
+QRadioButton{color: var(--basic-color-666-text);}
 /*QComboBox 下拉框*/
 QComboBox{padding: var(--basi-pdding-sieze-5);border: 1px solid var(--basic-color-1-border);max-width: 300px}
 /*QComboBox 可编辑下拉框样式*/
@@ -105,25 +112,17 @@ QComboBox::drop-down:editable {}
 /*QComboBox 可编辑下拉框右侧图标区域样式*/
 QComboBox::drop-down:editable {}
 
-/*QTabWidget tab选项卡*/
-QTabWidget{border: 1px solid #1b99c2;}
+/*****************************QTabWidget tab选项卡*********************************************/
+QTabWidget{}
 /*选项卡位于右侧*/
 QTabWidget::tab-bar {/*subcontrol-position:right;*/width:177px;}
-/*选项卡面板*/
-QTabWidget::pane{
-    border: 1px solid var(--basic-color-1-border);
-    background: var(--basic-color);
-    /*background-clip:margin;*/
-    /*background-origin:margin;*/
-    /*width:77px;*/
-    /*height:55px;*/
-    /*面板位置 位于左下角*/
-    /*subcontrol-position: bottom left;*/
-}
-QTabWidget QTabBar{background: var(--basic-color);border: none;}
-QTabBar::tab:selected {
-    border-bottom-style: none;
-}
+/*内容面板 需要显示顶部的边框作为选项卡的衬托(如果需要与内容对齐，需要把内容布局的边距设为0)*/
+QTabWidget::pane{border-top: 1px solid var(--basic-color-1-border);}
+QTabBar::tab{background:transparent;color:var(--basic-color-333-text);height: 30px;}
+QTabWidget QTabBar{background: transparent;border: none;}
+/* 给tab设置一个底部边框把白边填不上 */
+QTabBar::tab:hover{background:var(--basic-color-1);border-bottom: 3px solid var(--basic-color-1);border-radius: 2px;}
+QTabBar::tab:selected {border-bottom: 3px solid var(--accent-colo-green);color: var(--accent-colo-green-a);}
 
 /*------------------属性筛选---------------------*/
 /*QPushButton 原始按钮 btn_class_primary */
@@ -203,28 +202,18 @@ QPushButton[property_name="btn_border_radius_50%"]{}
 }
 /*最大化那妞*/
 #btn_bar_normal{/*background: #00bbf9;*/}
-#btn_bar_normal:hover{background: #47D1FF;}
+#btn_bar_normal:hover{background: var(--accent-color-1);}
+#btn_bar_normal:pressed{background: var(--accent-color-a);}
 /*关闭按钮*/
 #btn_bar_close{/*background: #f15bb5;*/}
 /*经过按钮*/
-#btn_bar_close:hover{background: #CE1283;}
+#btn_bar_close:hover{background: var(--accent-color-danger);}
 /*按钮被按下*/
-/*noinspection CssInvalidPseudoSelector*/
-#btn_bar_close:pressed{background: #CE1283;}
-/*标题栏背景*/
-#base_bar{background: #6096ba;}
+#btn_bar_close:pressed{background: var(--accent-color-danger-a);}
 /*应用图标*/
 #app_logo{width: 25px;height: 25px;border: none;background: transparent;}
 /* 一般弹窗样式 */
-#btn_dialog_yes, #btn_dialog_no{
-    width: 50px;
-    height: 27px;
-    font-family: "Microsoft YaHei UI", serif;
-    font-size: 14px;
-}
-#btn_dialog_yes{
-    border: 1px solid #6096ba;
-}
-#btn_dialog_yes:hover{
-    background: azure;
-}
+#btn_dialog_yes, #btn_dialog_no{width: 50px;height: 27px;font-size: 14px;}
+#btn_dialog_yes{border: 1px solid #6096ba;}
+#btn_dialog_yes:hover{background: azure;}
+#btn_dialog_yes:pressed{background: var(--accent-color-1);color: #ffffff}
