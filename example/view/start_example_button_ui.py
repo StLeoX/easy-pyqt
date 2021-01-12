@@ -8,9 +8,9 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget
 
+from config.const import WidgetProperty
 from core.button import QPushButtonToBaseButton
 from core.launch import EasyQtInit
-from config.const import WidgetProperty
 from view.activity.activity_dialog_normal import NormalDialogActivity
 from view.activity.activity_frame_less_window_hint import FrameLessWindowHintActivity
 from view.frame.frame_bar_demo0 import FrameBarDemo0
@@ -38,10 +38,11 @@ class StartExampleButtonUIActivity(FrameLessWindowHintActivity, Ui_Form):
     # noinspection PyUnresolvedReferences
     def set_signal(self):
         super(StartExampleButtonUIActivity, self).set_signal()
-        self.pushButton_8.hover_in.connect(lambda: self.pushButton_8.setIcon(self.resource.awesome_font_icon("fa.grav")))
-        self.pushButton_8.hover_out.connect(lambda: self.pushButton_8.setIcon(self.resource.awesome_font_icon("fa.frown-o")))
+        self.pushButton_8.hover_in.connect(
+            lambda: self.pushButton_8.setIcon(self.resource.awesome_font_icon("fa.grav")))
+        self.pushButton_8.hover_out.connect(
+            lambda: self.pushButton_8.setIcon(self.resource.awesome_font_icon("fa.frown-o")))
         self.pushButton_5.clicked.connect(lambda: NormalDialogActivity(info="当前按钮是可用的").exec_())
-
 
     def configure(self):
         """配置页面及控件属性, 要分清哪些是需要在重写之前，哪些是在重写之后哦"""
@@ -95,6 +96,14 @@ class StartExampleButtonUIActivity(FrameLessWindowHintActivity, Ui_Form):
         self.pushButton_9.setText("鼠标来在这里一下😶")
         self.pushButton_9.setToolTip("<p>其实没那么丑, 只是布局的原因，被拉伸了</p>"
                                      "<p>具体效果可以在流式布局中查看<span style='color:blue'>StartExampleButtonActivity</span></p>")
+        self.pushButton_10.setProperty(*WidgetProperty.btn_class_success[1])
+        self.pushButton_10.setToolTip("正确提示")
+        self.radioButton_2.setProperty(*WidgetProperty.radio_btn_class_primary[1])
+
+        self.checkBox.setText("一般的复选框样式")
+        self.checkBox.setProperty(*WidgetProperty.checkbox_class_normal[1])
+
+        self.checkBox_2.setText("原生的复选框样式")
 
 
 if __name__ == '__main__':

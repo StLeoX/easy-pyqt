@@ -49,6 +49,7 @@ class StartExampleButtonActivity(FrameLessWindowHintActivity):
 
         button3 = BaseButton("警告button")
         button3.setToolTip("橙黄色带有冲击性的颜色")
+        button3.setProperty("property_name", "btn_size_lg")
         button3.setProperty(*WidgetProperty.btn_class_warning[1])
         f_layout.addWidget(button3)
 
@@ -129,7 +130,7 @@ class StartExampleButtonActivity(FrameLessWindowHintActivity):
         f_layout.addWidget(check_box)
 
         check_box1 = QCheckBox("一般复选框")
-        check_box1.setProperty(*WidgetProperty.checkbox_class_primary[1])
+        check_box1.setProperty(*WidgetProperty.checkbox_class_normal[1])
         f_layout.addWidget(check_box1)
 
         f_layout.addWidget(QRadioButton("默认单选按钮"))
