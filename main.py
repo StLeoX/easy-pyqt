@@ -6,7 +6,7 @@
 """
 
 from core.launch import EasyQtInit
-from example.view.test_activity import TestActivity
+from example.view.start_example_button_ui import StartExampleButtonUIActivity
 
 if __name__ == '__main__':
-    EasyQtInit(TestActivity()).run()
+    EasyQtInit(StartExampleButtonUIActivity()).run()

@@ -3,9 +3,7 @@
 
 # 基本介绍
 
-easy qt for python（eq） 致力于样式跟界面布局之上，力达能够做出一个快速开发的组件框架，作为开发人员的你只需专注于业务逻辑以及如何调用即可。
-
-📝  [点击此处查看文档](https://py-mu.github.io/easy-pyqt)
+📝  [查看文档](https://py-mu.github.io/easy-pyqt)
 
 # 项目结构
     -project                # 项目目录

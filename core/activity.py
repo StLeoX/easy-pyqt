@@ -10,7 +10,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QMouseEvent
 from PyQt5.QtWidgets import QDialog
 
-from common.util.thread import FuncThread, ResponseData
+from core.thread import FuncThread, ResponseData
 from common.util.logger import Logger
 from config.const import Config
 from view.activity.dialog import WaitingDialog

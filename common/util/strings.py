@@ -19,6 +19,7 @@ def format_style_file(text: str) -> str:
     if values:
         for i in values[0].split("\n"):
             if i:
-                i = i.replace(" ", "").replace("\t", "").split(":")
-                text = text.replace(f"var({i[0]});", i[1])
+                i = i.strip().replace("\t", "").split(":")
+                if len(i) > 1:
+                    text = text.replace(f"var({i[0]});", i[1])
     return text

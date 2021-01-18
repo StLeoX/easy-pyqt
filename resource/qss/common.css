@@ -1,46 +1,58 @@
-/*默认的样式表。如果需要用到这个样式，且还用到其他的样式，那需要进行相加,子控件样式会继承自这个公共样式。除了主题样式，个性化样式请不要在此表中声明.*/
+/*----------------------备注-----------------------------
+    默认的样式表。如果需要用到这个样式，且还用到其他的样式，
+    那需要进行相加,子控件样式会继承自这个公共样式。
+    除了主题样式，个性化样式请不要在此表中声明.
+----------------------------------------------------------*/
 DEFINED_VALUE{
-    --basic-color: #fdfdfd; /*背景色一般留白颜色*/
-    --basic-color-1: #f5f5f5;/*基本辅助色 减饱和度 1 常用于 hover 事件*/
-    --basic-color-a: #dedede;/*基本辅助色 加饱和度 1* 常用于 点击 事件*/
-    --basic-color-2: #e3e3e3;/*基本辅助色 用于简单修饰背景色 */
-    --basic-color-3: #d2d2d2;/*基本辅助色 用于简单修饰背景色*/
-    --basic-color-4: #c2c2c2;/*基本辅助色 用于简单修饰背景色*/
-    --basic-color-5: #a1a2a1;/*基本辅助色 用于简单修饰背景色*/
-    --basic-color-999-text: #999;/*字体色 常用于不可用、弱提示的辅助色*/
-    --basic-color-666-text: #666;/*字体色 常用于不可用、弱提示的辅助色 不过较于999有比较明显的颜色*/
-    --basic-color-333-text: #333;/*字体色 常用色*/
-    --basic-color-1-border: #d2d2d2;/*基本辅助边框色 */
-    --basic-color-1-outline: gray;/*基本辅助边框色 */
-    --accent-color-light: #0099FF;/*辅助亮色用于表示强调，吸引注意力（一般不能多用，以免过度消费用户视觉）*/
-    --accent-color-1: rgba(0, 153, 255, 0.8);/*辅助色低饱和度 用于大范围的辅助背景色(低饱和度) 透明度减到0.8 常用于 hover 事件*/
-    --accent-color-a: #027bc7;/*辅助色低饱和度 常用于 点击 事件*/
-    --accent-color: #6e6e99;/*辅助色低饱和度*/
-    --accent-color-warning: #FF9900;/*辅助色表示警告*/
-    --accent-color-warning-1: rgba(255, 153, 0, 0.8);/*辅助色表示警告 透明度减到0.8*/
-    --accent-color-warning-a: rgb(227, 137, 2);/*辅助色表示警告 常用于 点击 事件*/
-    --accent-color-danger: #FF4351;/*辅助色表示危险*/
-    --accent-color-danger-1: rgba(255, 67, 81, 0.8);/*辅助色表示危险 透明度减到0.8*/
-    --accent-color-danger-a: rgb(220, 60, 73);/*辅助色表示危险 常用于 点击 事件*/
-    --accent-colo-green: #56a774; /*绿色 常用于成功*/
-    --accent-colo-green-1: #38724e; /*绿色*/
-    --accent-colo-green-a: #0aaa93; /*绿色*/
-    --other-color-0: #a2b2b2;  /*其他辅助色*/
-    --other-color-1: #b2b2b2;  /*其他辅助色*/
-    --other-color-2: #c2a2b2;  /*其他辅助色*/
-    --other-color-3: #d2a2d2;  /*其他辅助色*/
-    --other-color-4: #e2d2a2;  /*其他辅助色*/
-    --basi-border-radius: 2px;/*默认的倒角*/
-    --basi-pdding-sieze-5: 5px;/*默认的边距*/
-    --font-color: #333333;
-    --font-color-1: #484848;
+    /*主题配色*/
+    --basic-color: #fdfdfd;                                 /*留白色 大量基色*/
+    --basic-color-1: #f5f5f5;                               /*基本辅助色 减饱和度 1 常用于 hover 事件*/
+    --basic-color-a: #dedede;                               /*基本辅助色 加饱和度 a 常用于 点击 事件*/
+    --basic-color-a2: #e3e3e3;                              /*基本辅助色 加饱和度 a 常用于 点击 事件 */
+    --basic-color-a3: #d2d2d2;                              /*基本辅助色 用于简单修饰背景色*/
+    --basic-color-a4: #c2c2c2;                              /*基本辅助色 用于简单修饰背景色*/
+    --basic-color-a5: #a1a2a1;                              /*基本辅助色 用于简单修饰背景色*/
+    --accent-color-light: #0099FF;                          /*辅助亮色用于表示强调，吸引注意力（一般不能多用，以免过度消费用户视觉）*/
+    --accent-color-1: rgba(0, 153, 255, 0.8);               /*辅助色低饱和度 用于大范围的辅助背景色(低饱和度) 透明度减到0.8 常用于 hover 事件*/
+    --accent-color-a: #027bc7;                              /*辅助色低饱和度 常用于 点击 事件*/
+    --accent-color: #6e6e99;                                /*辅助色低饱和度*/
+    --accent-color-warning: #FF9900;                        /*辅助色表示警告*/
+    --accent-color-warning-1: rgba(255, 153, 0, 0.8);       /*辅助色表示警告 透明度减到0.8*/
+    --accent-color-warning-a: rgb(227, 137, 2);             /*辅助色表示警告 常用于 点击 事件*/
+    --accent-color-danger: #FF4351;                         /*辅助色表示危险*/
+    --accent-color-danger-1: rgba(255, 67, 81, 0.8);        /*辅助色表示危险 透明度减到0.8*/
+    --accent-color-danger-a: rgb(220, 60, 73);              /*辅助色表示危险 常用于 点击 事件*/
+    --accent-colo-green: #18a749;                           /*绿色 常用于成功*/
+    --accent-colo-green-1: #50a56a;                         /*绿色*/
+    --accent-colo-green-a: #4ead74;                         /*绿色*/
+    --other-color-0: #a2b2b2;                               /*其他辅助色*/
+    --other-color-1: #b2b2b2;                               /*其他辅助色*/
+    --other-color-2: #c2a2b2;                               /*其他辅助色*/
+    --other-color-3: #d2a2d2;                               /*其他辅助色*/
+    --other-color-4: #e2d2a2;                               /*其他辅助色*/
+
+    /*--- border 边框设定 ---*/
+    --basi-border-radius: 2px;                              /*border倒角*/
+    --basi-border-color: #d2d2d2;                           /*边框颜色*/
+    --basi-border-color-outline: gray;                      /*边框颜色*/
+    --basi-border-style: solid;                             /*边框类型*/
+    --basi-border-width-1: 1px;                             /*边框宽度*/
+    --basi-pdding-sieze-5: 5px;                             /*边距*/
+
+    /*--- 字体设定 ---*/
+    --font-color-333: #333;                                 /*主要字体颜色 333*/
+    --font-color-666: #666;                                 /*主要字体颜色 666*/
+    --font-color-999: #999;                                 /*主要字体颜色 999*/
+    --font-color-1: #484848;                                /*灰色字体：常用于不可选状态或者弱提示*/
+    --font-family: "Microsoft YaHei UI", serif;             /* 默认字体 */
+    --font-size-13: 13px;                                   /* 字体大小 */
 }
 
 
 /*------------------------------抽象元素筛选器--------------------------------------*/
-*{font-family: "Microsoft YaHei UI", serif;font-size: 13px;color: var(--basic-color-333-text);}
+*{font-family: var(--font-family); font-size: var(--font-size-13);color: var(--font-color-333);}
 /*QAbstractItemView item列*/
-QAbstractItemView{padding: 1px;border: 1px solid var(--basic-color-1-border);outline: none;/* 选定项的虚框 */ selection-background-color: var(--accent-color);  /* 整个下拉窗体被选中项的背景色 */}
+QAbstractItemView{padding: 1px;border: 1px solid var(--basi-border-color);outline: none;/* 选定项的虚框 */ selection-background-color: var(--accent-color);  /* 整个下拉窗体被选中项的背景色 */}
 /*QAbstractItemView item项 一般（设置pComboBox.setView(QListView());后，该项才起作用） */
 QAbstractItemView::item {height: 30px;padding: var(--basi-pdding-sieze-5); border-radius: var(--basi-border-radius); color: black}
 /*QAbstractItemView item项 划过效果*/
@@ -62,20 +74,55 @@ QScrollBar::handle:vertical:hover {background: var(--accent-color-light);}
 
 /*------------------------------元素筛选器--------------------------------------*/
 
-/*QWidget 基本容器*/
+
+/*------------------------------QWidget 基本容器---------------------------------------*/
 QWidget, QFrame{border-radius:var(--basi-border-radius);background-color: var(--basic-color);}
+QWidget[box_class_primary="true"], QFrame[box_class_primary="true"]{border-radius:var(--basi-border-radius);background-color: var(--basic-color);}
+
+
+/*------------------------------QPushButton 按钮-------------------------------------*/
 /*QPushButton 按钮*/
-QPushButton{border-color: var(--basic-color-1-border); border-width: 1px; border-style: solid;height: 30px;padding: 2px 5px}
+QPushButton{border-color: var(--basi-border-color); border-width: 1px; border-style: solid;height: 30px;padding: 2px 5px}
 QPushButton:hover{background: var(--basic-color-1);}
 QPushButton:pressed{background: var(--basic-color-a);}
+/*QPushButton 原始按钮 btn_class_primary */
+QPushButton[btn_class_primary="true"]{border-color:var(--basi-border-color);}
+QPushButton[btn_class_primary="true"]:hover{background: var(--basic-color-1);}
+QPushButton[btn_class_primary="true"]:pressed{background: var(--basic-color-a);}
+/*QPushButton 常规按钮 btn_class_normal */
+QPushButton[btn_class_normal="true"]{background: var(--accent-color-light);color: #fff; border-color:var(--accent-color-light);}
+QPushButton[btn_class_normal="true"]:hover{background: var(--accent-color-1);border-color: var(--accent-color-1);}
+QPushButton[btn_class_normal="true"]:pressed{background: var(--accent-color-a);border-color: var(--accent-color-a);}
+/*QPushButton 警告按钮 btn_class_warning */
+QPushButton[btn_class_warning="true"]{border-color:var(--accent-color-warning);color: #fff; background: var(--accent-color-warning);}
+QPushButton[btn_class_warning="true"]:hover{background: var(--accent-color-warning-1);border-color: var(--accent-color-warning-1);}
+QPushButton[btn_class_warning="true"]:pressed{background: var(--accent-color-warning-a);border-color: var(--accent-color-warning-a);}
+/*QPushButton 危险按钮 btn_class_danger */
+QPushButton[btn_class_danger="true"]{border-color:var(--accent-color-danger);color: #fff; background: var(--accent-color-danger);}
+QPushButton[btn_class_danger="true"]:hover{background: var(--accent-color-danger-1);border-color:var(--accent-color-danger-1);}
+QPushButton[btn_class_danger="true"]:pressed{background: var(--accent-color-danger-a);border-color:var(--accent-color-danger-a);}
+/*QPushButton 禁用按钮 btn_class_disable */
+QPushButton[btn_class_disable="true"], QPushButton:disabled{border-color:var(--basi-border-color);color: var(--basi-border-color-outline); background:var(--basic-color-a2);}
+QPushButton[btn_class_disable="true"]:hover, QPushButton:disabled:hover{background: var(--basic-color-a2);border-color:var(--basi-border-color); cursor: w-resize}
+QPushButton[btn_class_disable="true"]:pressed, QPushButton:disabled:pressed{background: var(--basic-color-a2);border-color:var(--basi-border-color);}
+/*QPushButton 成功按钮 btn_class_success */
+QPushButton[btn_class_success="true"]{border-color:var(--accent-colo-green-1);color: #ffffff; background:var(--accent-colo-green);}
+QPushButton[btn_class_success="true"]:hover{background: var(--accent-colo-green-a);border-color:var(--accent-colo-green-1); cursor: w-resize}
+QPushButton[btn_class_success="true"]:pressed{background: var(--accent-colo-green-1);border-color:var(--basi-border-color);}
+
+
+/*------------------------------QWidget 基本容器---------------------------------------*/
+
+
+
 /*QLineEdit 单行输入框*/
-QLineEdit{border-color: var(--basic-color-1-border); border-width: 1px; border-style: solid; height: 30px;padding: 2px 5px;}
+QLineEdit{border-color: var(--basi-border-color); border-width: 1px; border-style: solid; height: 30px;padding: 2px 5px;}
 /*QTextEdit 文本输入框*/
-QTextEdit, QPlainTextEdit{border-color: var(--basic-color-1-border); border-width: 1px; border-style: solid;padding: 2px 5px;}
+QTextEdit, QPlainTextEdit{border-color: var(--basi-border-color); border-width: 1px; border-style: solid;padding: 2px 5px;}
 /*QToolTip 提示框*/
-QToolTip{padding: 2px 3px; border-color: var(--basic-color-1-border); border-width: 1px; border-style: solid; background-color: var(--basic-color); color:var(--font-color-1); font-size:12px; border-radius: var(--basi-border-radius);}
+QToolTip{padding: 2px 3px; border-color: var(--basi-border-color); border-width: 1px; border-style: solid; background-color: var(--basic-color); color:var(--font-color-1); font-size:12px; border-radius: var(--basi-border-radius);}
 /*QComboBox 下拉框*/
-QComboBox{padding: var(--basi-pdding-sieze-5);border: 1px solid var(--basic-color-1-border);max-width: 300px}
+QComboBox{padding: var(--basi-pdding-sieze-5);border: 1px solid var(--basi-border-color);max-width: 300px}
 /*QComboBox 可编辑下拉框样式*/
 QComboBox:editable {}
 /*QComboBox 可编辑下拉框 打开样式*/
@@ -111,8 +158,8 @@ QTabWidget{}
 /*选项卡位于右侧*/
 QTabWidget::tab-bar {/*subcontrol-position:right;*/width:177px;/*alignment: center;*/}
 /*内容面板 需要显示顶部的边框作为选项卡的衬托(如果需要与内容对齐，需要把内容布局的边距设为0)*/
-QTabWidget::pane{border-top: 1px solid var(--basic-color-1-border);}
-QTabBar::tab{background:transparent;color:var(--basic-color-333-text);height: 30px;}
+QTabWidget::pane{border-top: 1px solid var(--basi-border-color);}
+QTabBar::tab{background:transparent;color:var(--font-color-333);height: 30px;}
 QTabWidget QTabBar{background: transparent;border: none;}
 /* 给tab设置一个底部边框把白边填不上 */
 QTabBar::tab:hover{background:var(--basic-color-1);border-bottom: 3px solid var(--basic-color-1);border-radius: 2px;}
@@ -120,77 +167,77 @@ QTabBar::tab:selected {border-bottom: 3px solid var(--accent-colo-green);color: 
 
 /*------------------属性筛选---------------------*/
 /*QPushButton 原始按钮 btn_class_primary */
-QPushButton[btn_class_primary="btn_class_primary"]{border-color:var(--basic-color-1-border);}
-QPushButton[btn_class_primary="btn_class_primary"]:hover{background: var(--basic-color-1);}
-QPushButton[btn_class_primary="btn_class_primary"]:pressed{background: var(--basic-color-a);}
+QPushButton[btn_class_primary="true"]{border-color:var(--basi-border-color);}
+QPushButton[btn_class_primary="true"]:hover{background: var(--basic-color-1);}
+QPushButton[btn_class_primary="true"]:pressed{background: var(--basic-color-a);}
 /*QPushButton 常规按钮 btn_class_normal */
-QPushButton[btn_class_normal="btn_class_normal"]{background: var(--accent-color-light);color: #fff; border-color:var(--accent-color-light);}
-QPushButton[btn_class_normal="btn_class_normal"]:hover{background: var(--accent-color-1);border-color: var(--accent-color-1);}
-QPushButton[btn_class_normal="btn_class_normal"]:pressed{background: var(--accent-color-a);border-color: var(--accent-color-a);}
+QPushButton[btn_class_normal="true"]{background: var(--accent-color-light);color: #fff; border-color:var(--accent-color-light);}
+QPushButton[btn_class_normal="true"]:hover{background: var(--accent-color-1);border-color: var(--accent-color-1);}
+QPushButton[btn_class_normal="true"]:pressed{background: var(--accent-color-a);border-color: var(--accent-color-a);}
 /*QPushButton 警告按钮 btn_class_warning */
-QPushButton[btn_class_warning="btn_class_warning"]{border-color:var(--accent-color-warning);color: #fff; background: var(--accent-color-warning);}
-QPushButton[btn_class_warning="btn_class_warning"]:hover{background: var(--accent-color-warning-1);border-color: var(--accent-color-warning-1);}
-QPushButton[btn_class_warning="btn_class_warning"]:pressed{background: var(--accent-color-warning-a);border-color: var(--accent-color-warning-a);}
+QPushButton[btn_class_warning="true"]{border-color:var(--accent-color-warning);color: #fff; background: var(--accent-color-warning);}
+QPushButton[btn_class_warning="true"]:hover{background: var(--accent-color-warning-1);border-color: var(--accent-color-warning-1);}
+QPushButton[btn_class_warning="true"]:pressed{background: var(--accent-color-warning-a);border-color: var(--accent-color-warning-a);}
 /*QPushButton 危险按钮 btn_class_danger */
-QPushButton[btn_class_danger="btn_class_danger"]{border-color:var(--accent-color-danger);color: #fff; background: var(--accent-color-danger);}
-QPushButton[btn_class_danger="btn_class_danger"]:hover{background: var(--accent-color-danger-1);border-color:var(--accent-color-danger-1);}
-QPushButton[btn_class_danger="btn_class_danger"]:pressed{background: var(--accent-color-danger-a);border-color:var(--accent-color-danger-a);}
+QPushButton[btn_class_danger="true"]{border-color:var(--accent-color-danger);color: #fff; background: var(--accent-color-danger);}
+QPushButton[btn_class_danger="true"]:hover{background: var(--accent-color-danger-1);border-color:var(--accent-color-danger-1);}
+QPushButton[btn_class_danger="true"]:pressed{background: var(--accent-color-danger-a);border-color:var(--accent-color-danger-a);}
 /*QPushButton 禁用按钮 btn_class_disable */
-QPushButton[btn_class_disable="btn_class_disable"], QPushButton:disabled{border-color:var(--basic-color-1-border);color: var(--basic-color-1-outline); background:var(--basic-color-2);}
-QPushButton[btn_class_disable="btn_class_disable"]:hover, QPushButton:disabled:hover{background: var(--basic-color-2);border-color:var(--basic-color-1-border); cursor: w-resize}
-QPushButton[btn_class_disable="btn_class_disable"]:pressed, QPushButton:disabled:pressed{background: var(--basic-color-2);border-color:var(--basic-color-1-border);}
+QPushButton[btn_class_disable="true"], QPushButton:disabled{border-color:var(--basi-border-color);color: var(--basi-border-color-outline); background:var(--basic-color-a2);}
+QPushButton[btn_class_disable="true"]:hover, QPushButton:disabled:hover{background: var(--basic-color-a2);border-color:var(--basi-border-color); cursor: w-resize}
+QPushButton[btn_class_disable="true"]:pressed, QPushButton:disabled:pressed{background: var(--basic-color-a2);border-color:var(--basi-border-color);}
 /*QPushButton 成功按钮 btn_class_success */
-QPushButton[btn_class_success="btn_class_success"]{border-color:var(--accent-colo-green-1);color: #ffffff; background:var(--accent-colo-green);}
-QPushButton[btn_class_success="btn_class_success"]:hover{background: var(--accent-colo-green-a);border-color:var(--accent-colo-green-1); cursor: w-resize}
-QPushButton[btn_class_success="btn_class_success"]:pressed{background: var(--accent-colo-green-1);border-color:var(--basic-color-1-border);}
+QPushButton[btn_class_success="true"]{border-color:var(--accent-colo-green-1);color: #ffffff; background:var(--accent-colo-green);}
+QPushButton[btn_class_success="true"]:hover{background: var(--accent-colo-green-a);border-color:var(--accent-colo-green-1); cursor: w-resize}
+QPushButton[btn_class_success="true"]:pressed{background: var(--accent-colo-green-1);border-color:var(--basi-border-color);}
 
-QLineEdit[border_class_red="border_class_red"]{border-color: var(--accent-color-danger);}
-QLineEdit[border_class_red="border_class_blue"]{color: var(--accent-color-a);}
+QLineEdit[border_class_red="true"]{border-color: var(--accent-color-danger);}
+QLineEdit[border_class_red="true"]{color: var(--accent-color-a);}
 
 
 
 /*QCheckBox 复选框*/
 
-QCheckBox[checkbox_class_primary="checkbox_class_primary"], QCheckBox{color: var(--basic-color-666-text);spacing:5px;}
-QCheckBox[checkbox_class_primary="checkbox_class_primary"]::unchecked ,QCheckBox::unchecked{color: var(--basic-color-3);}
-QCheckBox[checkbox_class_primary="checkbox_class_primary"]::unchecked:hover ,QCheckBox::unchecked:hover{color: var(--basic-color-4);}
-QCheckBox[checkbox_class_primary="checkbox_class_primary"]::checked ,QCheckBox::checked{border-color: var(--accent-colo-green-a);}
-QCheckBox[checkbox_class_primary="checkbox_class_primary"]::indicator, QCheckBox::indicator{border-radius: var(--basi-border-radius);border-color: var(--accent-colo-green); border-width: 1px; border-style: solid;}
-QCheckBox[checkbox_class_primary="checkbox_class_primary"]::indicator:hover, QCheckBox::indicator:hover{border-color: var(--accent-colo-green-a);}
-QCheckBox[checkbox_class_primary="checkbox_class_primary"]::indicator::checked, QCheckBox::indicator::checked{background: var(--accent-colo-green-a);}
-QCheckBox[checkbox_class_primary="checkbox_class_primary"]::indicator:indeterminate, QCheckBox::indicator:indeterminate {background: var(--accent-colo-green);padding: 2px;}
+QCheckBox[checkbox_class_primary="true"], QCheckBox{color: var(--font-color-666);spacing:5px;}
+QCheckBox[checkbox_class_primary="true"]::unchecked ,QCheckBox::unchecked{color: var(--basic-color-a3);}
+QCheckBox[checkbox_class_primary="true"]::unchecked:hover ,QCheckBox::unchecked:hover{color: var(--basic-color-a4);}
+QCheckBox[checkbox_class_primary="true"]::checked ,QCheckBox::checked{border-color: var(--accent-colo-green-a);}
+QCheckBox[checkbox_class_primary="true"]::indicator, QCheckBox::indicator{border-radius: var(--basi-border-radius);border-color: var(--accent-colo-green); border-width: 1px; border-style: solid;}
+QCheckBox[checkbox_class_primary="true"]::indicator:hover, QCheckBox::indicator:hover{border-color: var(--accent-colo-green-a);}
+QCheckBox[checkbox_class_primary="true"]::indicator::checked, QCheckBox::indicator::checked{background: var(--accent-colo-green-a);}
+QCheckBox[checkbox_class_primary="true"]::indicator:indeterminate, QCheckBox::indicator:indeterminate {background: var(--accent-colo-green);padding: 2px;}
 
-QCheckBox[checkbox_class_normal="checkbox_class_normal"] {border-color: var(--basic-color-1-border); border-width: 1px; border-style: solid;padding: 0 10px 0 0;color: #ffffff;}
-QCheckBox[checkbox_class_normal="checkbox_class_normal"]::indicator {width: 25px;height: 30px;border: none;border-radius: 0;background: var(--basic-color);}
-QCheckBox[checkbox_class_normal="checkbox_class_normal"]::unchecked {background: var(--basic-color-3);}
-QCheckBox[checkbox_class_normal="checkbox_class_normal"]::unchecked:hover {background: var(--basic-color-4);}
-QCheckBox[checkbox_class_normal="checkbox_class_normal"]::checked {background: var(--accent-colo-green);border-color: var(--basic-color-999-text);}
-QCheckBox[checkbox_class_normal="checkbox_class_normal"]::indicator::checked {image: url(../../resource/img/checkbox-check.png)}
-QCheckBox[checkbox_class_normal="checkbox_class_normal"]::indicator::unchecked:hover {}
+QCheckBox[checkbox_class_normal="true"] {border-color: var(--basi-border-color); border-width: 1px; border-style: solid;padding: 0 10px 0 0;color: #ffffff;}
+QCheckBox[checkbox_class_normal="true"]::indicator {width: 25px;height: 30px;border: none;border-radius: 0;background: var(--basic-color);}
+QCheckBox[checkbox_class_normal="true"]::unchecked {background: var(--basic-color-a3);}
+QCheckBox[checkbox_class_normal="true"]::unchecked:hover {background: var(--basic-color-a4);}
+QCheckBox[checkbox_class_normal="true"]::checked {background: var(--accent-colo-green);border-color: var(--font-color-999);}
+QCheckBox[checkbox_class_normal="true"]::indicator::checked {image: url(../../resource/img/checkbox-check.png)}
+QCheckBox[checkbox_class_normal="true"]::indicator::unchecked:hover {}
 
 
 
 /*RadioButton样式设置*/
-QRadioButton[radio_btn_class_normal="radio_btn_class_normal"]::indicator, QRadioButton::indicator{width:25px;}
-QRadioButton[radio_btn_class_normal="radio_btn_class_normal"]::indicator::unchecked, QRadioButton::indicator::unchecked{image:url(../../resource/img/radio-off.png);}
-QRadioButton[radio_btn_class_normal="radio_btn_class_normal"]::indicator::checked, QRadioButton::indicator::checked{image:url(../../resource/img/radio-on.png);}
-QRadioButton[radio_btn_class_normal="radio_btn_class_normal"], QRadioButton{spacing:5px;font-size:15px;}
+QRadioButton[radio_btn_class_normal="true"]::indicator, QRadioButton::indicator{width:25px;}
+QRadioButton[radio_btn_class_normal="true"]::indicator::unchecked, QRadioButton::indicator::unchecked{image:url(../../resource/img/radio-off.png);}
+QRadioButton[radio_btn_class_normal="true"]::indicator::checked, QRadioButton::indicator::checked{image:url(../../resource/img/radio-on.png);}
+QRadioButton[radio_btn_class_normal="true"], QRadioButton{spacing:5px;font-size:15px;}
 
-QRadioButton[radio_btn_class_primary="radio_btn_class_primary"]::indicator{}
-QRadioButton[radio_btn_class_primary="radio_btn_class_primary"]::indicator::unchecked{}
-QRadioButton[radio_btn_class_primary="radio_btn_class_primary"]::indicator::checked{}
-QRadioButton[radio_btn_class_primary="radio_btn_class_primary"]{}
+QRadioButton[radio_btn_class_primary="true"]::indicator{}
+QRadioButton[radio_btn_class_primary="true"]::indicator::unchecked{}
+QRadioButton[radio_btn_class_primary="true"]::indicator::checked{}
+QRadioButton[radio_btn_class_primary="true"]{}
 
 
 
 
 /*QPushButton 按钮尺寸 大 btn_size_lg */
-[btn_size_lg="btn_size_lg"]{height: 50px;padding: 3px 7px}
-QPushButton[btn_size_normal="btn_size_normal"]{height: 25px;padding: 2px 5px}
-QPushButton[btn_size_small="btn_size_small"]{height: 20px;padding: 1px 3px}
+[btn_size_lg="true"]{height: 50px;padding: 3px 7px}
+QPushButton[btn_size_normal="true"]{height: 25px;padding: 2px 5px}
+QPushButton[btn_size_small="true"]{height: 20px;padding: 1px 3px}
 
 /*QPushButton 按钮倒角 大 btn_size_lg */
-QPushButton[btn_border_radius_50="btn_border_radius_50%"]{}
+QPushButton[btn_border_radius_50="true%"]{}
 
 /*-----------------id筛选------------------------*/
 
@@ -218,8 +265,8 @@ QPushButton[btn_border_radius_50="btn_border_radius_50%"]{}
 }
 /*最大化那妞*/
 #btn_bar_normal{/*background: #00bbf9;*/}
-#btn_bar_normal:hover, #btn_bar_min:hover{background: var(--basic-color-3);}
-#btn_bar_normal:pressed, #btn_bar_min:pressed{background: var(--basic-color-5);}
+#btn_bar_normal:hover, #btn_bar_min:hover{background: var(--basic-color-a3);}
+#btn_bar_normal:pressed, #btn_bar_min:pressed{background: var(--basic-color-a5);}
 /*关闭按钮*/
 #btn_bar_close{/*background: #f15bb5;*/}
 /*经过按钮*/

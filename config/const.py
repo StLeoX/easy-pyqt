@@ -3,7 +3,7 @@
     create by pymu on 2020/10/23
     package: .const.py
     project: base_qt_application
-
+    这里一般保存应用常使用的固定常量，如文件的相对路径
     常量集合
 """
 import os
@@ -18,11 +18,8 @@ class Config:
     """
     属性项
     """
+    # 应用名称
     app_name = "example app"
-
-    person_sg = 0
-    person_gb = 1
-
     # 唯一启动标识 todo 获取设备号
     unique_name = "unique_6948510_u_8"
 
@@ -87,23 +84,6 @@ class Config:
             os.makedirs(path)
         return path
 
-    # get shadow img path
-    @property
-    def shadow_path(self):
-        """
-        获取边框阴影的目录所在（此处已经指定了上级目录img所在）
-        :return: shadow path
-        """
-        return self.link(self.img_path, "shadow")
-
-    def get_shadow_path(self, name: str) -> str:
-        """
-        获取阴影
-        :param name:
-        :return:
-        """
-        return self.link(self.shadow_path, name)
-
     def get_user_desktop_path(self) -> str:
         """
         返回桌面
@@ -111,45 +91,46 @@ class Config:
         """
         return self.link(os.path.expanduser('~'), "Desktop")
 
-    @property
-    def oracle_path(self):
-        """
-        :return:
-        """
-        return self.link(self.resource_path, "oracle_client\\instantclient_19_3")
-
-
 
 class WidgetProperty:
-    """空间属性样式对应表 详细效果图请参阅：https://github.com/py-mu/easy-pyqt"""
+    """空间属性样式对应表 按照字母排序 详细效果图请参阅：https://py-mu.github.io/easy-pyqt/#/ui/readme"""
+
+    # 容器
+    box_class_primary = ("原始容器", ("box_class_primary", "true"))  # note: 原始容器
 
     # 使用元组放置属性筛选描述
-    btn_class_primary = ("原始按钮，不被注意的按钮如取消", ("btn_class_primary", "btn_class_primary"))  # note: 原始按钮
-    btn_class_normal = ("常规按钮，容易被注意到且表示积极的按钮", ("btn_class_normal", "btn_class_normal"))  # note: 常规按钮()
-    btn_class_warning = ("警告按钮，橙黄色带有冲击性的颜色，具有警告意味，但是无关紧要", ("btn_class_warning", "btn_class_warning"))  # note: 警告按钮()
-    btn_class_danger = ("危险按钮，红色带有冲击性的颜色, 表示动作很危险， 具有强烈警告", ("btn_class_danger", "btn_class_danger"))  # note: 危险按钮()
-    btn_class_disable = ("禁用按钮，通常用于表示，当前动作不可用", ("btn_class_disable", "btn_class_disable"))  # note: 禁用按钮()
-    btn_class_success = ("成功按钮，通常用于表示，正确、可用", ("btn_class_success", "btn_class_success"))  # note: 成功按钮()
+    btn_class_primary = ("原始按钮，不被注意的按钮如取消", ("btn_class_primary", "true"))  # note: 原始按钮
+    btn_class_normal = ("常规按钮，容易被注意到且表示积极的按钮", ("btn_class_normal", "true"))  # note: 常规按钮()
+    btn_class_warning = ("警告按钮，橙黄色带有冲击性的颜色，具有警告意味，但是无关紧要", ("btn_class_warning", "true"))  # note: 警告按钮()
+    btn_class_danger = ("危险按钮，红色带有冲击性的颜色, 表示动作很危险， 具有强烈警告", ("btn_class_danger", "true"))  # note: 危险按钮()
+    btn_class_disable = ("禁用按钮，通常用于表示，当前动作不可用", ("btn_class_disable", "true"))  # note: 禁用按钮()
+    btn_class_success = ("成功按钮，通常用于表示，正确、可用", ("btn_class_success", "true"))  # note: 成功按钮()
 
-    checkbox_class_normal = ("常用的复选框", ("checkbox_class_normal", "checkbox_class_normal"))  # note: 常用的复选框()
-    checkbox_class_primary = ("原生的复选框", ("checkbox_class_primary", "checkbox_class_primary"))  # note: 原生的复选框()
+    # 复选框
+    checkbox_class_normal = ("常用的复选框", ("checkbox_class_normal", "true"))  # note: 常用的复选框()
+    checkbox_class_primary = ("原生的复选框", ("checkbox_class_primary", "true"))  # note: 原生的复选框()
 
-    radio_btn_class_primary = ("原生的复选框", ("radio_btn_class_primary", "radio_btn_class_primary"))  # note: 原生的单选框()
-    radio_btn_class_normal = ("原生的复选框", ("radio_btn_class_normal", "radio_btn_class_normal"))  # note: 原生的单选框()
+    # 单选框
+    radio_btn_class_primary = ("原生的复选框", ("radio_btn_class_primary", "true"))  # note: 原生的单选框()
+    radio_btn_class_normal = ("原生的复选框", ("radio_btn_class_normal", "true"))  # note: 原生的单选框()
 
-    border_class_red = ("红色边框一般用于警示，输入错误", ("border_class_red", "border_class_red"))  # note: 红色边框()
+    # 其他
+    border_class_red = ("红色边框一般用于警示，输入错误", ("border_class_red", "true"))  # note: 红色边框()
 
     @staticmethod
-    def get_style(name: str) -> Tuple[str, Tuple[str, str]]:
+    def get_style(name: str, valid=True) -> Tuple[str, Tuple[str, str]]:
         """
         通过属性名筛选样式
 
+        :param valid: 是否有效
         :param name: 属性名称
         :return: 如果有则返回，没有则返回默认的
         """
-        default_property = "默认属性", ("property_name", "")
+        the_property = "默认属性", ("property_name", "true")
         if not name:
-            return default_property
-        if hasattr(WidgetProperty, str(name)):
-            return getattr(WidgetProperty, str(name))
-        return default_property
+            return the_property
+        name = str(name)
+        if hasattr(WidgetProperty, name):
+            the_property = getattr(WidgetProperty, name)
+            the_property = the_property[0], the_property[1][0], valid
+        return the_property
