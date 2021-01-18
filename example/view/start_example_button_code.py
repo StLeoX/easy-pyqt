@@ -72,6 +72,7 @@ class StartExampleButtonActivity(FrameLessWindowHintActivity):
         button6 = BaseButton("带图标的button")
         button6.setToolTip("带图标的button(BaseButton)")
         button6.setProperty(*WidgetProperty.btn_class_normal[1])
+        button6.setProperty("btn_size_lg", "btn_size_lg")
         button6.setIcon(self.resource.awesome_font_icon("fa.eercast"))
         f_layout.addWidget(button6)
 

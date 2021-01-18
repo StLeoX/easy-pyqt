@@ -124,20 +124,20 @@ class WidgetProperty:
     """空间属性样式对应表 详细效果图请参阅：https://github.com/py-mu/easy-pyqt"""
 
     # 使用元组放置属性筛选描述
-    btn_class_primary = ("原始按钮，不被注意的按钮如取消", ("property_name", "btn_class_primary"))  # note: 原始按钮
-    btn_class_normal = ("常规按钮，容易被注意到且表示积极的按钮", ("property_name", "btn_class_normal"))  # note: 常规按钮()
-    btn_class_warning = ("警告按钮，橙黄色带有冲击性的颜色，具有警告意味，但是无关紧要", ("property_name", "btn_class_warning"))  # note: 警告按钮()
-    btn_class_danger = ("危险按钮，红色带有冲击性的颜色, 表示动作很危险， 具有强烈警告", ("property_name", "btn_class_danger"))  # note: 危险按钮()
-    btn_class_disable = ("禁用按钮，通常用于表示，当前动作不可用", ("property_name", "btn_class_disable"))  # note: 禁用按钮()
-    btn_class_success = ("成功按钮，通常用于表示，正确、可用", ("property_name", "btn_class_success"))  # note: 成功按钮()
+    btn_class_primary = ("原始按钮，不被注意的按钮如取消", ("btn_class_primary", "btn_class_primary"))  # note: 原始按钮
+    btn_class_normal = ("常规按钮，容易被注意到且表示积极的按钮", ("btn_class_normal", "btn_class_normal"))  # note: 常规按钮()
+    btn_class_warning = ("警告按钮，橙黄色带有冲击性的颜色，具有警告意味，但是无关紧要", ("btn_class_warning", "btn_class_warning"))  # note: 警告按钮()
+    btn_class_danger = ("危险按钮，红色带有冲击性的颜色, 表示动作很危险， 具有强烈警告", ("btn_class_danger", "btn_class_danger"))  # note: 危险按钮()
+    btn_class_disable = ("禁用按钮，通常用于表示，当前动作不可用", ("btn_class_disable", "btn_class_disable"))  # note: 禁用按钮()
+    btn_class_success = ("成功按钮，通常用于表示，正确、可用", ("btn_class_success", "btn_class_success"))  # note: 成功按钮()
 
-    checkbox_class_normal = ("常用的复选框", ("property_name", "checkbox_class_normal"))  # note: 常用的复选框()
-    checkbox_class_primary = ("原生的复选框", ("property_name", "checkbox_class_primary"))  # note: 原生的复选框()
+    checkbox_class_normal = ("常用的复选框", ("checkbox_class_normal", "checkbox_class_normal"))  # note: 常用的复选框()
+    checkbox_class_primary = ("原生的复选框", ("checkbox_class_primary", "checkbox_class_primary"))  # note: 原生的复选框()
 
-    radio_btn_class_primary = ("原生的复选框", ("property_name", "radio_btn_class_primary"))  # note: 原生的单选框()
-    radio_btn_class_normal = ("原生的复选框", ("property_name", "radio_btn_class_normal"))  # note: 原生的单选框()
+    radio_btn_class_primary = ("原生的复选框", ("radio_btn_class_primary", "radio_btn_class_primary"))  # note: 原生的单选框()
+    radio_btn_class_normal = ("原生的复选框", ("radio_btn_class_normal", "radio_btn_class_normal"))  # note: 原生的单选框()
 
-    border_class_red = ("红色边框一般用于警示，输入错误", ("property_name", "border_class_red"))  # note: 红色边框()
+    border_class_red = ("红色边框一般用于警示，输入错误", ("border_class_red", "border_class_red"))  # note: 红色边框()
 
     @staticmethod
     def get_style(name: str) -> Tuple[str, Tuple[str, str]]:
