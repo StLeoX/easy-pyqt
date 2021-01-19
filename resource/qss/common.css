@@ -1,8 +1,8 @@
-/*----------------------备注-----------------------------
-    默认的样式表。如果需要用到这个样式，且还用到其他的样式，
-    那需要进行相加,子控件样式会继承自这个公共样式。
-    除了主题样式，个性化样式请不要在此表中声明.
-----------------------------------------------------------*/
+/*----------------------备注-----------------------------|
+|        默认的样式表。如果需要用到这个样式，且还用到其他的样式，   |
+|        那需要进行相加,子控件样式会继承自这个公共样式。          |
+|        除了主题样式，个性化样式请不要在此表中声明.             |
+--------------------------------------------------------*/
 DEFINED_VALUE{
     /*主题配色*/
     --basic-color: #fdfdfd;                                 /*留白色 大量基色*/
@@ -40,6 +40,7 @@ DEFINED_VALUE{
     --basi-pdding-sieze-5: 5px;                             /*边距*/
 
     /*--- 字体设定 ---*/
+    --font-color: #fff;                                     /*白色字体（当在一些非白色背景中需要使用白色作为字体颜色）*/
     --font-color-333: #333;                                 /*主要字体颜色 333*/
     --font-color-666: #666;                                 /*主要字体颜色 666*/
     --font-color-999: #999;                                 /*主要字体颜色 999*/
@@ -90,15 +91,15 @@ QPushButton[btn_class_primary="true"]{border-color:var(--basi-border-color);}
 QPushButton[btn_class_primary="true"]:hover{background: var(--basic-color-1);}
 QPushButton[btn_class_primary="true"]:pressed{background: var(--basic-color-a);}
 /*QPushButton 常规按钮 btn_class_normal */
-QPushButton[btn_class_normal="true"]{background: var(--accent-color-light);color: #fff; border-color:var(--accent-color-light);}
+QPushButton[btn_class_normal="true"]{background: var(--accent-color-light);color: var(--font-color); border-color:var(--accent-color-light);}
 QPushButton[btn_class_normal="true"]:hover{background: var(--accent-color-1);border-color: var(--accent-color-1);}
 QPushButton[btn_class_normal="true"]:pressed{background: var(--accent-color-a);border-color: var(--accent-color-a);}
 /*QPushButton 警告按钮 btn_class_warning */
-QPushButton[btn_class_warning="true"]{border-color:var(--accent-color-warning);color: #fff; background: var(--accent-color-warning);}
+QPushButton[btn_class_warning="true"]{border-color:var(--accent-color-warning);color: var(--font-color); background: var(--accent-color-warning);}
 QPushButton[btn_class_warning="true"]:hover{background: var(--accent-color-warning-1);border-color: var(--accent-color-warning-1);}
 QPushButton[btn_class_warning="true"]:pressed{background: var(--accent-color-warning-a);border-color: var(--accent-color-warning-a);}
 /*QPushButton 危险按钮 btn_class_danger */
-QPushButton[btn_class_danger="true"]{border-color:var(--accent-color-danger);color: #fff; background: var(--accent-color-danger);}
+QPushButton[btn_class_danger="true"]{border-color:var(--accent-color-danger);color: var(--font-color); background: var(--accent-color-danger);}
 QPushButton[btn_class_danger="true"]:hover{background: var(--accent-color-danger-1);border-color:var(--accent-color-danger-1);}
 QPushButton[btn_class_danger="true"]:pressed{background: var(--accent-color-danger-a);border-color:var(--accent-color-danger-a);}
 /*QPushButton 禁用按钮 btn_class_disable */
@@ -106,7 +107,7 @@ QPushButton[btn_class_disable="true"], QPushButton:disabled{border-color:var(--b
 QPushButton[btn_class_disable="true"]:hover, QPushButton:disabled:hover{background: var(--basic-color-a2);border-color:var(--basi-border-color); cursor: w-resize}
 QPushButton[btn_class_disable="true"]:pressed, QPushButton:disabled:pressed{background: var(--basic-color-a2);border-color:var(--basi-border-color);}
 /*QPushButton 成功按钮 btn_class_success */
-QPushButton[btn_class_success="true"]{border-color:var(--accent-colo-green-1);color: #ffffff; background:var(--accent-colo-green);}
+QPushButton[btn_class_success="true"]{border-color:var(--accent-colo-green-1);color: var(--font-color); background:var(--accent-colo-green);}
 QPushButton[btn_class_success="true"]:hover{background: var(--accent-colo-green-a);border-color:var(--accent-colo-green-1); cursor: w-resize}
 QPushButton[btn_class_success="true"]:pressed{background: var(--accent-colo-green-1);border-color:var(--basi-border-color);}
 
@@ -164,32 +165,6 @@ QTabWidget QTabBar{background: transparent;border: none;}
 /* 给tab设置一个底部边框把白边填不上 */
 QTabBar::tab:hover{background:var(--basic-color-1);border-bottom: 3px solid var(--basic-color-1);border-radius: 2px;}
 QTabBar::tab:selected {border-bottom: 3px solid var(--accent-colo-green);color: var(--accent-colo-green-a);}
-
-/*------------------属性筛选---------------------*/
-/*QPushButton 原始按钮 btn_class_primary */
-QPushButton[btn_class_primary="true"]{border-color:var(--basi-border-color);}
-QPushButton[btn_class_primary="true"]:hover{background: var(--basic-color-1);}
-QPushButton[btn_class_primary="true"]:pressed{background: var(--basic-color-a);}
-/*QPushButton 常规按钮 btn_class_normal */
-QPushButton[btn_class_normal="true"]{background: var(--accent-color-light);color: #fff; border-color:var(--accent-color-light);}
-QPushButton[btn_class_normal="true"]:hover{background: var(--accent-color-1);border-color: var(--accent-color-1);}
-QPushButton[btn_class_normal="true"]:pressed{background: var(--accent-color-a);border-color: var(--accent-color-a);}
-/*QPushButton 警告按钮 btn_class_warning */
-QPushButton[btn_class_warning="true"]{border-color:var(--accent-color-warning);color: #fff; background: var(--accent-color-warning);}
-QPushButton[btn_class_warning="true"]:hover{background: var(--accent-color-warning-1);border-color: var(--accent-color-warning-1);}
-QPushButton[btn_class_warning="true"]:pressed{background: var(--accent-color-warning-a);border-color: var(--accent-color-warning-a);}
-/*QPushButton 危险按钮 btn_class_danger */
-QPushButton[btn_class_danger="true"]{border-color:var(--accent-color-danger);color: #fff; background: var(--accent-color-danger);}
-QPushButton[btn_class_danger="true"]:hover{background: var(--accent-color-danger-1);border-color:var(--accent-color-danger-1);}
-QPushButton[btn_class_danger="true"]:pressed{background: var(--accent-color-danger-a);border-color:var(--accent-color-danger-a);}
-/*QPushButton 禁用按钮 btn_class_disable */
-QPushButton[btn_class_disable="true"], QPushButton:disabled{border-color:var(--basi-border-color);color: var(--basi-border-color-outline); background:var(--basic-color-a2);}
-QPushButton[btn_class_disable="true"]:hover, QPushButton:disabled:hover{background: var(--basic-color-a2);border-color:var(--basi-border-color); cursor: w-resize}
-QPushButton[btn_class_disable="true"]:pressed, QPushButton:disabled:pressed{background: var(--basic-color-a2);border-color:var(--basi-border-color);}
-/*QPushButton 成功按钮 btn_class_success */
-QPushButton[btn_class_success="true"]{border-color:var(--accent-colo-green-1);color: #ffffff; background:var(--accent-colo-green);}
-QPushButton[btn_class_success="true"]:hover{background: var(--accent-colo-green-a);border-color:var(--accent-colo-green-1); cursor: w-resize}
-QPushButton[btn_class_success="true"]:pressed{background: var(--accent-colo-green-1);border-color:var(--basi-border-color);}
 
 QLineEdit[border_class_red="true"]{border-color: var(--accent-color-danger);}
 QLineEdit[border_class_red="true"]{color: var(--accent-color-a);}

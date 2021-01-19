@@ -18,6 +18,7 @@ eq自带的组件
 ![](../img/0x02设计frame大致布局.PNG)
 
 - 使用：
+
 ```python
 # 实例化
 self.bar: FrameBarDemo0 = FrameBarDemo0(self)
@@ -30,4 +31,5 @@ self.bar_mini = self.bar.btn_bar_min
 self.bar_normal = self.bar.btn_bar_normal
 super(TestActivity, self).configure()
 self.bar.btn_bar_app_logo.setIcon(self.resource.qt_icon_project_png)
+
 ```
